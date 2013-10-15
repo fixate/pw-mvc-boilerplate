@@ -1,0 +1,35 @@
+.DS_STORE
+config.rb
+.sass-cache/
+
+# ignore symlinked styleguide folders and files
+styleguide/css
+styleguide/img
+styleguide/fnt
+styleguide/style.css
+
+#ignore ProcessWire files and folders
+*.old
+*.old/*
+*.new
+*.new/*
+old
+old/*
+*.1
+*.1/*
+sess_*
+*.cache
+*.swp
+*.swo
+*.sh
+site/config-dev.php
+site/assets/logs
+site/assets/files
+site/assets/sessions
+site/assets/cache
+site/assets/installed.php
+
+# ignore grunt files
+node_modules
+npm-debug.log
+

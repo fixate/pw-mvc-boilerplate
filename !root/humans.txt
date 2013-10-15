@@ -1,0 +1,44 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+
+/* TEAM */
+	Ms: Alison Hugo
+	Site: http://fixate.it
+	Location: Johannesburg, South Africa
+
+	Ms: Cassandra Zamparini
+	Site: http://fixate.it
+	Location: Johannesburg, South Africa
+
+	Mr: Larry Botha
+	Site: http://fixate.it
+	Location: Johannesburg, South Africa
+
+	Mr: Stan Bondi
+	Site: http://fixate.it
+	Location: Johannesburg, South Africa
+
+/* SITE */
+	Standards: HTML5, CSS, PHP, Apache
+	Components: Wordpress, Modernizr, jQuery
+	Software: Illustrator, Sublime Text 2, Sass
+
+
+           ,ooooooooooooooooodc
+           oXXXXXXXXXXXXXXXXXNO.
+           oXXXKOxxxxxxxxxxxxxl
+           oXXXO;
+           oXXXO;
+           oXXXO;
+           oXXXO:..........
+         ,o0XXXXK0000000000l
+        .o0XXXXXXXXXXXXXXXNd
+          .xXXXKdcccccccccc'
+           oXXXO;
+           oXXXO;
+           oXXXO;
+           oXXXO;
+           oXXXO;
+           l0KKk,
+           .....
