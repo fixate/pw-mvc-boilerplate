@@ -7,7 +7,7 @@
 
 define('GA_UACODE', false);
 
-if (file_exists(dirname(__FILE__) . '/../config.dev.php')) {
+if (file_exists(dirname(__FILE__) . '/../config-dev.php')) {
 	define('PW_LOCAL_DEV', true);
 } else {
   define('PW_LOCAL_DEV', false);
