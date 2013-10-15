@@ -26,7 +26,9 @@ Ensure you have uncommented the following line in `site/config.php`:
 $config->prependTemplateFile = '_init.php';
 ```
 
-and get cracking!
+Move the contents of `!root` to the root of your site (.gitignore to your project root), and get cracking!
+
+**NOTE:** ProcessWire creates its own .htaccess. The .htaccess in this repo extends the [H5BP .htaccess](https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess) with the ProcessWire 2.3 .htaccess. You may override that .htaccess with this one.
 
 ### License
 
