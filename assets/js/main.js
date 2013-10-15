@@ -1,3 +1,3 @@
-$(document).ready(function() {
-	// nothing here yet
-}); 
+(function(window, $) {
+  // REMOVE IF NOT USING 
+}(this, this.jQuery));
