@@ -24,7 +24,6 @@
   <?php include("./partials/header.inc.php"); ?>
 
   <div class="area-content">
-
     <div id="main" class="wrap" role="main">
 
       <h1 id='title'><?= $page->get("headline|title"); ?></h1>
