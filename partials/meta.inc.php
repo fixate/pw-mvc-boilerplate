@@ -20,7 +20,7 @@
   <meta name="msapplication-TileColor" content="#ffffff"/>
   <meta name="msapplication-TileImage" content="apple-touch-icon-152x152-precomposed.png"/>
 
-  <link rel="SHORTCUT ICON" href="<?= $config->urls->templates; ?>asset/img/favicon.ico" type="image/x-icon" />
+  <link rel="SHORTCUT ICON" href="<?= $config->urls->templates; ?>assets/img/favicon.ico" type="image/x-icon" />
   <link rel="logo" type="image/svg" href="<?= $config->urls->templates; ?>assets/img/logo.svg"/>
 
   <!--[if ! lte IE 7]><!-->
