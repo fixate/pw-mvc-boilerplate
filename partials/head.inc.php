@@ -2,6 +2,7 @@
 /**
  * Include for site's head and header sections.
  *
+ * @package ProcessWire
  * @since Theme_Name 1.0
  */
 ?>

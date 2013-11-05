@@ -2,6 +2,7 @@
 /**
  * Partial for outputting scripts to footer.inc.php
  *
+ * @package ProcessWire
  * @since Theme_Name 1.0
  */
 

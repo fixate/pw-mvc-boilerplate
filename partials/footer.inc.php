@@ -2,6 +2,7 @@
 /**
  * Include for site footer.
  *
+ * @package ProcessWire
  * @since Theme_Name 1.0
  */
 

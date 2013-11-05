@@ -4,6 +4,9 @@
  * http://mathiasbynens.be/notes/async-analytics-snippet
  *
  * Set GA_UACODE in functions.php to your analytics tracking code
+ *
+ * @package ProcessWire
+ * @since Theme_Name 1.0
  */
 ?>
 <script>

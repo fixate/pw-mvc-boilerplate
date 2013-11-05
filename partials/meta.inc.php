@@ -1,10 +1,17 @@
+<?php
+/**
+ * Page head. Included via head.inc.php
+ *
+ * @package ProcessWire
+ * @since Theme_Name 1.0
+ */
+?>
 <head>
   <meta charset="utf-8">
   <link rel="dns-prefetch" href="//ajax.googleapis.com" />
 
-	<title><?php echo $page->get("headline|title"); ?></title>
-
-  <meta name="description" content="<?php echo $page->summary; ?>" />
+	<title><?= $page->get("seo_title|title"); ?></title>
+  <meta name="description" content="<?= $page->get("seo_description"); ?>" />
 
   <?php // enable responsive behaviour for all devices ?>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +24,7 @@
   <link rel="logo" type="image/svg" href="<?= $config->urls->templates; ?>assets/img/logo.svg"/>
 
   <!--[if ! lte IE 7]><!-->
-	<link rel="stylesheet" type="text/css" href="<?php echo $config->urls->templates; ?>assets/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="<?= $config->urls->templates; ?>assets/css/style.css" />
   <!--<![endif]-->
 
   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/feed" />
@@ -29,6 +36,5 @@
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-
 </head>
 
