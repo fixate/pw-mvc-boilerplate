@@ -2,6 +2,8 @@
 /**
  * Google Analytics tracking code. Optimised asynchronous snippet as per:
  * http://mathiasbynens.be/notes/async-analytics-snippet
+ *
+ * Set GA_UACODE in functions.php to your analytics tracking code
  */
 ?>
 <script>
