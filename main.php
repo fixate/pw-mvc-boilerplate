@@ -38,8 +38,8 @@
         }
       ?>
 
-    </div><?php // #main ?>
-  </div><?php //.area-content ?>
+    </div><!-- #main -->
+  </div><!-- .area-content -->
 
   <?php include("./partials/footer.inc.php"); ?>
 

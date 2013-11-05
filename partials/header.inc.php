@@ -8,7 +8,7 @@
  * @since Theme_Name 1.0
  */
 ?>
-<header role="banner">
+<header class="area-header" role="banner">
 
   <div class="wrap">
 
