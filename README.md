@@ -9,7 +9,7 @@ in your admin.
 
 ## Purpose
 
-Kickstart ProcessWire projects, and provide a structure which is more suitable to an MVC approach.
+Kickstart ProcessWire projects with a structure that reduces some repetition.
 
 ## Usage
 
