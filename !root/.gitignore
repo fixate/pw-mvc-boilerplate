@@ -2,6 +2,9 @@
 config.rb
 .sass-cache/
 
+# ignore Sourcejs folder
+Source.js
+
 # ignore symlinked styleguide folders and files
 styleguide/css
 styleguide/img
