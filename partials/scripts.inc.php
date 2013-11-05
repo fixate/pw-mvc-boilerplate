@@ -2,8 +2,10 @@
 /**
  * Partial for outputting scripts to footer.inc.php
  *
+ * @since Theme_Name 1.0
  */
-include('./partials/google-analytics.inc.php'); ?>
+
+get_google_analytics(); ?>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 

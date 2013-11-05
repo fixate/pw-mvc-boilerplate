@@ -1,14 +1,9 @@
 <?php
-
 /**
- * Demo site header include file (HTML5)
+ * Include for site's head and header sections.
  *
- * Note that this file has nothing to do with ProcessWire. We just split our common
- * header and footer markup into separate files (head.inc and foot.inc) like this,
- * since it was common to all of our templates.
- *
+ * @since Theme_Name 1.0
  */
-
 ?>
 <!doctype html>
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="<?= __('en', 'theme_text_domain'); ?>"> <![endif]-->
@@ -16,13 +11,6 @@
 <!--[if gt IE 9]><!--> <html class="no-js" lang="<?= __('en', 'theme_text_domain'); ?>"> <!--<![endif]-->
 <?php include('./partials/meta.inc.php'); ?>
 <body>
-
-	<p id='bgtitle'><?php
-
-		// print the section title as big faded text that appears near the top left of the page
-		echo $page->rootParent->title;
-
-	?></p>
 
 	<div id="masthead" class="masthead">
 
@@ -45,17 +33,6 @@
 				foreach($children as $child) {
 					$class = $child === $page->rootParent ? " class='on'" : '';
 					echo "<li><a$class href='{$child->url}'>{$child->title}</a></li>";
-				}
-
-			?></ul>
-
-			<ul id='breadcrumb'><?php
-
-				// Create breadcrumb navigation by cycling through the current $page's
-				// parents in order, linking to each:
-
-				foreach($page->parents as $parent) {
-					echo "<li><a href='{$parent->url}'>{$parent->title}</a> &gt; </li>";
 				}
 
 			?></ul>

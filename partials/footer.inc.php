@@ -1,5 +1,9 @@
-
-				<?php
+<?php
+/**
+ * Include for site footer.
+ *
+ * @since Theme_Name 1.0
+ */
 
 				// Output navigation for any children below the bodycopy.
 				// This navigation cycles through the page's children and prints
