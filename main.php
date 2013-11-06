@@ -31,6 +31,5 @@
   </div><!-- .area-content -->
 
   <?php include("./partials/footer.inc.php"); ?>
-
 </body>
 </html>
