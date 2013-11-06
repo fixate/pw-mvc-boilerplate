@@ -1,8 +1,9 @@
 <?php
 /**
- * Search page template
+ * Search template
  *
- * This site uses the delegate approach: http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/
+ * This site uses the delegate approach:
+ * http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/
  *
  * Make sure to set 'Alternate Template' to 'main.php' under Template Settings
  *

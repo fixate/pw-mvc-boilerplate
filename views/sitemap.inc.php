@@ -1,6 +1,6 @@
 <?php
 /**
- * Sitemap page template
+ * Sitemap template
  *
  * This site uses the delegate approach: http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/
  *

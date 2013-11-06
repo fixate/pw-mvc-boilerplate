@@ -1,6 +1,6 @@
 <?php
 /**
- * Basic page template
+ * Contact template
  *
  * This site uses the delegate approach:
  * http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/
