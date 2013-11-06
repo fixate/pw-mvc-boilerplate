@@ -5,7 +5,6 @@
 /**
  * This is the global init file included before all template files.
  *
- * Use of this is optional and set via $config->prependTemplateFile in /site/config.php.
  * This file is used to make controllers available to each template. Controllers are
  * used to keep logic out of the templates, and to make available all fields defined
  * in the templates.
@@ -30,6 +29,10 @@
  */
 include "./controllers/globals-controller.php";
 
-if ($page->template) {
+/**
+ * Load the controller associated with the current template if it exists
+ */
+if ($page->template && (file_exists($config->paths->templates . "/controllers/{$page->template}-controller.php"))) {
   include "./controllers/{$page->template}-controller.php";
 }
+
