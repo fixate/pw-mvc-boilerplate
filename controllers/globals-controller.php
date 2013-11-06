@@ -40,22 +40,6 @@ $assets_uri = $config->urls->templates . 'assets';
   $FUNCTIONS
 \*------------------------------------*/
 /**
- * Delegate rendering to the current template's view
- *
- * This function is called in main.php, and is responsible for outputting anything
- * defined within the view of any template
- *
- * @since Theme_Name 1.0
- */
-function render_view($page, $config) {
-  if ($page->template) {
-    $t = new TemplateFile($config->paths->templates . "views/{$page->template}.inc.php");
-    echo $t->render();
-  }
-}
-
-
-/**
  * Output Google Analytics code as per:
  * http://mathiasbynens.be/notes/async-analytics-snippet
  *

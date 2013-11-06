@@ -12,4 +12,3 @@
  */
 
 echo $page->body;
-
