@@ -13,12 +13,11 @@
 \*------------------------------------*/
 define('GA_UACODE', false);
 
-if (file_exists(dirname(__FILE__) . '/../../config-dev.php')) {
+if (file_exists(dirname($config->paths->templates) . '/config-dev.php')) {
 	define('PW_LOCAL_DEV', true);
 } else {
   define('PW_LOCAL_DEV', false);
 }
-
 
 
 
@@ -48,7 +47,7 @@ $assets_uri = $config->urls->templates . 'assets';
  */
 function get_google_analytics() {
   if (defined('PW_LOCAL_DEV') && PW_LOCAL_DEV !== true && GA_UACODE !== false){
-    include("../partials/google-analytics.inc.php");
+    include "./partials/google-analytics.inc.php";
   }
 
   return false;
