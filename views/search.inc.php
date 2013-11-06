@@ -28,4 +28,4 @@ if ($query) :
 
 <?php else : ?>
   <p>Please enter a search term in the search box.</p>
-<?php endif; // $query ?>
+<?php endif; // $query
