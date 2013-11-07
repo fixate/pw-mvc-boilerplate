@@ -28,6 +28,8 @@
  * @param object    $input      the WireInput object
  * @param object    $page       the current page object
  * @param object    $sanitizer  the sanitizer object for input sanitisation
+ * @return string   either the rendered form, or a success message on successful
+ *                  submission
  */
 function theme_fn_prefix_get_contact_form($modules, $input, $page, $sanitizer) {
   $to_email = $page->get('email');
