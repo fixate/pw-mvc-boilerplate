@@ -16,7 +16,7 @@ Kickstart ProcessWire projects with a structure that reduces repetition, separat
 - `html`, `body`, and structural markup is defined in a single template
 - header, footer, and other global sections are defined once
 - logic is abstracted from markup
-- contains a working, and easy to understand, contact form built through the API
+- contains a working, and easy to understand contact form built through the API
 
 ## Usage
 
