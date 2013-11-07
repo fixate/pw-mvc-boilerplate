@@ -24,7 +24,10 @@
  * Inspired by the following article:
  * http://processwire.com/talk/topic/2089-create-simple-forms-using-api/?p=19505
  *
- * @since Theme_Name 1.0
+ * @param object    $modules    the object giving access to all installed modules
+ * @param object    $input      the WireInput object
+ * @param object    $page       the current page object
+ * @param object    $sanitizer  the sanitizer object for input sanitisation
  */
 function theme_fn_prefix_get_contact_form($modules, $input, $page, $sanitizer) {
   $to_email = $page->get('email');
