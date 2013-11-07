@@ -21,7 +21,7 @@
 /**
  * Loop through pages of the site and output a list item for each with a link
  *
- * @since Theme_Name 1.0
+ * @param object $page    the page to use as the root for generating a list of children
  */
 function theme_fn_prefix_pages_list($page) {
 
