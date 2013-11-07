@@ -9,7 +9,14 @@ in your admin.
 
 ## Purpose
 
-Kickstart ProcessWire projects with a structure that reduces some repetition.
+Kickstart ProcessWire projects with a structure that reduces repetition, separates logic from markup, and logically organises your code for easier management.
+
+## Features
+
+- `html`, `body`, and structural markup is defined in a single template
+- header, footer, and other global sections are defined once
+- logic is abstracted from markup
+- contains a working, and easy to understand, contact form built through the API
 
 ## Usage
 
