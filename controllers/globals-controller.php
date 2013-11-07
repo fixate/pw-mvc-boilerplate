@@ -50,6 +50,9 @@ $seo_noindex = $page->seo_noindex;
  * Output Google Analytics code as per:
  * http://mathiasbynens.be/notes/async-analytics-snippet
  *
+ * This function first ensures we are not in a dev environment, and then includes
+ * the Google Analytics template found in /partials/google-analytics.inc.php
+ *
  * @since Theme_Name 1.0
  */
 function get_google_analytics() {
