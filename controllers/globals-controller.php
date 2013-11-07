@@ -24,13 +24,20 @@ if (file_exists(dirname($config->paths->templates) . '/config-dev.php')) {
 
 
 /*------------------------------------*\
+  $VARIABLES
+\*------------------------------------*/
+$assets_uri = $config->urls->templates . 'assets';
+
+
+
+
+
+/*------------------------------------*\
   $FIELDS
 \*------------------------------------*/
 $seo_title = $page->get('seo_title|title');
 $seo_desc = $page->seo_descr;
 $seo_noindex = $page->seo_noindex;
-
-$assets_uri = $config->urls->templates . 'assets';
 
 
 
