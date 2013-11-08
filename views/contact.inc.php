@@ -13,4 +13,4 @@
 
 echo $page->body;
 
-echo theme_fn_prefix_get_contact_form($modules, $input, $page, $sanitizer);
+echo theme_fn_prefix_get_contact_form($modules, $config, $input, $page, $sanitizer, $session);

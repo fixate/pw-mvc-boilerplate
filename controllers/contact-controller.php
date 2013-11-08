@@ -31,7 +31,7 @@
  * @return string               either the rendered form, or a success message on
  *                              successful submission
  */
-function theme_fn_prefix_get_contact_form($modules, $input, $page, $sanitizer) {
+function theme_fn_prefix_get_contact_form($modules, $config, $input, $page, $sanitizer, $session) {
   $to_email = $page->get('email');
   $message_success = '<p>Thank for your message, we\'ll be in touch soon!</p>';
   $output = '';
@@ -83,6 +83,13 @@ function theme_fn_prefix_get_contact_form($modules, $input, $page, $sanitizer) {
   $form_message->required = 1;
   $form->append($form_message);
 
+  // implement basic honeypot spam proection
+  $form_honeypot = $modules->get('InputfieldCheckbox');
+  $form_honeypot->label = " ";
+  $form_honeypot->attr('id+name','sendemail');
+  $form_honeypot->attr('style', 'display:none;');
+  $form->append($form_honeypot);
+
   // create a submit button
   $form_submit = $modules->get("InputfieldSubmit");
   $form_submit->attr("value","Send");
@@ -96,10 +103,24 @@ function theme_fn_prefix_get_contact_form($modules, $input, $page, $sanitizer) {
     // process the submitted form
     $form->processInput($input->post);
 
+    // check if honeypot is checked
+    $spam_field = $form->get("sendemail");
+    $spam_action = $sanitizer->text($input->post->sendemail);
+
+    // if it is checked, add an error to the error array
+    if ($spam_action == 1) {
+      $spam_field->error("If you are human, you'd best email us directly; your submission is being detected as spam! If you are a robot, please ignore this.");
+
+      // write this attempt to a log
+      $spam_log = new FileLog($config->paths->logs . 'detectedspam.txt');
+      $spam_log->save('Spam catched: '.$sanitizer->textarea($input->post->body));
+    }
+
     // check if there are errors in the submission
     if($form->getErrors()) {
       $output = $form->render();
     } else {
+
       // sanitise inputs
       $user_name     = $sanitizer->text($input->post->name);
       $user_email    = $sanitizer->email($form->get('email')->value);
