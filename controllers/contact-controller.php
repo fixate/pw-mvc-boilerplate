@@ -24,10 +24,6 @@
  * Inspired by the following article:
  * http://processwire.com/talk/topic/2089-create-simple-forms-using-api/?p=19505
  *
- * @param object    $modules    the object giving access to all installed modules
- * @param object    $input      the WireInput object
- * @param object    $page       the current page object
- * @param object    $sanitizer  the sanitizer object for input sanitisation
  * @return string               either the rendered form, or a success message on
  *                              successful submission
  */
