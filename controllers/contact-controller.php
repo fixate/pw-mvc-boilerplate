@@ -31,7 +31,14 @@
  * @return string               either the rendered form, or a success message on
  *                              successful submission
  */
-function theme_fn_prefix_get_contact_form($modules, $config, $input, $page, $sanitizer, $session) {
+function theme_fn_prefix_get_contact_form() {
+  $modules = wire('modules');
+  $config = wire('config');
+  $input = wire('input');
+  $page = wire('page');
+  $sanitizer = wire('sanitizer');
+  $session = wire('session');
+
   $to_email = $page->get('email');
   $message_success = '<p>Thank for your message, we\'ll be in touch soon!</p>';
   $output = '';
