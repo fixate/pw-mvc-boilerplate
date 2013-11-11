@@ -84,6 +84,9 @@ function theme_fn_prefix_get_contact_form($modules, $config, $input, $page, $san
   $form->append($form_message);
 
   // implement basic honeypot spam proection
+  $form_honeypot_markup = $modules->get('InputfieldMarkup');
+  $form_honeypot_markup->attr('value', '<label for="sendemail" style="display:none;">carbon life forms, don\'t enter this checkbox!</label>');
+  $form->append($form_honeypot_markup);
   $form_honeypot = $modules->get('InputfieldCheckbox');
   $form_honeypot->label = " ";
   $form_honeypot->attr('id+name','sendemail');
