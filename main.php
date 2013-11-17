@@ -23,7 +23,7 @@
   <div class="area-content">
     <div id="main" class="wrap" role="main">
 
-      <h1 id='title'><?= $page->get("headline|title"); ?></h1>
+      <h1><?= $page->get("headline|title"); ?></h1>
 
       <?php render_view(); ?>
 
