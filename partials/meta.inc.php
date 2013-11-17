@@ -1,6 +1,8 @@
 <?php
 /**
- * Page head. Included via head.inc.php
+ * Page head.
+ *
+ * Included via main.php
  *
  * @package ProcessWire
  * @since Theme_Name 1.0
