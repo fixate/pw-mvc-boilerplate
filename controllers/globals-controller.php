@@ -47,6 +47,21 @@ $seo_noindex = $page->seo_noindex;
   $FUNCTIONS
 \*------------------------------------*/
 /**
+ * Delegate rendering of a template to its view
+ *
+ * @since Theme_Name 1.0
+ */
+function render_view() {
+  $page = wire('page');
+
+  if ($page->template) {
+    include "./views/{$page->template}.inc.php";
+  }
+}
+
+
+
+/**
  * Output Google Analytics code as per:
  * http://mathiasbynens.be/notes/async-analytics-snippet
  *

@@ -25,11 +25,7 @@
 
       <h1 id='title'><?= $page->get("headline|title"); ?></h1>
 
-      <?php
-        if ($page->template) {
-          include "./views/{$page->template}.inc.php";
-        }
-      ?>
+      <?php render_view(); ?>
 
     </div><!-- #main -->
   </div><!-- .area-content -->
