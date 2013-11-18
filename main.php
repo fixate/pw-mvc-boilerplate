@@ -18,6 +18,7 @@
 <!--[if gt IE 9]><!--> <html class="no-js" lang="<?= __('en', 'theme_text_domain'); ?>"> <!--<![endif]-->
 <?php include("./partials/meta.inc.php"); ?>
 <body>
+  <?php include("./partials/edit-page.inc.php"); ?>
   <?php include("./partials/header.inc.php"); ?>
 
   <div class="area-content">

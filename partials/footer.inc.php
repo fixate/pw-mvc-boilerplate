@@ -18,13 +18,4 @@
   </div>
 </div>
 
-<?php
-
-// If the page is editable, then output a link that takes us straight to the page edit screen:
-if($page->editable()) {
-  echo "<a class='nav' id='editpage' href='{$config->urls->admin}page/edit/?id={$page->id}'>Edit</a>";
-}
-
-?>
-
 <?php include('./partials/scripts.inc.php');
