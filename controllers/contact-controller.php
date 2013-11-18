@@ -68,22 +68,22 @@ function theme_fn_prefix_get_contact_form() {
   // create an input for a visitor's name
   $form_name = $modules->get("InputfieldText");
   $form_name->label = "Name";
-  $form_name->attr('id+name','name');
   $form_name->required = 1;
+  $form_name->attr('id+name','name');
   $form->append($form_name);
 
   // create an input for a visitor's email
   $form_email = $modules->get("InputfieldEmail");
   $form_email->label = "E-Mail";
-  $form_email->attr('id+name','email');
   $form_email->required = 1;
+  $form_email->attr('id+name','email');
   $form->append($form_email);
 
   // create a textarea for the visitor's message
   $form_message = $modules->get("InputfieldTextarea");
   $form_message->label = "Message";
-  $form_message->attr('id+name','message');
   $form_message->required = 1;
+  $form_message->attr('id+name','message');
   $form->append($form_message);
 
   // implement basic honeypot spam proection
@@ -119,7 +119,7 @@ function theme_fn_prefix_get_contact_form() {
 
       // write this attempt to a log
       $spam_log = new FileLog($config->paths->logs . 'detectedspam.txt');
-      $spam_log->save('Spam catched: '.$sanitizer->textarea($input->post->body));
+      $spam_log->save('Spam caught: '.$sanitizer->textarea($input->post->body));
     }
 
     // check if there are errors in the submission
