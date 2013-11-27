@@ -73,7 +73,7 @@ function get_primary_nav() {
   if ($modules->isInstalled('MarkupSimpleNavigation')) {
     $treeMenu = $modules->get('MarkupSimpleNavigation');
   } else {
-    trigger_error("Please install MarkupSimpleNavigatin to use " . __FUNCTION__ . "()", E_USER_ERROR);
+    trigger_error("MarkupSimpleNavigatin must be added as a module to use " . __FUNCTION__ . "()", E_USER_ERROR);
     return false;
   }
 
