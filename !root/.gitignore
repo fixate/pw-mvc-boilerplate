@@ -26,10 +26,10 @@ sess_*
 *.swo
 *.sh
 **/site/config-dev.php
-**/site/assets/logs
-**/site/assets/files
-**/site/assets/sessions
-**/site/assets/cache
+**/site/assets/logs/**
+**/site/assets/files/**
+**/site/assets/sessions/**
+**/site/assets/cache/**
 **/site/assets/installed.php
 
 # ignore grunt files
