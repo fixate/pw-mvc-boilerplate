@@ -18,7 +18,7 @@ Kickstart ProcessWire projects with a structure that reduces repetition, separat
 - logic is abstracted from markup
 - contains a working, and easy to understand contact form built through the API
 
-## Usage
+## Installation
 
 Clone this repo into
 
@@ -36,6 +36,31 @@ $config->prependTemplateFile = '_init.php';
 Move the contents of `!root` to the root of your site (.gitignore to your project root), and get cracking!
 
 **NOTE:** ProcessWire creates its own .htaccess. The .htaccess in this repo extends the [H5BP .htaccess](https://github.com/h5bp/html5-boilerplate/blob/master/.htaccess) with the ProcessWire 2.3 .htaccess. You may override that .htaccess with this one.
+
+## Usage
+
+**Basic Controller:**
+
+```php
+class HomeController extends Controller {
+	function index() {
+		return $this->render();
+	}
+}
+```
+
+**Views:**
+
+Basic layout: `views/layouts`
+
+```php
+<html>
+<?= $this>partial('...') ?>
+
+<?php $this->yield() ?>
+</html>
+
+```
 
 ### License
 
