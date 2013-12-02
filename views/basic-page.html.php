@@ -1,6 +1,6 @@
 <?php
 /**
- * Home template
+ * Basic page template
  *
  * This site uses the delegate approach:
  * http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/
@@ -11,5 +11,4 @@
  * @since Theme_Name 1.0
  */
 
-echo $page->body;
-
+echo $this->body();

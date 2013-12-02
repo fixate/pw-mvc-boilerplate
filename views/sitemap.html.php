@@ -14,6 +14,6 @@
 ?>
 
 <ul>
-<?php theme_fn_prefix_pages_list($pages->get("/")); ?>
+<?= $pages_list ?>
 </ul>
 

@@ -1,36 +1,22 @@
 <?php
+
+/*------------------------------------*\
+	$CONTROLLERS
+	\*------------------------------------*/
 /**
- * Base template for delegating which view to use to render content.
+ * Site-wide controllers which hold logic, and helpers for access to fields defined
+ * in templates.
  *
- * This template should be set as the alternate template for all templates. Each
- * template view must match the template name.
+ * A global controller is available to all templates. Template-specific controllers
+ * may override variables defined in the global controller.
  *
- * Information on using the delegate approach can be found here:
- * http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/
- *
- * @package ProcessWire
- * @since Theme_Name 1.0
+ * Template-specific controllers are only loaded on pages using that particular
+ * template.
  */
-?>
-<!doctype html>
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="<?= __('en', 'theme_text_domain'); ?>"> <![endif]-->
-<!--[if IE 9]>    <html class="no-js ie9 oldie" lang="<?= __('en', 'theme_text_domain'); ?>"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js" lang="<?= __('en', 'theme_text_domain'); ?>"> <!--<![endif]-->
-<?php include("./partials/meta.inc.php"); ?>
-<body>
-  <?php include("./partials/edit-page.inc.php"); ?>
-  <?php include("./partials/header.inc.php"); ?>
 
-  <div class="area-content">
-    <div id="main" class="wrap" role="main">
+/**
+ * Load the controller associated with the current template if it exists
+ */
 
-      <h1><?= $page->get("headline|title"); ?></h1>
-
-      <?php render_view(); ?>
-
-    </div><!-- #main -->
-  </div><!-- .area-content -->
-
-  <?php include("./partials/footer.inc.php"); ?>
-</body>
-</html>
+require_once "{$config->paths->templates}/controllers/application_controller.php";
+Controller::run($config, $page);

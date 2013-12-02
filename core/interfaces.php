@@ -1,0 +1,17 @@
+<?php
+
+interface IController {
+	function render($view_name = null, $data = array());
+	function call($func);
+	// User page entry point
+	function index();
+}
+
+interface IView {
+	// Called in View
+	function yield();
+	function partial($name);
+
+	// Called in Base Controller
+	function render();
+}

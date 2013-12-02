@@ -1,6 +1,6 @@
 <?php
 /**
- * Contact template
+ * Home template
  *
  * This site uses the delegate approach:
  * http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/
@@ -11,6 +11,6 @@
  * @since Theme_Name 1.0
  */
 
-echo $page->body;
+echo $this->body();
 
-echo theme_fn_prefix_get_contact_form();
+$this->google_analytics();

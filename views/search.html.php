@@ -11,19 +11,19 @@
  * @since Theme_Name 1.0
  */
 
-if ($query) :
+if ($q) :
 
   if($count) : ?>
 
-    <small><?= $results; ?></small>
+    <small><?= $result_str; ?></small>
 
-    <?php foreach($matches as $match) : ?>
-    <h4><a href='<?= $match->url; ?>'><?= $match->title; ?></a></h4>
-    <p><?= $match->summary; ?></p>
+    <?php foreach($results as $item) : ?>
+    <h4><a href='<?= $item->url; ?>'><?= $item->title; ?></a></h4>
+    <p><?= $item->summary; ?></p>
     <?php endforeach; ?>
 
   <?php else : ?>
-    <small><?= $results; ?></small>
+    <small><?= $result_str; ?></small>
   <?php endif; // $count ?>
 
 <?php else : ?>

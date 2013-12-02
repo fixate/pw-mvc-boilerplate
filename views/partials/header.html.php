@@ -22,10 +22,10 @@
     <a class="visuallyhidden" href="#main">skip navigation and go to main content</a>
 
     <?php // get primary nav ?>
-    <?php include("./partials/nav-primary.inc.php"); ?>
+    <?= $this->partial('nav-primary') ?>
 
     <?php // get search form ?>
-    <?php include("./partials/search-form.inc.php"); ?>
+    <?= $this->partial('search-form') ?>
 
   </div>
 
