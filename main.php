@@ -19,4 +19,5 @@
  */
 
 require_once "{$config->paths->templates}/controllers/application_controller.php";
+Controller::set_fallback_controller('ApplicationController');
 Controller::run($config, $page);

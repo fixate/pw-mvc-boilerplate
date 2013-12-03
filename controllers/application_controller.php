@@ -1,6 +1,6 @@
 <?php
 
-abstract class ApplicationController extends Controller {
+class ApplicationController extends Controller {
 
 	function __construct(&$config, &$page) {
 		parent::__construct($config, $page);
@@ -22,6 +22,11 @@ abstract class ApplicationController extends Controller {
 		}
 
 		return $vars;
+  }
+
+  // Fallback index
+  function index() {
+    return $this->render();
   }
 
   /**

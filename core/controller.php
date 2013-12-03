@@ -62,22 +62,28 @@ abstract class Controller implements IController {
 		return $view;
 	}
 
-	// Static functions
-	static function run(&$config, &$page) {
-		if (!$page->template) {
-			return;
-		}
+  // Static functions
+  static function run(&$config, &$page) {
+    if (!$page->template) {
+      return;
+    }
 
-		$template = str_replace('-', '_', (string)$page->template);
-		$controller_path = "{$config->paths->templates}/controllers/{$template}_controller.php";
+    $template = str_replace('-', '_', (string)$page->template);
+    $controller_path = f8\Paths::join($config->paths->templates, 'controllers', "{$template}_controller.php");
+    $controller = f8\Strings::camel_case($template).'Controller';
 
-		if (file_exists($controller_path)) {
-			require_once $controller_path;
+    if (file_exists($controller_path)) {
+      require_once $controller_path;
+    } elseif (isset(self::$fallback_controller)) {
+      $controller = self::$fallback_controller;
+    } else {
+      trigger_error("No controller defined for template '{$template}'", E_USER_ERROR);
+      return false;
+    }
 
-			// Instantiate controller class
-			$class = \fixate\Strings::camel_case($template).'Controller';
-			$controller = new $class($config, $page);
-			$controller->call();
-		}
-	}
+    // Instantiate controller class
+    $controller = new $controller($config, $page);
+    $controller->call();
+    return true;
+  }
 }
