@@ -22,11 +22,15 @@
   <meta name="msapplication-TileColor" content="#ffffff"/>
   <meta name="msapplication-TileImage" content="apple-touch-icon-152x152-precomposed.png"/>
 
-  <link rel="SHORTCUT ICON" href="<?= $assets_uri; ?>/img/favicon.ico" type="image/x-icon" />
-  <link rel="logo" type="image/svg" href="<?= $assets_uri; ?>/img/logo.svg"/>
+  <link rel="SHORTCUT ICON" href="<?= $config->urls->templates; ?>assets/img/favicon.ico" type="image/x-icon" />
+  <link rel="logo" type="image/svg" href="<?= $config->urls->templates; ?>assets/img/logo.svg"/>
 
   <!--[if ! lte IE 7]><!-->
-	<link rel="stylesheet" type="text/css" href="<?= $assets_uri; ?>/css/style.css" />
+  <?php if (defined('PW_LOCAL_DEV') && PW_LOCAL_DEV !== true) : ?>
+    <link rel="stylesheet" type="text/css" href="<?= $config->urls->templates; ?>assets/css/style.min.css" />
+  <?php else: ?>
+    <link rel="stylesheet" type="text/css" href="<?= $config->urls->templates; ?>assets/css/style.css" />
+  <?php endif; ?>
   <!--<![endif]-->
 
   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/feed" />
