@@ -12,7 +12,7 @@ class ApplicationController extends Controller {
     $page =& $this->page;
 
 		$vars = array(
-			'seo_title' => $page->get('seo_title|title'),
+			'seo_title' => $page->get_seo_title(),
 			'seo_desc' => $page->seo_descr,
 			'seo_noindex' => $page->seo_noindex
 		);
@@ -23,6 +23,25 @@ class ApplicationController extends Controller {
 
 		return $vars;
   }
+
+	/**
+	 * Get the seo title set on the page, or use a fallback if no seo title is supplied
+	 */
+	function get_seo_title() {
+		$page =& $this->page;
+		$pages =& $this->pages;
+		$seo_title = '';
+
+		if ($title = $page->seo_title) {
+			$seo_title = $title;
+		} else {
+			$seo_title = $page->title;
+			$seo_title .= ' ' . $pages->get('/settings/')->seo_separator;
+			$seo_title .= ' ' . $pages->get('/settings/')->seo_title_append;
+		}
+
+		return $seo_title;
+	}
 
   // Fallback index
   function index() {
