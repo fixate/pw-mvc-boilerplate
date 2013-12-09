@@ -1,0 +1,17 @@
+/**
+ * The purpose of this file is to bring in site styles into TinyMCE, or CKEditor so
+ * that users have a preview of how the front end content will look once published.
+ *
+ * To load these styles into rich text and wysiwygs, do the following:
+ *
+		- navigate to the field you want styles added to
+		- select the 'Input' tab
+		- expand 'TinyMCE Advanced Configuration Options'
+		- paste '/site/templates/assets/css/editor.css' under 'content_css'
+ */
+@import url('style.css');
+
+body {
+  padding: 0 1em;
+}
+
