@@ -18,6 +18,14 @@
  * Load the controller associated with the current template if it exists
  */
 
+if (!defined(Controller)) {
+  $str = '<span style="color:red">ERROR:</span> MVC core not loaded!<br><br>
+    Please uncomment <br><code>$config->prependTemplateFile = \'_init.php\'; </code><br>
+   in <span style="color:#444">site/config.php.';
+
+  die($str);
+}
+
 require_once "{$config->paths->templates}/controllers/application_controller.php";
 Controller::set_fallback_controller('ApplicationController');
 Controller::run($config, $page);
