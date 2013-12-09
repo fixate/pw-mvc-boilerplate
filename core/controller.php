@@ -15,6 +15,8 @@ abstract class Controller implements IController {
 	public $page = null;
 	protected $config = null;
 
+  protected static $fallback_controller = null;
+
 	function __construct(&$config, &$page) {
 		$this->config = $config;
 		$this->page = $page;
@@ -61,6 +63,10 @@ abstract class Controller implements IController {
 
 		return $view;
 	}
+
+  static function set_fallback_controller($controller) {
+    self::$fallback_controller = $controller;
+  }
 
   // Static functions
   static function run(&$config, &$page) {
