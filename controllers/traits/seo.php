@@ -1,7 +1,7 @@
 <?php
 
 trait SEO {
-	function initialize() {
+	function __seoInitialize() {
 		$this->add_view_vars($this->get_seo_vars());
 	}
 

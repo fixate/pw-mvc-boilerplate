@@ -1,7 +1,7 @@
 <?php
 
 trait PrimaryNav {
-	function initialize() {
+	function __pnInitialize() {
 		$this->helper('primary_nav');
 	}
 

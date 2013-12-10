@@ -1,7 +1,7 @@
 <?php
 
 trait VideoEmbed {
-	function initialize() {
+	function __vidembedInitialize() {
 		$this->helper('video_embed');
 	}
 	/**
@@ -18,7 +18,7 @@ trait VideoEmbed {
 
 		$allowfullscreen = $options['allowfullscreen'] ? 'allowfullscreen' : '';
 
-		$embed = $band->band_video;
+		$embed = str_replace('/v/', '/embed/', $band->band_video);
 		return '<iframe width="'.$options['width'].'" height="'.$options['height'].'" src="'.$embed.'" frameborder="0" '.$allowfullscreen.'></iframe>';
 	}
 

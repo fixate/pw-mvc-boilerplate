@@ -3,24 +3,17 @@
 \fixate\Php::require_all(TEMPLATE_DIR.'/controllers/traits');
 
 class ApplicationController extends Controller {
-	use SEO {
-		SEO::initialize as private __seoInitialize;
-	}
-
-	use VideoEmbed {
-		VideoEmbed::initialize as private __vidembedInitialize;
-	}
-
-	use PrimaryNav {
-		PrimaryNav::initialize as private __pnInitialize;
-	}
+	use SEO;
+	use VideoEmbed;
+	use PrimaryNav;
 
 	function __construct(&$config, &$page) {
 		parent::__construct($config, $page);
 
-		__seoInitialize();
-		__vidembedInitialize();
-		__pnInitialize();
+		// And this is why PHP sucks...
+		SEO::__seoInitialize();
+		VideoEmbed::__vidembedInitialize();
+		PrimaryNav::__pnInitialize();
 	}
 
   // Fallback index
