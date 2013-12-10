@@ -11,4 +11,4 @@
  * @since Theme_Name 1.0
  */
 
-echo $this->page()->body;
+echo $page->body;

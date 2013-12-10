@@ -20,11 +20,7 @@ class View implements IView {
 	}
 
 	function yield() {
-		echo $this->render_file($this->name, array(), create_function('$view', 'return $view->page()->body;'));
-	}
-
-	function page() {
-		return $this->controller->page;
+		echo $this->render_file($this->name);
 	}
 
 	function partial($name, $data = array()) {
@@ -68,6 +64,10 @@ class View implements IView {
 		if (!($_base_path = $this->base_path)) {
 			$_base_path = f8\Paths::resolve(f8\Paths::join(dirname(__FILE__), '../views'));
 		}
+
+    if (!isset($this->data)) {
+      $this->data = array();
+    }
 
 		$_path = f8\Paths::join($_base_path, $file);
 		if (!f8\Strings::ends_with($_path, '.html.php')) {
