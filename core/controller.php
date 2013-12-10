@@ -13,7 +13,7 @@ use fixate as f8;
 
 abstract class Controller implements IController {
 	public $page = null;
-	protected $config = null;
+	public $config = null;
 
   protected static $fallback_controller = null;
 

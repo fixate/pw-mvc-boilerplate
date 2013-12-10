@@ -71,6 +71,7 @@ class View implements IView {
 
 		$view = $this;
 		$page = $this->controller->page;
+    $config = $this->controller->config;
 		extract(array_merge($_data, $this->data));
 
 		ob_start();
