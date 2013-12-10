@@ -15,6 +15,8 @@ abstract class Controller implements IController {
 	public $page = null;
 	public $config = null;
 
+	private $view_vars = array();
+
   protected static $fallback_controller = null;
 
 	function __construct(&$config, &$page) {
@@ -37,6 +39,10 @@ abstract class Controller implements IController {
 
 	abstract function index();
 
+	function get_view_vars() {
+		return $this->view_vars;
+	}
+
 	function call($func = 'index') {
 		$view = $this->$func();
 		if ($view && $view instanceof IView) {
@@ -44,13 +50,13 @@ abstract class Controller implements IController {
 		}
 	}
 
-  function helper($func) {
-    if (!is_callable($func)) {
-      // Assume that method is in this instance
-      $func = array($this, $func);
-    }
-    View::add_helper($func);
-  }
+	function helper($func) {
+		if (!is_callable($func)) {
+			$func = array($this, $func);
+		}
+
+		View::add_helper($func);
+	}
 
 	// Protected functions
 	protected function get_implicit_view_name() {
@@ -63,9 +69,21 @@ abstract class Controller implements IController {
 
 		$view->set_base_path(f8\Paths::join($this->config->paths->templates, 'views'));
 		$view->set_asset_uri(f8\Paths::join($this->config->urls->templates, 'assets'));
+		$view->add_data($this->data);
 		$view->add_data($data);
 
 		return $view;
+	}
+
+	protected function add_view_vars($key, $value = null) {
+		if (is_array($key)) {
+			$vars = $key;
+		} else {
+			$vars = array($key => $value);
+		}
+
+		$this->view_vars = array_merge($this->view_vars, $vars);
+		return $this;
 	}
 
   static function set_fallback_controller($controller) {

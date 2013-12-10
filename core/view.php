@@ -10,13 +10,9 @@ class View implements IView {
 	protected $data = array();
 	public $controller = null;
 
-	function __construct(&$controller, $name) {
+	function __construct(IController &$controller, $name) {
 		$this->controller = $controller;
 		$this->name = $name;
-
-		if (method_exists($controller, 'get_view_vars')) {
-			$this->data = $controller->get_view_vars();
-		}
 	}
 
 	function yield() {
@@ -27,10 +23,10 @@ class View implements IView {
 		return $this->render_file(f8\Paths::join('partials', $name), $data);
 	}
 
-  function asset_url($path) {
-    $templates = $this->controller->config->urls->templates;
-    return f8\Paths::join($templates, $path);
-  }
+	function asset_url($path) {
+		$templates = $this->controller->config->urls->templates;
+		return f8\Paths::join($templates, $path);
+	}
 
 	function set_layout($name) {
 		$this->layout = $name;
@@ -65,9 +61,9 @@ class View implements IView {
 			$_base_path = f8\Paths::resolve(f8\Paths::join(dirname(__FILE__), '../views'));
 		}
 
-    if (!isset($this->data)) {
-      $this->data = array();
-    }
+		if (!isset($this->data)) {
+			$this->data = array();
+		}
 
 		$_path = f8\Paths::join($_base_path, $file);
 		if (!f8\Strings::ends_with($_path, '.html.php')) {
@@ -76,7 +72,7 @@ class View implements IView {
 
 		$view = $this;
 		$page = $this->controller->page;
-    $config = $this->controller->config;
+		$config = $this->controller->config;
 		extract(array_merge($_data, $this->data));
 
 		ob_start();
@@ -113,10 +109,6 @@ class View implements IView {
 		} else {
 			$func_name = (string)$func;
 		}
-
-    if (!is_callable($func)) {
-      throw new ViewException("Helper {$func} not callable.");
-    }
 
 		self::$helpers[$func_name] = $func;
 	}
