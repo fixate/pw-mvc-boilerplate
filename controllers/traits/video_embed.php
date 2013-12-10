@@ -1,5 +1,7 @@
 <?php
 
+require_once TEMPLATE_DIR.'/lib/video_embedder.php';
+
 trait VideoEmbed {
 	function __vidembedInitialize() {
 		$this->helper('video_embed');
@@ -16,11 +18,11 @@ trait VideoEmbed {
 			'allowfullscreen' => true
 		), $options);
 
-		$allowfullscreen = $options['allowfullscreen'] ? 'allowfullscreen' : '';
+		$embedder = Embedder::factory($url);
+		if ($embedder == null) {
+			return $url;
+		}
 
-		$embed = str_replace('/v/', '/embed/', $band->band_video);
-		return '<iframe width="'.$options['width'].'" height="'.$options['height'].'" src="'.$embed.'" frameborder="0" '.$allowfullscreen.'></iframe>';
+		return $embedder->embed($options);
 	}
-
-
 }
