@@ -20,11 +20,11 @@ class View implements IView {
 	}
 
 	function yield() {
-		echo $this->render_file($this->name, array(), create_function('$view', 'return $view->body();'));
+		echo $this->render_file($this->name, array(), create_function('$view', 'return $view->page()->body;'));
 	}
 
-	function body() {
-		return $this->controller->page->body;
+	function page() {
+		return $this->controller->page;
 	}
 
 	function partial($name, $data = array()) {

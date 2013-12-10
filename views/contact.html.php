@@ -11,6 +11,6 @@
  * @since Theme_Name 1.0
  */
 
-echo $this->body();
+echo $this->page()->body;
 
 echo $form;

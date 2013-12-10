@@ -19,7 +19,7 @@
 <?= $this->partial('meta') ?>
 <body>
   <!--[if lte IE 8]><div class="alert-ie8">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a modern browser</a> to experience this site.</div><![endif]-->
-	<?= $this->partial('edit-page') ?>
+	<?= $this->partial('admin/bar') ?>
 	<?= $this->partial('header') ?>
 
 	<div class="area-content">
