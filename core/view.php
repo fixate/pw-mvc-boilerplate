@@ -31,6 +31,11 @@ class View implements IView {
 		return $this->render_file(f8\Paths::join('partials', $name), $data);
 	}
 
+  function asset_url($path) {
+    $templates = $this->controller->config->urls->templates;
+    return f8\Paths::join($templates, $path);
+  }
+
 	function set_layout($name) {
 		$this->layout = $name;
 		return $this;
