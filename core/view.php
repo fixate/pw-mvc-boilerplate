@@ -108,6 +108,10 @@ class View implements IView {
 			$func_name = (string)$func;
 		}
 
+    if (!is_callable($func)) {
+      throw new ViewException("Helper {$func} not callable.");
+    }
+
 		self::$helpers[$func_name] = $func;
 	}
 }

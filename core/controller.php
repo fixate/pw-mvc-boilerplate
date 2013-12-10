@@ -44,9 +44,13 @@ abstract class Controller implements IController {
 		}
 	}
 
-	function helper($func) {
-		View::add_helper($func);
-	}
+  function helper($func) {
+    if (!is_callable($func)) {
+      // Assume that method is in this instance
+      $func = array($this, $func);
+    }
+    View::add_helper($func);
+  }
 
 	// Protected functions
 	protected function get_implicit_view_name() {
@@ -57,7 +61,7 @@ abstract class Controller implements IController {
 	protected function load_view($view_name, $data) {
 		$view = new View($this, $view_name);
 
-		$view->set_base_path(f8\Paths::join($this->config->paths->templates, views));
+		$view->set_base_path(f8\Paths::join($this->config->paths->templates, 'views'));
 		$view->set_asset_uri(f8\Paths::join($this->config->urls->templates, 'assets'));
 		$view->add_data($data);
 

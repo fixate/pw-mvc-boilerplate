@@ -22,8 +22,6 @@
 	<?= $this->partial('edit-page') ?>
 	<?= $this->partial('header') ?>
 
-	<?= $this->primary_nav() ?>
-
 	<div class="area-content">
 		<div id="main" class="wrap" role="main">
 

@@ -72,6 +72,7 @@ class ApplicationController extends Controller {
         'inner_tpl' => '<ul class="menu menu__sub">||</ul>',
         'show_root' => true,
         'list_field_class' => 'menu__item menu__item--primary',
+        'item_tpl' => '<a href="{item_url|url}">{title}</a>'
       )
     );
   }
