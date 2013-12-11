@@ -5,7 +5,7 @@
 require TEMPLATE_DIR.'/config/environment.php';
 
 /*------------------------------------*\
-  Load core
+	Load core
 \*------------------------------------*/
 /**
  * This is the global init file included before all template files.
@@ -17,16 +17,18 @@ require TEMPLATE_DIR.'/config/environment.php';
 
 require_once TEMPLATE_DIR.'core/all.php';
 
+// Initialize the environment
+Environment::initialize($config);
 
 /*------------------------------------*\
-  Intializers
+	Intializers
 \*------------------------------------*/
 
 \fixate\Php::require_all(TEMPLATE_DIR.'initializers/');
 
 
 /*------------------------------------*\
-  $CONTROLLERS
+	$CONTROLLERS
 \*------------------------------------*/
 /**
  * Site-wide controllers which hold logic, and helpers for access to fields defined
@@ -46,3 +48,4 @@ require_once TEMPLATE_DIR.'core/all.php';
 require_once "{$config->paths->templates}/controllers/application_controller.php";
 Controller::set_fallback_controller('ApplicationController');
 Controller::run($config, $page);
+

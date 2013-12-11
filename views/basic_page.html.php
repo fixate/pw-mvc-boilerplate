@@ -10,5 +10,11 @@
  * @package ProcessWire
  * @since Theme_Name 1.0
  */
+?>
+<h1><?= $page->get("headline|title"); ?></h1>
 
-echo $page->body;
+<?= $page->body; ?>
+
+<?php foreach ($page->sections as &$section): ?>
+	<?= $this->partial('repeater/section', compact('section')) ?>
+<?php endforeach ?>

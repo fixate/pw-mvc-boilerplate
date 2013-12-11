@@ -2,8 +2,6 @@
 /**
  * Page head.
  *
- * Included via main.php
- *
  * @package ProcessWire
  * @since Theme_Name 1.0
  */
@@ -22,15 +20,11 @@
   <meta name="msapplication-TileColor" content="#ffffff"/>
   <meta name="msapplication-TileImage" content="apple-touch-icon-152x152-precomposed.png"/>
 
-  <link rel="SHORTCUT ICON" href="<?= $config->urls->templates; ?>assets/img/favicon.ico" type="image/x-icon" />
-  <link rel="logo" type="image/svg" href="<?= $config->urls->templates; ?>assets/img/logo.svg"/>
+	<link rel="SHORTCUT ICON" href="<?= $this->assets('img/favicon.ico') ?>" type="image/x-icon" />
+	<link rel="logo" type="image/svg" href="<?= $this->assets('img/logo.svg') ?>"/>
 
   <!--[if ! lte IE 7]><!-->
-  <?php if (defined('PW_LOCAL_DEV') && PW_LOCAL_DEV !== true) : ?>
-    <link rel="stylesheet" type="text/css" href="<?= $config->urls->templates; ?>assets/css/style.min.css" />
-  <?php else: ?>
-    <link rel="stylesheet" type="text/css" href="<?= $config->urls->templates; ?>assets/css/style.css" />
-  <?php endif; ?>
+	<link rel="stylesheet" type="text/css" href="<?= $this->assets('css/style.css') ?>" />
   <!--<![endif]-->
 
   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/feed" />

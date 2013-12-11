@@ -1,7 +1,9 @@
 <?php
 
-require_once TEMPLATE_DIR.'core/interfaces.php';
 require_once TEMPLATE_DIR.'core/utils.php';
+
+require_once TEMPLATE_DIR.'core/interfaces.php';
+require_once TEMPLATE_DIR.'core/environment.php';
 
 require_once TEMPLATE_DIR.'core/view.php';
 

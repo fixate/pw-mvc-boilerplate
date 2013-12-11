@@ -139,5 +139,9 @@ class Paths {
 	static function resolve($path) {
 		return realpath($path);
 	}
+
+	static function change_extension($path, $ext) {
+		return self::get_filename_without_extension($path).'.'.trim($ext, '.');
+	}
 }
 

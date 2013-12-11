@@ -75,7 +75,7 @@ abstract class Controller implements IController {
 		return $view;
 	}
 
-	protected function add_view_vars($key, $value = null) {
+  function add_view_vars($key, $value = null) {
 		if (is_array($key)) {
 			$vars = $key;
 		} else {

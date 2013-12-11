@@ -23,7 +23,16 @@ class View implements IView {
 		return $this->render_file(f8\Paths::join('partials', $name), $data);
 	}
 
-	function asset_url($path) {
+	function assets($path, $use_min = true) {
+		$ext = f8\Paths::get_extension($path);
+		$use_min = $use_min && ($ext == 'js' || $ext == 'css');
+		$is_min = f8\Strings::ends_with($path, ".min.${ext}") !== false;
+
+		// If in production change file to use .min extension
+		if (Environment::is_production() && !$is_min && $use_min) {
+			$path = f8\Paths::change_extension($path, "min.{$ext}");
+		}
+
 		$templates = $this->controller->config->urls->templates;
 		return f8\Paths::join($templates, $path);
 	}

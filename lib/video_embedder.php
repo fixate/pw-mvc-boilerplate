@@ -18,10 +18,10 @@ abstract class Embedder {
 
 	abstract function parse($url);
 
-	abstract function embed($options = null);
+	abstract function code($options = null);
 }
 
-class YoutubeEmbedder {
+class YoutubeEmbedder extends Embedder {
 	// YouTube
 	const MATCH_RGX = '#^(https?:)?//(www\.)?youtube\.com#';
 
@@ -53,7 +53,7 @@ class YoutubeEmbedder {
 		throw new EmbedderException("Invalid YouTube url {$url}.");
 	}
 
-	function embed($options = array()) {
+	function code($options = array()) {
 		$allowfullscreen = $options['allowfullscreen'] ? 'allowfullscreen' : '';
 
 		$embed = "//youtube.com/embed/{$this->vid}";

@@ -22,16 +22,11 @@
 	<?= $this->partial('admin/bar') ?>
 	<?= $this->partial('header') ?>
 
-	<div class="area-content">
-		<div id="main" class="wrap" role="main">
-
-			<h1><?= $page->get("headline|title"); ?></h1>
-
-			<?php $this->yield(); ?>
-
-		</div><!-- #main -->
+	<div class="area-content" role="main">
+		<?php $this->yield(); ?>
 	</div><!-- .area-content -->
 
 	<?= $this->partial('footer') ?>
+	<?= $this->partial('scripts') ?>
 </body>
 </html>

@@ -5,14 +5,13 @@
  * @package ProcessWire
  * @since Theme_Name 1.0
  */
-
-get_google_analytics(); ?>
+?>
+<?php if (Environment::is_production() && GA_UACODE !== false): ?>
+	<?= $view->partial("google-analytics") ?>;
+<?php endif ?>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="<?= $config->urls->templates; ?>assets/js/lib/jquery-1.10.2.min.js">\x3C/script>')</script>
+<script>window.jQuery || document.write('<script src="<?= $this->assets('js/vendor/jquery-1.10.2.min.js') ?>">\x3C/script>')</script>
 
-<?php if (defined('PW_LOCAL_DEV') && PW_LOCAL_DEV !== true) : ?>
-  <script type="text/javascript" src="<?= $config->urls->templates; ?>assets/js/main.min.js"></script>
-<?php else: ?>
-  <script type="text/javascript" src="<?= $config->urls->templates; ?>assets/js/main.js"></script>
-<?php endif; ?>
+<script src="<?= $this->assets('js/vendor/looper.min.js') ?>"></script>
+<script type="text/javascript" src="<?= $this->assets('js/main.js') ?>"></script>

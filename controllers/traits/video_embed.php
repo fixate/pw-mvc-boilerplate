@@ -23,6 +23,6 @@ trait VideoEmbed {
 			return $url;
 		}
 
-		return $embedder->embed($options);
+		return $embedder->code($options);
 	}
 }

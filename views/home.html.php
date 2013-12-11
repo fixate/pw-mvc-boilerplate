@@ -12,5 +12,3 @@
  */
 
 echo $page->body;
-
-$this->google_analytics();
