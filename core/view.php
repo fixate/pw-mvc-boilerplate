@@ -47,7 +47,9 @@ class View implements IView {
 	}
 
 	function add_data($data) {
-		$this->data = array_merge($data, $this->data);
+		if ($data) {
+			$this->data = array_merge($this->data, $data);
+		}
 		return $this;
 	}
 
