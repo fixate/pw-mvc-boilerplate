@@ -18,4 +18,4 @@
   </div>
 </div>
 
-<?php include('./partials/scripts.inc.php');
+<?= $this->partial('scripts') ?>

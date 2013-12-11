@@ -11,7 +11,7 @@
 ?>
 <script>
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', '<?= GA_UACODE; ?>']);
+  _gaq.push(['_setAccount', '<?= Environment::ga_uacode() ?>']);
   _gaq.push(['_trackPageview']);
   (function() {
     var ga = document.createElement('script');

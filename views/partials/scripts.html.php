@@ -6,8 +6,8 @@
  * @since Theme_Name 1.0
  */
 ?>
-<?php if (Environment::is_production() && GA_UACODE !== false): ?>
-	<?= $view->partial("google-analytics") ?>;
+<?php if (Environment::is_production() && Environment::ga_uacode() !== false): ?>
+	<?= $this->partial("google-analytics") ?>;
 <?php endif ?>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
