@@ -38,7 +38,7 @@ class View implements IView {
 		}
 
 		$templates = $this->controller->config->urls->templates;
-		return f8\Paths::join($templates, $path);
+		return f8\Paths::join($templates, 'assets', $path);
 	}
 
 	function set_layout($name) {
