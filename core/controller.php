@@ -69,6 +69,9 @@ abstract class Controller implements IController {
 
 		$view->set_base_path(f8\Paths::join($this->config->paths->templates, 'views'));
 		$view->set_asset_uri(f8\Paths::join($this->config->urls->templates, 'assets'));
+		if ($this->view_vars) {
+			$view->add_data($this->view_vars);
+		}
 		$view->add_data($data);
 
 		return $view;
