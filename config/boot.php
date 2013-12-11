@@ -1,8 +1,4 @@
 <?php
-/*------------------------------------*\
-	Load environment code
-\*------------------------------------*/
-require TEMPLATE_DIR.'/config/environment.php';
 
 /*------------------------------------*\
 	Load core
@@ -17,8 +13,14 @@ require TEMPLATE_DIR.'/config/environment.php';
 
 require_once TEMPLATE_DIR.'core/all.php';
 
+/*------------------------------------*\
+	Load environment
+\*------------------------------------*/
+require TEMPLATE_DIR.'/config/environment.php';
 // Initialize the environment
 Environment::initialize($config);
+// Set user variables
+Environment::set($environment);
 
 /*------------------------------------*\
 	Intializers
