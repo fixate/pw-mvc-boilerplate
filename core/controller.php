@@ -7,7 +7,7 @@ use fixate as f8;
  * Fields and functions that are globally accessible to all templates are defined
  * here. This controller is included in _init.php, and is available to all templates
  *
- * @package ProcessWire
+ * @package FixateProcesswire
  * @since Theme_Name 1.0
  */
 
@@ -111,7 +111,16 @@ abstract class Controller implements IController {
 
     // Instantiate controller class
     $controller = new $controller($config, $page);
+		if (method_exists($controller, 'before')) {
+			$controller->before();
+		}
+
     $controller->call();
+
+		if (method_exists($controller, 'after')) {
+			$controller->after();
+		}
+
     return true;
   }
 }

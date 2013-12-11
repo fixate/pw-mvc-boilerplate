@@ -7,9 +7,7 @@ class ApplicationController extends Controller {
 	use VideoEmbed;
 	use PrimaryNav;
 
-	function __construct(&$config, &$page) {
-		parent::__construct($config, $page);
-
+	function before() {
 		// And this is why PHP sucks...
 		SEO::__seoInitialize();
 		VideoEmbed::__vidembedInitialize();
@@ -21,3 +19,4 @@ class ApplicationController extends Controller {
     return $this->render();
   }
 }
+
