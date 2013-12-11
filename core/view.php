@@ -26,6 +26,7 @@ class View implements IView {
 	function assets($path, $use_min = true) {
 		if ($use_min) {
 			$ext = f8\Paths::get_extension($path);
+			// Only css and js
 			if ($ext == 'js' || $ext == 'css') {
 				$is_min = f8\Strings::ends_with($path, ".min.${ext}") !== false;
 
@@ -84,12 +85,17 @@ class View implements IView {
 
 		$view = $this;
 		$page = $this->controller->page;
+		$pages = wire('pages');
 		$config = $this->controller->config;
 		extract(array_merge($_data, $this->data));
 
 		ob_start();
-		if (!file_exists($_path) && is_callable($fallback)) {
-			echo $fallback($this);
+		if (!file_exists($_path)) {
+			if (is_callable($fallback)) {
+				echo $fallback($this);
+			} else {
+				throw new ViewException("Template {$file} does not exist.");
+			}
 		} else {
 			include $_path;
 		}
