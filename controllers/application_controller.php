@@ -8,7 +8,6 @@ class ApplicationController extends Controller {
 	use PrimaryNav;
 
 	function before() {
-		// And this is why PHP sucks...
 		SEO::__seoInitialize();
 		VideoEmbed::__vidembedInitialize();
 		PrimaryNav::__pnInitialize();
@@ -16,7 +15,7 @@ class ApplicationController extends Controller {
 
   // Fallback index
   function index() {
-    return $this->render();
+    return $this->render($this->config->page->template->name);
   }
 }
 

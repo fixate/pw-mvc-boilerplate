@@ -32,6 +32,8 @@ abstract class Controller implements IController {
 
 		if (!isset($view_name)) {
 			$view_name = $this->get_implicit_view_name();
+		} else {
+			$view_name = self::clean_template($view_name);
 		}
 
 		return $this->load_view($view_name, $data);
@@ -88,6 +90,10 @@ abstract class Controller implements IController {
 		return $this;
 	}
 
+	static function clean_template($template) {
+		return str_replace('-', '_', $template);
+	}
+
   static function set_fallback_controller($controller) {
     self::$fallback_controller = $controller;
   }
@@ -98,7 +104,7 @@ abstract class Controller implements IController {
       return;
     }
 
-    $template = str_replace('-', '_', (string)$page->template);
+    $template = self::clean_template((string)$page->template);
     $controller_path = f8\Paths::join($config->paths->templates, 'controllers', "{$template}_controller.php");
     $controller = f8\Strings::camel_case($template).'Controller';
 
