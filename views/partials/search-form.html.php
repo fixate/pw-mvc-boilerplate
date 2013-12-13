@@ -10,5 +10,5 @@
 ?>
 <form id='search_form' action='<?php echo $config->urls->root?>search/' method='get'>
   <input type='text' name='q' id='search_query' value='<?php echo htmlentities($q, ENT_QUOTES, 'UTF-8'); ?>' />
-  <button type='submit' class="btn btn--primary" id='search_submit'>Search</button>
+  <button type='submit' class="btn btn-_primary" id='search_submit'>Search</button>
 </form>
