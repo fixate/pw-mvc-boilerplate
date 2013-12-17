@@ -50,9 +50,11 @@ abstract class Controller implements IController {
 		if (!method_exists($this, $func)) {
 			$func = 'index';
 		}
-		$view = $this->$func();
-		if ($view && $view instanceof IView) {
-			echo $view->render();
+		$resp = $this->$func();
+		if ($resp && $resp instanceof IView) {
+			echo $resp->render();
+		} else if ($resp && (is_array($resp) || is_object($resp))) {
+			echo json_encode($resp);
 		}
 	}
 
