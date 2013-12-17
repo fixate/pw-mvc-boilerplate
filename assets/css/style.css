@@ -1204,23 +1204,23 @@ img, embed, object, video {
 /**
  * Rounded images.
  */
-.img--round {
+.img-_round {
   border-radius: 4px; }
 
 /**
  * Image placement variations.
  */
-.img--right {
+.img-_right {
   float: right;
   margin-bottom: 1.5;
   margin-left: 1.5; }
 
-.img--left {
+.img-_left {
   float: left;
   margin-right: 1.5;
   margin-bottom: 1.5; }
 
-.img--center {
+.img-_center {
   display: block;
   margin-right: auto;
   margin-bottom: 1.5;
@@ -1232,13 +1232,13 @@ img, embed, object, video {
  * Please note, these will not work too nicely with fluid images and will
  * distort when resized below a certain width. Use with caution.
  */
-.img--short {
+.img-_short {
   height: 7.5; }
 
-.img--medium {
+.img-_medium {
   height: 15; }
 
-.img--tall {
+.img-_tall {
   height: 22.5; }
 
 /**
@@ -1271,7 +1271,7 @@ li > ol {
 /**
  * We have a lot at our disposal for making very complex table constructs, e.g.:
  *
-   <table class="table--bordered  table--striped  table--data">
+   <table class="table-_bordered  table-_striped  table-_data">
      <colgroup>
        <col class=t10>
        <col class=t10>
@@ -1447,28 +1447,28 @@ td {
 /**
  * Bordered tables
  */
-.table--bordered th,
-.table--bordered td {
+.table-_bordered th,
+.table-_bordered td {
   border: 1px solid #666666; }
-  .table--bordered th:empty,
-  .table--bordered td:empty {
+  .table-_bordered th:empty,
+  .table-_bordered td:empty {
     border: none; }
-.table--bordered thead tr:last-child th {
+.table-_bordered thead tr:last-child th {
   border-bottom-width: 2px; }
-.table--bordered tbody tr th:last-of-type {
+.table-_bordered tbody tr th:last-of-type {
   border-right-width: 2px; }
 
 /**
  * Striped tables
  */
-.table--striped tbody tr:nth-of-type(odd) {
+.table-_striped tbody tr:nth-of-type(odd) {
   background-color: #ffc;
   /* Override this color in your theme stylesheet */ }
 
 /**
  * Data table
  */
-.table--data {
+.table-_data {
   font: 12px/1.5 sans-serif; }
 
 /*------------------------------------*\
@@ -1560,7 +1560,7 @@ input[type="checkbox"] {
    </li>
  *
  */
-.label--full {
+.label-_full {
   display: block; }
 
 /**
@@ -1679,7 +1679,7 @@ input[type="checkbox"] {
 /**
  * Grid wrapper
  */
-.grid, .grid--rev, .grid--full, .grid--center, .gw {
+.grid, .grid-_rev, .grid-_full, .grid-_center, .gw {
   margin-left: -24px;
   margin-left: -1.5rem;
   list-style: none;
@@ -1688,7 +1688,7 @@ input[type="checkbox"] {
 /**
  * Very infrequently occuring grid wrappers as children of grid wrappers.
  */
-.grid > .grid, .grid--rev > .grid, .grid--full > .grid, .grid--center > .grid, .gw > .grid, .grid > .grid--rev, .grid--rev > .grid--rev, .grid--full > .grid--rev, .grid--center > .grid--rev, .gw > .grid--rev, .grid > .grid--full, .grid--rev > .grid--full, .grid--full > .grid--full, .grid--center > .grid--full, .gw > .grid--full, .grid > .grid--center, .grid--rev > .grid--center, .grid--full > .grid--center, .grid--center > .grid--center, .gw > .grid--center, .grid > .gw, .grid--rev > .gw, .grid--full > .gw, .grid--center > .gw, .gw > .gw {
+.grid > .grid, .grid-_rev > .grid, .grid-_full > .grid, .grid-_center > .grid, .gw > .grid, .grid > .grid-_rev, .grid-_rev > .grid-_rev, .grid-_full > .grid-_rev, .grid-_center > .grid-_rev, .gw > .grid-_rev, .grid > .grid-_full, .grid-_rev > .grid-_full, .grid-_full > .grid-_full, .grid-_center > .grid-_full, .gw > .grid-_full, .grid > .grid-_center, .grid-_rev > .grid-_center, .grid-_full > .grid-_center, .grid-_center > .grid-_center, .gw > .grid-_center, .grid > .gw, .grid-_rev > .gw, .grid-_full > .gw, .grid-_center > .gw, .gw > .gw {
   margin-left: 0; }
 
 /**
@@ -1704,34 +1704,34 @@ input[type="checkbox"] {
 /**
  * Reversed grids
  */
-.grid--rev {
+.grid-_rev {
   direction: rtl;
   text-align: right; }
-  .grid--rev > .grid__item, .grid--rev > .g {
+  .grid-_rev > .grid__item, .grid-_rev > .g {
     direction: ltr;
     text-align: left; }
 
 /**
  * Gutterless grids have all the properties of regular grids, minus any spacing.
  */
-.grid--full {
+.grid-_full {
   margin-left: 0; }
-  .grid--full > .grid__item, .grid--full > .g {
+  .grid-_full > .grid__item, .grid-_full > .g {
     padding-left: 0; }
 
 /**
  * Centered grids align grid items centrally without needing to use push or pull
  * classes.
  */
-.grid--center {
+.grid-_center {
   text-align: center; }
-  .grid--center > .grid__item, .grid--center > .g {
+  .grid-_center > .grid__item, .grid-_center > .g {
     text-align: left; }
 
 /*------------------------------------*\
     $BUTTONS
 \*------------------------------------*/
-.btn, .btn--primary {
+.btn, .btn-_primary {
   position: relative;
   display: inline-block;
   text-align: center;
@@ -1746,18 +1746,18 @@ input[type="checkbox"] {
   -moz-transition: all 150ms ease-in;
   -o-transition: all 150ms ease-in;
   transition: all 150ms ease-in; }
-  .btn, .btn--primary, .btn:hover, .btn--primary:hover, .btn:focus, .btn--primary:focus {
+  .btn, .btn-_primary, .btn:hover, .btn-_primary:hover, .btn:focus, .btn-_primary:focus {
     text-decoration: none; }
-  .btn:active, .btn--primary:active, .btn:focus, .btn--primary:focus {
+  .btn:active, .btn-_primary:active, .btn:focus, .btn-_primary:focus {
     outline: none;
     -webkit-transition: 0;
     -moz-transition: 0;
     -o-transition: 0;
     transition: 0; }
-  [disabled].btn, [disabled].btn--primary, .btn:disabled, .btn--primary:disabled {
+  [disabled].btn, [disabled].btn-_primary, .btn:disabled, .btn-_primary:disabled {
     cursor: default; }
 
-.btn--full {
+.btn-_full {
   display: block;
   width: 100%; }
 
@@ -2517,21 +2517,21 @@ input[type="radio"] {
 /**
  * $use-icons must be set to true for custom radios and checkboxes
  */
-.radio--custom:before,
-.checkbox--custom:before {
+.radio-_custom:before,
+.checkbox-_custom:before {
   line-height: 1; }
 
 /* .icon-check-empty */
-.radio--custom:before {
+.radio-_custom:before {
   content: "\e010"; }
 
-.checkbox--custom:before {
+.checkbox-_custom:before {
   content: "\e000"; }
 
 /* .icon-check */
-input:checked + label > .radio--custom:before {
+input:checked + label > .radio-_custom:before {
   content: "\e011"; }
-input:checked + label > .checkbox--custom:before {
+input:checked + label > .checkbox-_custom:before {
   content: "\e001"; }
 
 /*------------------------------------*\
@@ -2599,7 +2599,7 @@ input:checked + label > .checkbox--custom:before {
     color: #333333;
     padding: .5em 1em; }
 
-.menu__item--current > a, .menu__item--current > a:hover, .menu__item--current > a:active {
+.menu__item-_current > a, .menu__item-_current > a:hover, .menu__item-_current > a:active {
   cursor: default; }
 
 .menu__sub {
@@ -2640,14 +2640,14 @@ input:checked + label > .checkbox--custom:before {
 /*------------------------------------*\
     $BUTTONS
 \*------------------------------------*/
-.btn, .btn--primary {
+.btn, .btn-_primary {
   color: white; }
 
-.btn--primary {
+.btn-_primary {
   background-color: #333333; }
-  .btn--primary:hover, .btn--primary:focus {
+  .btn-_primary:hover, .btn-_primary:focus {
     background-color: #666666; }
-  .btn--primary:active {
+  .btn-_primary:active {
     background-color: #1a1a1a; }
 
 /**
@@ -2700,52 +2700,52 @@ h1, h2, h3, h4, h5, h6 {
 /**
  * alignment modifiers
  */
-.text--left {
+.text-_left {
   text-align: left; }
 
-.text--center {
+.text-_center {
   text-align: center; }
 
-.text--right {
+.text-_right {
   text-align: right; }
 
 /**
  * case modifiers
  */
-.case--upper {
+.case-_upper {
   text-transform: uppercase; }
 
-.case--lower {
+.case-_lower {
   text-transform: lowercase; }
 
-.case--normal {
+.case-_normal {
   text-transform: none; }
 
-.case--capital {
+.case-_capital {
   text-transform: capitalize; }
 
 /**
  * Font weights
  */
-.weight--light {
+.weight-_light {
   font-weight: 300; }
 
-.weight--normal {
+.weight-_normal {
   font-weight: 400; }
 
-.weight--semibold {
+.weight-_semibold {
   font-weight: 600; }
 
 /**
  * vertical alignment modifiers
  */
-.valign--top {
+.valign-_top {
   vertical-align: top; }
 
-.valign--middle {
+.valign-_middle {
   vertical-align: middle; }
 
-.valign--bottom {
+.valign-_bottom {
   vertical-align: bottom; }
 
 /**
@@ -2780,8 +2780,8 @@ h1, h2, h3, h4, h5, h6 {
     overflow: visible; }
 
 @media only screen and (max-width: 480px) {
-  .accessibility--palm,
-  .visuallyhidden--palm {
+  .accessibility-_palm,
+  .visuallyhidden-_palm {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -2791,8 +2791,8 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     width: 1px; } }
 @media only screen and (min-width: 481px) and (max-width: 1023px) {
-  .accessibility--lap,
-  .visuallyhidden--lap {
+  .accessibility-_lap,
+  .visuallyhidden-_lap {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -2802,8 +2802,8 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     width: 1px; } }
 @media only screen and (min-width: 481px) {
-  .accessibility--lap-and-up,
-  .visuallyhidden--lap-and-up {
+  .accessibility-_lap-and-up,
+  .visuallyhidden-_lap-and-up {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -2813,8 +2813,8 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     width: 1px; } }
 @media only screen and (max-width: 1023px) {
-  .accessibility--portable,
-  .visuallyhidden--portable {
+  .accessibility-_portable,
+  .visuallyhidden-_portable {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -2824,8 +2824,8 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     width: 1px; } }
 @media only screen and (min-width: 1024px) {
-  .accessibility--desk,
-  .visuallyhidden--desk {
+  .accessibility-_desk,
+  .visuallyhidden-_desk {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -2835,8 +2835,8 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     width: 1px; } }
 @media only screen and (min-width: 1200px) {
-  .accessibility--desk-wide,
-  .visuallyhidden--desk-wide {
+  .accessibility-_desk-wide,
+  .visuallyhidden-_desk-wide {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -2871,44 +2871,44 @@ h1, h2, h3, h4, h5, h6 {
 /*
  * Display level modifiers
  */
-.display--block {
+.display-_block {
   display: block; }
 
-input.display--block,
-textarea.display--block,
-button.display--block {
+input.display-_block,
+textarea.display-_block,
+button.display-_block {
   width: 100%; }
 
-.display--iblock {
+.display-_iblock {
   display: inline-block; }
 
-.display--table, .display--table-full {
+.display-_table, .display-_table-full {
   display: table; }
 
-.display--itable {
+.display-_itable {
   display: inline-table; }
 
-.display--table, .display--table-full,
-.display--itable {
+.display-_table, .display-_table-full,
+.display-_itable {
   height: 100%; }
 
-.display--table-full {
+.display-_table-full {
   width: 100%; }
 
-.display--table__inner {
+.display-_table__inner {
   display: table-cell;
   vertical-align: middle; }
 
 /**
  * Add/remove floats
  */
-.float--right {
+.float-_right {
   float: right; }
 
-.float--left {
+.float-_left {
   float: left; }
 
-.float--none {
+.float-_none {
   float: none; }
 
 /**
@@ -2918,29 +2918,29 @@ button.display--block {
   margin: 24px;
   margin: 1.5rem; }
 
-.push--top {
+.push-_top {
   margin-top: 24px;
   margin-top: 1.5rem; }
 
-.push--right {
+.push-_right {
   margin-right: 24px;
   margin-right: 1.5rem; }
 
-.push--bottom {
+.push-_bottom {
   margin-bottom: 24px;
   margin-bottom: 1.5rem; }
 
-.push--left {
+.push-_left {
   margin-left: 24px;
   margin-left: 1.5rem; }
 
-.push--ends {
+.push-_ends {
   margin-top: 24px;
   margin-top: 1.5rem;
   margin-bottom: 24px;
   margin-bottom: 1.5rem; }
 
-.push--sides {
+.push-_sides {
   margin-right: 24px;
   margin-right: 1.5rem;
   margin-left: 24px;
@@ -2950,29 +2950,29 @@ button.display--block {
   margin: 16px;
   margin: 1rem; }
 
-.push-small--top {
+.push-small-_top {
   margin-top: 16px;
   margin-top: 1rem; }
 
-.push-small--right {
+.push-small-_right {
   margin-right: 16px;
   margin-right: 1rem; }
 
-.push-small--bottom {
+.push-small-_bottom {
   margin-bottom: 16px;
   margin-bottom: 1rem; }
 
-.push-small--left {
+.push-small-_left {
   margin-left: 16px;
   margin-left: 1rem; }
 
-.push-small--ends {
+.push-small-_ends {
   margin-top: 16px;
   margin-top: 1rem;
   margin-bottom: 16px;
   margin-bottom: 1rem; }
 
-.push-small--sides {
+.push-small-_sides {
   margin-right: 16px;
   margin-right: 1rem;
   margin-left: 16px;
@@ -2981,23 +2981,23 @@ button.display--block {
 .flush {
   margin: 0; }
 
-.flush--top {
+.flush-_top {
   margin-top: 0; }
 
-.flush--right {
+.flush-_right {
   margin-right: 0; }
 
-.flush--bottom {
+.flush-_bottom {
   margin-bottom: 0; }
 
-.flush--left {
+.flush-_left {
   margin-left: 0; }
 
-.flush--ends {
+.flush-_ends {
   margin-top: 0;
   margin-bottom: 0; }
 
-.flush--sides {
+.flush-_sides {
   margin-right: 0;
   margin-left: 0; }
 
@@ -3008,29 +3008,29 @@ button.display--block {
   padding: 24px;
   padding: 1.5rem; }
 
-.soft--top {
+.soft-_top {
   padding-top: 24px;
   padding-top: 1.5rem; }
 
-.soft--right {
+.soft-_right {
   padding-right: 24px;
   padding-right: 1.5rem; }
 
-.soft--bottom {
+.soft-_bottom {
   padding-bottom: 24px;
   padding-bottom: 1.5rem; }
 
-.soft--left {
+.soft-_left {
   padding-left: 24px;
   padding-left: 1.5rem; }
 
-.soft--ends {
+.soft-_ends {
   padding-top: 24px;
   padding-top: 1.5rem;
   padding-bottom: 24px;
   padding-bottom: 1.5rem; }
 
-.soft--sides {
+.soft-_sides {
   padding-right: 24px;
   padding-right: 1.5rem;
   padding-left: 24px;
@@ -3040,29 +3040,29 @@ button.display--block {
   padding: 16px;
   padding: 1rem; }
 
-.soft-small--top {
+.soft-small-_top {
   padding-top: 16px;
   padding-top: 1rem; }
 
-.soft-small--right {
+.soft-small-_right {
   padding-right: 16px;
   padding-right: 1rem; }
 
-.soft-small--bottom {
+.soft-small-_bottom {
   padding-bottom: 16px;
   padding-bottom: 1rem; }
 
-.soft-small--left {
+.soft-small-_left {
   padding-left: 16px;
   padding-left: 1rem; }
 
-.soft-small--ends {
+.soft-small-_ends {
   padding-top: 16px;
   padding-top: 1rem;
   padding-bottom: 16px;
   padding-bottom: 1rem; }
 
-.soft-small--sides {
+.soft-small-_sides {
   padding-right: 16px;
   padding-right: 1rem;
   padding-left: 16px;
@@ -3071,23 +3071,23 @@ button.display--block {
 .hard {
   padding: 0; }
 
-.hard--top {
+.hard-_top {
   padding-top: 0; }
 
-.hard--right {
+.hard-_right {
   padding-right: 0; }
 
-.hard--bottom {
+.hard-_bottom {
   padding-bottom: 0; }
 
-.hard--left {
+.hard-_left {
   padding-left: 0; }
 
-.hard--ends {
+.hard-_ends {
   padding-top: 0;
   padding-bottom: 0; }
 
-.hard--sides {
+.hard-_sides {
   padding-right: 0;
   padding-left: 0; }
 
