@@ -45,7 +45,11 @@ abstract class Controller implements IController {
 		return $this->view_vars;
 	}
 
-	function call($func = 'index') {
+	function call() {
+		$func = f8\Strings::snake_case($this->page->name);
+		if (!method_exists($this, $func)) {
+			$func = 'index';
+		}
 		$view = $this->$func();
 		if ($view && $view instanceof IView) {
 			echo $view->render();
