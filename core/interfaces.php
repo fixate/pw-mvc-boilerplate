@@ -2,7 +2,7 @@
 
 interface IController {
 	function render($view_name = null, $data = array());
-	function call($func);
+	function call();
 
 	// User page entry point
 	function index();
