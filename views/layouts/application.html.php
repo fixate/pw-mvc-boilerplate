@@ -18,7 +18,7 @@
 <!--[if gt IE 9]><!--> <html class="no-js" lang="<?= __('en', 'theme_text_domain'); ?>"> <!--<![endif]-->
 <?= $this->partial('meta') ?>
 <body>
-  <!--[if lte IE 8]><div class="alert-ie8">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a modern browser</a> to experience this site.</div><![endif]-->
+  <!--[if lte IE 8]><div class="alert_-danger">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a modern browser</a> to experience this site.</div><![endif]-->
 	<?= $this->partial('admin/bar') ?>
 	<?= $this->partial('header') ?>
 
