@@ -24,11 +24,11 @@ trait PrimaryNav {
 
 		return $treeMenu->render(
 			array(
-				'current_class' => 'menu__item-_current',
-				'outer_tpl' => '<ul class="menu menu-_primary">||</ul>',
+				'current_class' => 'menu__item_-current',
+				'outer_tpl' => '<ul class="menu menu_-primary">||</ul>',
 				'inner_tpl' => '<ul class="menu menu__sub">||</ul>',
 				'show_root' => true,
-				'list_field_class' => 'menu__item menu__item-_primary',
+				'list_field_class' => 'menu__item menu__item_-primary',
 				'item_tpl' => '<a href="{nav_url|url}">{title}</a>'
 			)
 		);

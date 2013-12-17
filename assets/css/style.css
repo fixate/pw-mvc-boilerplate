@@ -1204,23 +1204,23 @@ img, embed, object, video {
 /**
  * Rounded images.
  */
-.img-_round {
+.img_-round {
   border-radius: 4px; }
 
 /**
  * Image placement variations.
  */
-.img-_right {
+.img_-right {
   float: right;
   margin-bottom: 1.5;
   margin-left: 1.5; }
 
-.img-_left {
+.img_-left {
   float: left;
   margin-right: 1.5;
   margin-bottom: 1.5; }
 
-.img-_center {
+.img_-center {
   display: block;
   margin-right: auto;
   margin-bottom: 1.5;
@@ -1232,13 +1232,13 @@ img, embed, object, video {
  * Please note, these will not work too nicely with fluid images and will
  * distort when resized below a certain width. Use with caution.
  */
-.img-_short {
+.img_-short {
   height: 7.5; }
 
-.img-_medium {
+.img_-medium {
   height: 15; }
 
-.img-_tall {
+.img_-tall {
   height: 22.5; }
 
 /**
@@ -1271,7 +1271,7 @@ li > ol {
 /**
  * We have a lot at our disposal for making very complex table constructs, e.g.:
  *
-   <table class="table-_bordered  table-_striped  table-_data">
+   <table class="table_-bordered  table_-striped  table_-data">
      <colgroup>
        <col class=t10>
        <col class=t10>
@@ -1447,28 +1447,28 @@ td {
 /**
  * Bordered tables
  */
-.table-_bordered th,
-.table-_bordered td {
+.table_-bordered th,
+.table_-bordered td {
   border: 1px solid #666666; }
-  .table-_bordered th:empty,
-  .table-_bordered td:empty {
+  .table_-bordered th:empty,
+  .table_-bordered td:empty {
     border: none; }
-.table-_bordered thead tr:last-child th {
+.table_-bordered thead tr:last-child th {
   border-bottom-width: 2px; }
-.table-_bordered tbody tr th:last-of-type {
+.table_-bordered tbody tr th:last-of-type {
   border-right-width: 2px; }
 
 /**
  * Striped tables
  */
-.table-_striped tbody tr:nth-of-type(odd) {
+.table_-striped tbody tr:nth-of-type(odd) {
   background-color: #ffc;
   /* Override this color in your theme stylesheet */ }
 
 /**
  * Data table
  */
-.table-_data {
+.table_-data {
   font: 12px/1.5 sans-serif; }
 
 /*------------------------------------*\
@@ -1560,7 +1560,7 @@ input[type="checkbox"] {
    </li>
  *
  */
-.label-_full {
+.label_-full {
   display: block; }
 
 /**
@@ -1679,7 +1679,7 @@ input[type="checkbox"] {
 /**
  * Grid wrapper
  */
-.grid, .grid-_rev, .grid-_full, .grid-_center, .gw {
+.grid, .grid_-rev, .grid_-full, .grid_-center, .gw {
   margin-left: -24px;
   margin-left: -1.5rem;
   list-style: none;
@@ -1688,7 +1688,7 @@ input[type="checkbox"] {
 /**
  * Very infrequently occuring grid wrappers as children of grid wrappers.
  */
-.grid > .grid, .grid-_rev > .grid, .grid-_full > .grid, .grid-_center > .grid, .gw > .grid, .grid > .grid-_rev, .grid-_rev > .grid-_rev, .grid-_full > .grid-_rev, .grid-_center > .grid-_rev, .gw > .grid-_rev, .grid > .grid-_full, .grid-_rev > .grid-_full, .grid-_full > .grid-_full, .grid-_center > .grid-_full, .gw > .grid-_full, .grid > .grid-_center, .grid-_rev > .grid-_center, .grid-_full > .grid-_center, .grid-_center > .grid-_center, .gw > .grid-_center, .grid > .gw, .grid-_rev > .gw, .grid-_full > .gw, .grid-_center > .gw, .gw > .gw {
+.grid > .grid, .grid_-rev > .grid, .grid_-full > .grid, .grid_-center > .grid, .gw > .grid, .grid > .grid_-rev, .grid_-rev > .grid_-rev, .grid_-full > .grid_-rev, .grid_-center > .grid_-rev, .gw > .grid_-rev, .grid > .grid_-full, .grid_-rev > .grid_-full, .grid_-full > .grid_-full, .grid_-center > .grid_-full, .gw > .grid_-full, .grid > .grid_-center, .grid_-rev > .grid_-center, .grid_-full > .grid_-center, .grid_-center > .grid_-center, .gw > .grid_-center, .grid > .gw, .grid_-rev > .gw, .grid_-full > .gw, .grid_-center > .gw, .gw > .gw {
   margin-left: 0; }
 
 /**
@@ -1704,34 +1704,34 @@ input[type="checkbox"] {
 /**
  * Reversed grids
  */
-.grid-_rev {
+.grid_-rev {
   direction: rtl;
   text-align: right; }
-  .grid-_rev > .grid__item, .grid-_rev > .g {
+  .grid_-rev > .grid__item, .grid_-rev > .g {
     direction: ltr;
     text-align: left; }
 
 /**
  * Gutterless grids have all the properties of regular grids, minus any spacing.
  */
-.grid-_full {
+.grid_-full {
   margin-left: 0; }
-  .grid-_full > .grid__item, .grid-_full > .g {
+  .grid_-full > .grid__item, .grid_-full > .g {
     padding-left: 0; }
 
 /**
  * Centered grids align grid items centrally without needing to use push or pull
  * classes.
  */
-.grid-_center {
+.grid_-center {
   text-align: center; }
-  .grid-_center > .grid__item, .grid-_center > .g {
+  .grid_-center > .grid__item, .grid_-center > .g {
     text-align: left; }
 
 /*------------------------------------*\
     $BUTTONS
 \*------------------------------------*/
-.btn, .btn-_primary {
+.btn, .btn_-primary {
   position: relative;
   display: inline-block;
   text-align: center;
@@ -1746,18 +1746,18 @@ input[type="checkbox"] {
   -moz-transition: all 150ms ease-in;
   -o-transition: all 150ms ease-in;
   transition: all 150ms ease-in; }
-  .btn, .btn-_primary, .btn:hover, .btn-_primary:hover, .btn:focus, .btn-_primary:focus {
+  .btn, .btn_-primary, .btn:hover, .btn_-primary:hover, .btn:focus, .btn_-primary:focus {
     text-decoration: none; }
-  .btn:active, .btn-_primary:active, .btn:focus, .btn-_primary:focus {
+  .btn:active, .btn_-primary:active, .btn:focus, .btn_-primary:focus {
     outline: none;
     -webkit-transition: 0;
     -moz-transition: 0;
     -o-transition: 0;
     transition: 0; }
-  [disabled].btn, [disabled].btn-_primary, .btn:disabled, .btn-_primary:disabled {
+  [disabled].btn, [disabled].btn_-primary, .btn:disabled, .btn_-primary:disabled {
     cursor: default; }
 
-.btn-_full {
+.btn_-full {
   display: block;
   width: 100%; }
 
@@ -2517,21 +2517,21 @@ input[type="radio"] {
 /**
  * $use-icons must be set to true for custom radios and checkboxes
  */
-.radio-_custom:before,
-.checkbox-_custom:before {
+.radio_-custom:before,
+.checkbox_-custom:before {
   line-height: 1; }
 
 /* .icon-check-empty */
-.radio-_custom:before {
+.radio_-custom:before {
   content: "\e010"; }
 
-.checkbox-_custom:before {
+.checkbox_-custom:before {
   content: "\e000"; }
 
 /* .icon-check */
-input:checked + label > .radio-_custom:before {
+input:checked + label > .radio_-custom:before {
   content: "\e011"; }
-input:checked + label > .checkbox-_custom:before {
+input:checked + label > .checkbox_-custom:before {
   content: "\e001"; }
 
 /*------------------------------------*\
@@ -2599,7 +2599,7 @@ input:checked + label > .checkbox-_custom:before {
     color: #333333;
     padding: .5em 1em; }
 
-.menu__item-_current > a, .menu__item-_current > a:hover, .menu__item-_current > a:active {
+.menu__item_-current > a, .menu__item_-current > a:hover, .menu__item_-current > a:active {
   cursor: default; }
 
 .menu__sub {
@@ -2640,14 +2640,14 @@ input:checked + label > .checkbox-_custom:before {
 /*------------------------------------*\
     $BUTTONS
 \*------------------------------------*/
-.btn, .btn-_primary {
+.btn, .btn_-primary {
   color: white; }
 
-.btn-_primary {
+.btn_-primary {
   background-color: #333333; }
-  .btn-_primary:hover, .btn-_primary:focus {
+  .btn_-primary:hover, .btn_-primary:focus {
     background-color: #666666; }
-  .btn-_primary:active {
+  .btn_-primary:active {
     background-color: #1a1a1a; }
 
 /**
@@ -2700,52 +2700,52 @@ h1, h2, h3, h4, h5, h6 {
 /**
  * alignment modifiers
  */
-.text-_left {
+.text_-left {
   text-align: left; }
 
-.text-_center {
+.text_-center {
   text-align: center; }
 
-.text-_right {
+.text_-right {
   text-align: right; }
 
 /**
  * case modifiers
  */
-.case-_upper {
+.case_-upper {
   text-transform: uppercase; }
 
-.case-_lower {
+.case_-lower {
   text-transform: lowercase; }
 
-.case-_normal {
+.case_-normal {
   text-transform: none; }
 
-.case-_capital {
+.case_-capital {
   text-transform: capitalize; }
 
 /**
  * Font weights
  */
-.weight-_light {
+.weight_-light {
   font-weight: 300; }
 
-.weight-_normal {
+.weight_-normal {
   font-weight: 400; }
 
-.weight-_semibold {
+.weight_-semibold {
   font-weight: 600; }
 
 /**
  * vertical alignment modifiers
  */
-.valign-_top {
+.valign_-top {
   vertical-align: top; }
 
-.valign-_middle {
+.valign_-middle {
   vertical-align: middle; }
 
-.valign-_bottom {
+.valign_-bottom {
   vertical-align: bottom; }
 
 /**
@@ -2780,8 +2780,8 @@ h1, h2, h3, h4, h5, h6 {
     overflow: visible; }
 
 @media only screen and (max-width: 480px) {
-  .accessibility-_palm,
-  .visuallyhidden-_palm {
+  .accessibility_-palm,
+  .visuallyhidden_-palm {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -2791,8 +2791,8 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     width: 1px; } }
 @media only screen and (min-width: 481px) and (max-width: 1023px) {
-  .accessibility-_lap,
-  .visuallyhidden-_lap {
+  .accessibility_-lap,
+  .visuallyhidden_-lap {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -2802,8 +2802,8 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     width: 1px; } }
 @media only screen and (min-width: 481px) {
-  .accessibility-_lap-and-up,
-  .visuallyhidden-_lap-and-up {
+  .accessibility_-lap-and-up,
+  .visuallyhidden_-lap-and-up {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -2813,8 +2813,8 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     width: 1px; } }
 @media only screen and (max-width: 1023px) {
-  .accessibility-_portable,
-  .visuallyhidden-_portable {
+  .accessibility_-portable,
+  .visuallyhidden_-portable {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -2824,8 +2824,8 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     width: 1px; } }
 @media only screen and (min-width: 1024px) {
-  .accessibility-_desk,
-  .visuallyhidden-_desk {
+  .accessibility_-desk,
+  .visuallyhidden_-desk {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -2835,8 +2835,8 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     width: 1px; } }
 @media only screen and (min-width: 1200px) {
-  .accessibility-_desk-wide,
-  .visuallyhidden-_desk-wide {
+  .accessibility_-desk-wide,
+  .visuallyhidden_-desk-wide {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -2871,44 +2871,44 @@ h1, h2, h3, h4, h5, h6 {
 /*
  * Display level modifiers
  */
-.display-_block {
+.display_-block {
   display: block; }
 
-input.display-_block,
-textarea.display-_block,
-button.display-_block {
+input.display_-block,
+textarea.display_-block,
+button.display_-block {
   width: 100%; }
 
-.display-_iblock {
+.display_-iblock {
   display: inline-block; }
 
-.display-_table, .display-_table-full {
+.display_-table, .display_-table-full {
   display: table; }
 
-.display-_itable {
+.display_-itable {
   display: inline-table; }
 
-.display-_table, .display-_table-full,
-.display-_itable {
+.display_-table, .display_-table-full,
+.display_-itable {
   height: 100%; }
 
-.display-_table-full {
+.display_-table-full {
   width: 100%; }
 
-.display-_table__inner {
+.display_-table__inner {
   display: table-cell;
   vertical-align: middle; }
 
 /**
  * Add/remove floats
  */
-.float-_right {
+.float_-right {
   float: right; }
 
-.float-_left {
+.float_-left {
   float: left; }
 
-.float-_none {
+.float_-none {
   float: none; }
 
 /**
@@ -2918,29 +2918,29 @@ button.display-_block {
   margin: 24px;
   margin: 1.5rem; }
 
-.push-_top {
+.push_-top {
   margin-top: 24px;
   margin-top: 1.5rem; }
 
-.push-_right {
+.push_-right {
   margin-right: 24px;
   margin-right: 1.5rem; }
 
-.push-_bottom {
+.push_-bottom {
   margin-bottom: 24px;
   margin-bottom: 1.5rem; }
 
-.push-_left {
+.push_-left {
   margin-left: 24px;
   margin-left: 1.5rem; }
 
-.push-_ends {
+.push_-ends {
   margin-top: 24px;
   margin-top: 1.5rem;
   margin-bottom: 24px;
   margin-bottom: 1.5rem; }
 
-.push-_sides {
+.push_-sides {
   margin-right: 24px;
   margin-right: 1.5rem;
   margin-left: 24px;
@@ -2950,29 +2950,29 @@ button.display-_block {
   margin: 16px;
   margin: 1rem; }
 
-.push-small-_top {
+.push-small_-top {
   margin-top: 16px;
   margin-top: 1rem; }
 
-.push-small-_right {
+.push-small_-right {
   margin-right: 16px;
   margin-right: 1rem; }
 
-.push-small-_bottom {
+.push-small_-bottom {
   margin-bottom: 16px;
   margin-bottom: 1rem; }
 
-.push-small-_left {
+.push-small_-left {
   margin-left: 16px;
   margin-left: 1rem; }
 
-.push-small-_ends {
+.push-small_-ends {
   margin-top: 16px;
   margin-top: 1rem;
   margin-bottom: 16px;
   margin-bottom: 1rem; }
 
-.push-small-_sides {
+.push-small_-sides {
   margin-right: 16px;
   margin-right: 1rem;
   margin-left: 16px;
@@ -2981,23 +2981,23 @@ button.display-_block {
 .flush {
   margin: 0; }
 
-.flush-_top {
+.flush_-top {
   margin-top: 0; }
 
-.flush-_right {
+.flush_-right {
   margin-right: 0; }
 
-.flush-_bottom {
+.flush_-bottom {
   margin-bottom: 0; }
 
-.flush-_left {
+.flush_-left {
   margin-left: 0; }
 
-.flush-_ends {
+.flush_-ends {
   margin-top: 0;
   margin-bottom: 0; }
 
-.flush-_sides {
+.flush_-sides {
   margin-right: 0;
   margin-left: 0; }
 
@@ -3008,29 +3008,29 @@ button.display-_block {
   padding: 24px;
   padding: 1.5rem; }
 
-.soft-_top {
+.soft_-top {
   padding-top: 24px;
   padding-top: 1.5rem; }
 
-.soft-_right {
+.soft_-right {
   padding-right: 24px;
   padding-right: 1.5rem; }
 
-.soft-_bottom {
+.soft_-bottom {
   padding-bottom: 24px;
   padding-bottom: 1.5rem; }
 
-.soft-_left {
+.soft_-left {
   padding-left: 24px;
   padding-left: 1.5rem; }
 
-.soft-_ends {
+.soft_-ends {
   padding-top: 24px;
   padding-top: 1.5rem;
   padding-bottom: 24px;
   padding-bottom: 1.5rem; }
 
-.soft-_sides {
+.soft_-sides {
   padding-right: 24px;
   padding-right: 1.5rem;
   padding-left: 24px;
@@ -3040,29 +3040,29 @@ button.display-_block {
   padding: 16px;
   padding: 1rem; }
 
-.soft-small-_top {
+.soft-small_-top {
   padding-top: 16px;
   padding-top: 1rem; }
 
-.soft-small-_right {
+.soft-small_-right {
   padding-right: 16px;
   padding-right: 1rem; }
 
-.soft-small-_bottom {
+.soft-small_-bottom {
   padding-bottom: 16px;
   padding-bottom: 1rem; }
 
-.soft-small-_left {
+.soft-small_-left {
   padding-left: 16px;
   padding-left: 1rem; }
 
-.soft-small-_ends {
+.soft-small_-ends {
   padding-top: 16px;
   padding-top: 1rem;
   padding-bottom: 16px;
   padding-bottom: 1rem; }
 
-.soft-small-_sides {
+.soft-small_-sides {
   padding-right: 16px;
   padding-right: 1rem;
   padding-left: 16px;
@@ -3071,23 +3071,23 @@ button.display-_block {
 .hard {
   padding: 0; }
 
-.hard-_top {
+.hard_-top {
   padding-top: 0; }
 
-.hard-_right {
+.hard_-right {
   padding-right: 0; }
 
-.hard-_bottom {
+.hard_-bottom {
   padding-bottom: 0; }
 
-.hard-_left {
+.hard_-left {
   padding-left: 0; }
 
-.hard-_ends {
+.hard_-ends {
   padding-top: 0;
   padding-bottom: 0; }
 
-.hard-_sides {
+.hard_-sides {
   padding-right: 0;
   padding-left: 0; }
 
