@@ -92,14 +92,18 @@ class View implements IView {
 		extract(array_merge($_data, $this->data));
 
 		ob_start();
-		if (!file_exists($_path)) {
-			if (is_callable($fallback)) {
-				echo $fallback($this);
+		try {
+			if (!file_exists($_path)) {
+				if (is_callable($fallback)) {
+					echo $fallback($this);
+				} else {
+					throw new ViewException("Template {$file} does not exist.");
+				}
 			} else {
-				throw new ViewException("Template {$file} does not exist.");
+				include $_path;
 			}
-		} else {
-			include $_path;
+		} catch (Exception $ex) {
+			return ob_get_clean() . "ERROR in View: ".$ex->getMessage();
 		}
 		return ob_get_clean();
 	}
@@ -110,13 +114,18 @@ class View implements IView {
 		} else {
 			if (in_array($method, array_keys(self::$helpers))) {
 				$method = self::$helpers[$method];
+				if (!is_callable($method)) {
+					if (is_array($method) && count($method) >= 2) { $method = $method[1]; }
+					throw new ViewException("Method '{$method}' not found.");
+				}
+
 				if (is_array($method)) {
 					return call_user_func_array($method, $args);
 				} else {
 					return call_user_func($method, $args);
 				}
 			} else {
-				throw new ViewException("Method {$method} not found.");
+				throw new ViewException("Method '{$method}' not found.");
 			}
 		}
 	}
