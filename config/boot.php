@@ -13,6 +13,10 @@
 
 require_once TEMPLATE_DIR.'core/all.php';
 
+
+
+
+
 /*------------------------------------*\
 	Load environment
 \*------------------------------------*/
@@ -22,11 +26,17 @@ Environment::initialize($config);
 // Set user variables
 Environment::set($environment);
 
+
+
+
+
 /*------------------------------------*\
 	Intializers
 \*------------------------------------*/
-
 \fixate\Php::require_all(TEMPLATE_DIR.'initializers/');
+
+
+
 
 
 /*------------------------------------*\
@@ -46,7 +56,6 @@ Environment::set($environment);
 /**
  * Load the controller associated with the current template if it exists
  */
-
 require_once "{$config->paths->templates}/controllers/application_controller.php";
 Controller::set_fallback_controller('ApplicationController');
 Controller::run($config, $page);

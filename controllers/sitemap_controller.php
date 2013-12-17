@@ -15,6 +15,10 @@ class SitemapController extends ApplicationController {
 		));
 	}
 
+
+
+
+
 /*------------------------------------*\
 	$FUNCTIONS
 	\*------------------------------------*/

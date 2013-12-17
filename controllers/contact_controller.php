@@ -15,6 +15,10 @@ class ContactController extends ApplicationController {
 		));
 	}
 
+
+
+
+
 /*------------------------------------*\
 	$FUNCTIONS
 	\*------------------------------------*/
@@ -144,6 +148,11 @@ class ContactController extends ApplicationController {
 		return $output;
 	}
 }
+
+
+
+
+
 /*------------------------------------*\
   $FIELDS
 \*------------------------------------*/
