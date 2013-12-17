@@ -46,7 +46,7 @@ abstract class Controller implements IController {
 	}
 
 	function call() {
-		$func = f8\Strings::snake_case($this->page->name);
+		$func = 'page_'.f8\Strings::snake_case($this->page->name);
 		if (!method_exists($this, $func)) {
 			$func = 'index';
 		}
