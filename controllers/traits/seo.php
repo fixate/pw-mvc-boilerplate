@@ -1,13 +1,13 @@
 <?php
 
 trait SEO {
-	function __seoInitialize() {
-		$this->add_view_vars($this->get_seo_vars());
+	static function __seoInitialize($obj) {
+		$obj->add_view_vars($obj->get_seo_vars());
 	}
 
 	function get_seo_title() {
 		$page =& $this->page;
-		$pages =& wire('pages');
+		$pages = wire('pages');
 		$seo_title = '';
 
 		if ($title = $page->seo_title) {

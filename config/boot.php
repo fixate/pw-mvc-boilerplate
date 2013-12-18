@@ -13,20 +13,40 @@
 
 require_once TEMPLATE_DIR.'core/all.php';
 
+
+
+
+
 /*------------------------------------*\
 	Load environment
 \*------------------------------------*/
 require TEMPLATE_DIR.'/config/environment.php';
-// Initialize the environment
-Environment::initialize($config);
+// Get and initialize the environment
+$_GLOBALS['env'] = $env = Environment::get_instance();
+$env->set_env(getenv('PW_ENV') || $config->debug ? 'development' : 'production');
 // Set user variables
-Environment::set($environment);
+$env->set($environment);
+// We dont need user environment from here on
+unset($environment);
+
+
+
+
+
 
 /*------------------------------------*\
-	Intializers
+  Intializers
 \*------------------------------------*/
-
+/**
+ * Put initialization code for your various modules
+ * in the initializers directory.
+ */
 \fixate\Php::require_all(TEMPLATE_DIR.'initializers/');
+
+
+
+
+
 
 
 /*------------------------------------*\
@@ -46,7 +66,6 @@ Environment::set($environment);
 /**
  * Load the controller associated with the current template if it exists
  */
-
 require_once "{$config->paths->templates}/controllers/application_controller.php";
 Controller::set_fallback_controller('ApplicationController');
 Controller::run($config, $page);
