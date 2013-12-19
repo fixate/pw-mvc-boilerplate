@@ -15,7 +15,8 @@ class View implements IView {
 		$this->name = $name;
 	}
 
-	function yield() {
+	// Spit out the page
+	function spit() {
 		echo $this->render_file($this->name);
 	}
 
