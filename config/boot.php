@@ -21,10 +21,27 @@ require_once TEMPLATE_DIR.'core/all.php';
 	Load environment
 \*------------------------------------*/
 require TEMPLATE_DIR.'/config/environment.php';
-// Initialize the environment
-Environment::initialize($config);
+// Get and initialize the environment
+$_GLOBALS['env'] = $env = Environment::get_instance();
+$env->set_env(getenv('PW_ENV') || $config->debug ? 'development' : 'production');
 // Set user variables
-Environment::set($environment);
+$env->set($environment);
+// We dont need user environment from here on
+unset($environment);
+
+
+
+
+
+
+/*------------------------------------*\
+  Intializers
+\*------------------------------------*/
+/**
+ * Put initialization code for your various modules
+ * in the initializers directory.
+ */
+\fixate\Php::require_all(TEMPLATE_DIR.'initializers/');
 
 
 

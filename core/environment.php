@@ -2,64 +2,63 @@
 
 class Environment {
 	// String representing current environment (development, production etc)
-	public static $env = array();
+	public $env = [];
 
-	private static $__environment = null;
-
-	static function initialize(&$config) {
-		self::$env['is_production'] = !self::$env['is_development'] =
-
-		self::$env['env'] = self::$env['is_production'] ? 'production' : 'development';
-	}
-
-	static function is_production() {
-		return self::env() == 'production';
-	}
-
-	static function is_development() {
-		return self::env() == 'development';
-	}
-
-	static function env() {
-		if (array_key_exists('env', self::$env)) {
-			return self::$env['env'];
+	static function get_instance() {
+		static $instance = null;
+		if ($instance == null) {
+			$instance = new static();
 		}
 
-		if ($env = getenv('PW_ENV')) {
-			return $env;
-		}
-
-		if (self::$__environment) {
-			return self::$__environment;
-		}
-
-		self::$__environment = file_exists(dirname($config->paths->templates) . '/config-dev.php') ?
-			'development' : 'production';
-
-		return self::$__environment;
+		return $instance;
 	}
 
-	static function set($k, $v = null) {
+	function set_env($env) {
+		$this->env['env'] = $env;
+		$this->env['is_production'] = ($env == 'production');
+		$this->env['is_development'] = !$this->is_production;
+	}
+
+	function set($k, $v = null) {
 		if (is_array($k)) {
-			self::$env = array_merge(self::$env, $k);
+			$this->env = array_merge($this->env, $k);
 		} else {
-			self::$env[$k] = $v;
+			$this->env[$k] = $v;
 		}
 	}
 
-	static function unset_key($k) {
-		unset(self::$env[$k]);
+	function unset_key($k) {
+		unset($this->env[$k]);
 	}
 
-  static function __callStatic($method, $args) {
-		if (method_exists(self, $method)) {
+	function has($key) {
+		return array_key_exists($key, $this->env);
+	}
+
+	// Support getting environment singleton with static method calls
+	public static function __callStatic($method, $args) {
+		if (method_exists(__CLASS__, $method)) {
 			return call_user_func_array(array(self, $method), $args);
 		}
 
-		if (array_key_exists($method, self::$env)) {
-			return self::$env[$method];
+		$instance = static::get_instance();
+
+		if ($instance->has($method)) {
+			return $instance->$method;
 		}
 
 		trigger_error("No such method for Environment::{$method}.", E_ERROR);
+	}
+
+	function __set($name, $value) {
+		$this->env[$name] = $value;
+	}
+
+  function __get($name) {
+		if (array_key_exists($name, $this->env)) {
+			return $this->env[$name];
+		}
+
+		return null;
 	}
 }

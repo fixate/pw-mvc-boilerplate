@@ -118,12 +118,12 @@ class Paths {
 
   static function get_filename_without_extension($path)
   {
-    return substr($path, 0, strrpos($path, '.'));
+		return pathinfo($path, PATHINFO_FILENAME);
   }
 
   static function get_extension($path)
   {
-    return end(explode(".", $path));
+		return strtolower(pathinfo($path, PATHINFO_EXTENSION));
   }
 
 	static function join()

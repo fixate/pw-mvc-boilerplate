@@ -46,13 +46,15 @@ abstract class Controller implements IController {
 	}
 
 	function call() {
-		$func = f8\Strings::snake_case($this->page->name);
+		$func = 'page_'.f8\Strings::snake_case($this->page->name);
 		if (!method_exists($this, $func)) {
 			$func = 'index';
 		}
-		$view = $this->$func();
-		if ($view && $view instanceof IView) {
-			echo $view->render();
+		$resp = $this->$func();
+		if ($resp && $resp instanceof IView) {
+			echo $resp->render();
+		} else if ($resp && (is_array($resp) || is_object($resp))) {
+			echo json_encode($resp);
 		}
 	}
 

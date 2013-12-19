@@ -1,8 +1,8 @@
 <?php
 
 trait PrimaryNav {
-	function __pnInitialize() {
-		$this->helper('primary_nav');
+	static function __pnInitialize($obj) {
+		$obj->helper('primary_nav');
 	}
 
 	/**
@@ -29,7 +29,7 @@ trait PrimaryNav {
 				'inner_tpl' => '<ul class="menu menu__sub">||</ul>',
 				'show_root' => true,
 				'list_field_class' => 'menu__item menu__item_-primary',
-				'item_tpl' => '<a href="{nav_url|url}">{title}</a>'
+				'item_tpl' => '<a href="{nav_url|url}">{title|band_title}</a>'
 			)
 		);
 	}

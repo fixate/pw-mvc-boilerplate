@@ -89,34 +89,45 @@ class View implements IView {
 		$page = $this->controller->page;
 		$pages = wire('pages');
 		$config = $this->controller->config;
+		$env = Environment::get_instance();
 		extract(array_merge($_data, $this->data));
 
 		ob_start();
-		if (!file_exists($_path)) {
-			if (is_callable($fallback)) {
-				echo $fallback($this);
+		try {
+			if (!file_exists($_path)) {
+				if (is_callable($fallback)) {
+					echo $fallback($this);
+				} else {
+					throw new ViewException("Template {$file} does not exist.");
+				}
 			} else {
-				throw new ViewException("Template {$file} does not exist.");
+				include $_path;
 			}
-		} else {
-			include $_path;
+		} catch (Exception $ex) {
+			return ob_get_clean() . "ERROR in View: ".$ex->getMessage();
 		}
 		return ob_get_clean();
 	}
 
 	public function __call($method, $args) {
-		if (property_exists($method) && is_callable($method)) {
+		if (property_exists(__CLASS__, $method) && is_callable($method)) {
 			return call_user_func_array(array($this, $method), $args);
 		} else {
 			if (in_array($method, array_keys(self::$helpers))) {
 				$method = self::$helpers[$method];
+				if (!is_callable($method)) {
+					if (is_array($method) && count($method) >= 2) { $method = $method[1]; }
+
+					throw new ViewException("Method '{$method}' not found.");
+				}
+
 				if (is_array($method)) {
 					return call_user_func_array($method, $args);
 				} else {
 					return call_user_func($method, $args);
 				}
 			} else {
-				throw new ViewException("Method {$method} not found.");
+				throw new ViewException("Method '{$method}' not found.");
 			}
 		}
 	}

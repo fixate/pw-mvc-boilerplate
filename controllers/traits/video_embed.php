@@ -3,8 +3,8 @@
 require_once TEMPLATE_DIR.'/lib/video_embedder.php';
 
 trait VideoEmbed {
-	function __vidembedInitialize() {
-		$this->helper('video_embed');
+	static function __vidembedInitialize($obj) {
+		$obj->helper('video_embed');
 	}
 	/**
 	 * Embed code for videos.
