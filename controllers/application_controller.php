@@ -6,11 +6,13 @@ class ApplicationController extends Controller {
 	use SEO;
 	use VideoEmbed;
 	use PrimaryNav;
+	use Search;
 
 	function before() {
-		SEO::__seoInitialize();
-		VideoEmbed::__vidembedInitialize();
-		PrimaryNav::__pnInitialize();
+		SEO::__seoInitialize($this);
+		VideoEmbed::__vidembedInitialize($this);
+		PrimaryNav::__pnInitialize($this);
+		Search::__searchInitialize($this);
 	}
 
   // Fallback index
