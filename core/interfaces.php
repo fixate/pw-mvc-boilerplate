@@ -10,7 +10,7 @@ interface IController {
 
 interface IView {
 	// Called in View
-	function yield();
+	function spit();
 	function partial($name);
 
 	// Called in Base Controller

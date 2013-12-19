@@ -36,7 +36,7 @@ class Environment {
 	}
 
 	// Support getting environment singleton with static method calls
-	public static function __callStatic($method, $args) {
+  static function __callStatic($method, $args) {
 		if (method_exists(__CLASS__, $method)) {
 			return call_user_func_array(array(self, $method), $args);
 		}
@@ -61,4 +61,9 @@ class Environment {
 
 		return null;
 	}
+
+	private function __clone() {
+		trigger_error("Clone disabled for singleton class.", E_ERROR);
+	}
+
 }
