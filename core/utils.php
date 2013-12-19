@@ -78,8 +78,11 @@ class Strings {
 class Php {
 	static function require_all($path, $ext = 'php') {
 		$requires = Files::ls($path, $ext);
-		foreach ($requires as $f) {
-			require Paths::join($path, $f);
+
+		if ($requires) {
+			foreach ($requires as $f) {
+				require Paths::join($path, $f);
+			}
 		}
 	}
 }
@@ -87,7 +90,10 @@ class Php {
 class Files {
 	static function ls($path, $extension = null)
   {
+		if (!is_dir($path)) return false;
+
     $result = array();
+
     if ($handle = opendir($path))
       while (($file = readdir($handle)) !== false)
       {
