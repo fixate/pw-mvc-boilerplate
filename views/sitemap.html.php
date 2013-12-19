@@ -16,4 +16,3 @@
 <ul>
 <?= $pages_list ?>
 </ul>
-

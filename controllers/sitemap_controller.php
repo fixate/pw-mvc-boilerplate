@@ -19,8 +19,8 @@ class SitemapController extends ApplicationController {
 
 
 
-/*------------------------------------*\
-	$FUNCTIONS
+	/*------------------------------------*\
+		$FUNCTIONS
 	\*------------------------------------*/
 	/**
 	 * Loop through pages of the site and output a list item for each with a link
@@ -28,7 +28,8 @@ class SitemapController extends ApplicationController {
 	 * @param object $page    the page to use as the root for generating a list of children
 	 */
 	function pages_list($page) {
-		$html = "<li><a href='{$page->url}'>{$page->title}</a> ";
+		static $html;
+		$html .= "<li><a href='{$page->url}'>{$page->title}</a> ";
 
 		if ($page->numChildren) {
 			$html .= "<ul>";
