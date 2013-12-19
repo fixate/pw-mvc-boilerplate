@@ -8,6 +8,10 @@
  */
 class HomeController extends ApplicationController {
 	function index() {
-		return $this->render();
+		return $this->render(
+			// array(
+			//   'extraScripts' => 'your-script.js',
+			// )
+		);
 	}
 }
