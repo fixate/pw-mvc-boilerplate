@@ -17,7 +17,7 @@
 <script src="//google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
 <?php endif ?>
 
-<?php if (is_array($extraScripts)) foreach ($extraScripts as $script): ?>
+<?php if (isset($extraScripts) && is_array($extraScripts)) foreach ($extraScripts as $script): ?>
 <script src="<?= $this->assets("js/${script}") ?>"></script>
 <?php endforeach ?>
 <script type="text/javascript" src="<?= $this->assets('js/main.js') ?>"></script>
