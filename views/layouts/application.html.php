@@ -23,7 +23,7 @@
 	<?= $this->partial('header') ?>
 
 	<div class="area-content" role="main">
-		<?php $this->yield(); ?>
+		<?php $this->spit(); ?>
 	</div><!-- .area-content -->
 
 	<?= $this->partial('footer') ?>

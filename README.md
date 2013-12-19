@@ -53,7 +53,7 @@ Basic layout: `views/layouts`
 <html>
 <?= $this>partial('...') ?>
 
-<?php $this->yield() ?>
+<?php $this->spit() ?>
 </html>
 
 ```
