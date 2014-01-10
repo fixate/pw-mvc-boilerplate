@@ -24,7 +24,7 @@ trait SEO {
 		$page =& $this->page;
 
 		if ($page->seo_description) {
-			return '<meta name="description" content="{$page->seo_description}">';
+			return "<meta name='description' content='{$page->seo_description}'>";
 		}
 	}
 
@@ -32,7 +32,7 @@ trait SEO {
 		$page =& $this->page;
 
 		if ($page->seo_noindex) {
-			return '<meta name="robots" content="noindex, nofollow">';
+			return "<meta name='robots' content='noindex, nofollow'>";
 		}
 	}
 
@@ -41,7 +41,7 @@ trait SEO {
 
 		return array(
 			'seo_title'   => $this->get_seo_title(),
-			'seo_desc'    => $page->seo_desc,
+			'seo_desc'    => $this->get_seo_desc(),
 			'seo_noindex' => $this->get_seo_noindex()
 		);
 	}

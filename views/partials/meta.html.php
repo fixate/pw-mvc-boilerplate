@@ -21,7 +21,6 @@
   <meta name="msapplication-TileColor" content="#ffffff"/>
   <meta name="msapplication-TileImage" content="apple-touch-icon-152x152-precomposed.png"/>
 
-	<link rel="SHORTCUT ICON" href="<?= $this->assets('img/favicon.ico') ?>" type="image/x-icon" />
 	<link rel="logo" type="image/svg" href="<?= $this->assets('img/logo.svg') ?>"/>
 
   <!--[if ! lte IE 7]><!-->
