@@ -14,7 +14,7 @@ trait SEO {
 			$seo_title = $title;
 		} else {
 			$seo_title = $page->title;
-			$seo_title .= ' ' . $pages->get('/settings/')->seo_separator;
+			$seo_title .= ' ' . $pages->get('/settings/')->seo_title_separator;
 			$seo_title .= ' ' . $pages->get('/settings/')->seo_title_append;
 		}
 
