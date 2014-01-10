@@ -14,11 +14,26 @@ trait SEO {
 			$seo_title = $title;
 		} else {
 			$seo_title = $page->title;
-			$seo_title .= ' ' . $pages->get('/settings/')->seo_title_separator;
 			$seo_title .= ' ' . $pages->get('/settings/')->seo_title_append;
 		}
 
 		return $seo_title;
+	}
+
+	function get_seo_desc() {
+		$page =& $this->page;
+
+		if ($page->seo_description) {
+			return '<meta name="description" content="{$page->seo_description}">';
+		}
+	}
+
+	function get_seo_noindex() {
+		$page =& $this->page;
+
+		if ($page->seo_noindex) {
+			return '<meta name="robots" content="noindex, nofollow">';
+		}
 	}
 
 	function get_seo_vars() {
@@ -26,9 +41,10 @@ trait SEO {
 
 		return array(
 			'seo_title'   => $this->get_seo_title(),
-			'seo_desc'    => $page->seo_descr,
-			'seo_noindex' => $page->seo_noindex
+			'seo_desc'    => $page->seo_desc,
+			'seo_noindex' => $this->get_seo_noindex()
 		);
 	}
 }
+
 

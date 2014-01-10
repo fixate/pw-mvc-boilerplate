@@ -11,7 +11,8 @@
   <link rel="dns-prefetch" href="//ajax.googleapis.com" />
 
 	<title><?= $seo_title; ?></title>
-  <meta name="description" content="<?= $seo_desc; ?>" />
+	<?= $seo_desc; ?>
+	<?= $seo_noindex; ?>
 
   <?php // enable responsive behaviour for all devices ?>
   <meta name="viewport" content="width=device-width, initial-scale=1">
