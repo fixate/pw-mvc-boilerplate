@@ -64,7 +64,8 @@ class HomeController extends Controller {
 	// Also a page specific method
 	function override_view_name() {
 	  	// Override the implicit view and use views/foobar.html.php
-		return $this->render('foobar', array('optional' => 'vars'));
+	  	// Also sets the layout to views/layouts/alternative.html.php
+		return $this->render('foobar', array('optional' => 'vars'))->set_layout('alternative');
 	}
 }
 ```
@@ -74,18 +75,25 @@ class HomeController extends Controller {
 Basic layout: `views/layouts`
 
 ```php
+<!-- views/layouts/application.html.php -->
 <html>
 <!-- This will process and output the file views/partials/my_partial.html.php -->
-<?= $this>partial('my_partial') ?>
+<?= $this->partial('my_partial') ?>
 
 <!-- This is Rails' yield ('yield' is a reserved word in php 5.5 - so let's 'spit' the content out) -->
 <?php $this->spit() ?>
 
 <!-- This will process and output the file views/partials/footer.html.php with the variable foo-->
-<?= $this>partial('footer', array('foo' => 'bar')) ?>
+<?= $this->partial('footer', array('foo' => 'bar')) ?>
 </html>
 
 ```
+
+### TODO
+
+- Write tests!!!
+- Add controller level layout override
+- More...?
 
 ### License
 
