@@ -39,7 +39,9 @@ Move the contents of `!root` to the root of your site (.gitignore to your projec
 If you don't do this, processwire will look for site/[template_name].php. mvc.php is the entrypoint into
 the MVC framework.
 
-**Basic Controller:**
+There is no routing, you take care of that by making templates and pages in the ProcessWire admin.
+
+**Controller for 'home' template:**
 
 ```php
 // site/controllers/home_controller.php
@@ -52,6 +54,9 @@ class HomeController extends Controller {
 		// Render views/home.html.php
 		return $this->render();
 	}
+	
+	function before() { /* Will run before controller method */ }
+	function after() { /* Will run after controller method */ }
 	
 	// Will execute for a page named page-specific/page_specific instead of index()
 	// Also renders views/home.html.php
