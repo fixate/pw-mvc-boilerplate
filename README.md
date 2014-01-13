@@ -54,6 +54,7 @@ class HomeController extends Controller {
 	}
 	
 	// Will execute for a page named page-specific/page_specific instead of index()
+	// Also renders views/home.html.php
 	function page_specific() {
 	   	$vars = array('defined' => 'only here!');
 		// Optionally pass an array for variables that will be available in the view
