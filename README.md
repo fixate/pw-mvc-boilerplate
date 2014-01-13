@@ -9,7 +9,7 @@ in your admin.
 
 ## Purpose
 
-Kickstart ProcessWire projects with a structure that reduces repetition, separates logic from markup, and logically organises your code for easier management.
+Kickstart ProcessWire projects with a light-weight structure that reduces repetition, separates logic from markup, and logically organises your code for easier management.
 
 ## Features
 
@@ -17,6 +17,7 @@ Kickstart ProcessWire projects with a structure that reduces repetition, separat
 - header, footer, and other global sections are defined once
 - logic is abstracted from markup
 - contains a working, and easy to understand contact form built through the API
+- Rails-inspired MVC pattern
 
 ## Installation
 
@@ -33,14 +34,37 @@ Move the contents of `!root` to the root of your site (.gitignore to your projec
 
 ## Usage
 
-For all of your templates that you want to work through a `Controller` use the mvc.php template. To enable that set `Alternate Template Filename` to 'mvc' in the advanced tab of your template.
+**IMPORTANT:** For all of your templates that you want to work through a `Controller` use the mvc.php template. To enable that set `Alternate Template Filename` to 'mvc' in the advanced tab of your template.
+
+If you don't do this, processwire will look for site/[template_name].php. mvc.php is the entrypoint into
+the MVC framework.
 
 **Basic Controller:**
 
 ```php
+// site/controllers/home_controller.php
+// The name of the class matters! 'Home' in 'HomeController' refers to a home template in processwire admin.
 class HomeController extends Controller {
+        // Index will be executed by all pages using the Home template.
+        // Except if a page-specific method is defined (see below)
+        // This function MUST be defined in your template controller.
 	function index() {
+		// Render views/home.html.php
 		return $this->render();
+	}
+	
+	// Will execute for a page named page-specific/page_specific instead of index()
+	function page_specific() {
+	   	$vars = array('defined' => 'only here!');
+		// Optionally pass an array for variables that will be available in the view
+		// e.g. <p>var = <?= $defined ?></p> <!-- only here! -->
+		return $this->render($vars);
+	}
+	
+	// Also a page specific method
+	function override_view_name() {
+	  	// Override the implicit view and use views/foobar.html.php
+		return $this->render('foobar', array('optional' => 'vars'));
 	}
 }
 ```
@@ -51,9 +75,14 @@ Basic layout: `views/layouts`
 
 ```php
 <html>
-<?= $this>partial('...') ?>
+<!-- This will process and output the file views/partials/my_partial.html.php -->
+<?= $this>partial('my_partial') ?>
 
+<!-- This is Rails' yield ('yield' is a reserved word in php 5.5 - so let's 'spit' the content out) -->
 <?php $this->spit() ?>
+
+<!-- This will process and output the file views/partials/footer.html.php with the variable foo-->
+<?= $this>partial('footer', array('foo' => 'bar')) ?>
 </html>
 
 ```
