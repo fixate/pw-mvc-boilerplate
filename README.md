@@ -55,7 +55,9 @@ class HomeController extends Controller {
 		return $this->render();
 	}
 	
+	// Optional
 	function before() { /* Will run before controller method */ }
+	// Optional
 	function after() { /* Will run after controller method */ }
 	
 	// Will execute for a page named page-specific/page_specific instead of index()
