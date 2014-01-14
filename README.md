@@ -1,6 +1,6 @@
 # A Rails-inspired MVC boilerplate for ProcessWire
 
-A boilerplate for new ProcessWire projects. The templates are structured to use the [delegate approach](http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/), so make sure to set all templates to use `mvc.php` as an alternate template by visiting:
+A boilerplate for new ProcessWire projects. The MVC entrypoint is enabled for a template by using the [delegate approach](http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/), so make sure to set all templates to use `mvc.php` as an alternate template by visiting:
 
 ```
 Setup -> [template] -> Advanced -> Alternate Template Filename
@@ -18,6 +18,7 @@ Kickstart ProcessWire projects with a light-weight structure that reduces repeti
 - logic is abstracted from markup
 - contains a working, and easy to understand contact form built through the API
 - Rails-inspired MVC pattern
+- Page-specific and fallback controller actions
 
 ## Installation
 
