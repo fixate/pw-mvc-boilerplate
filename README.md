@@ -49,7 +49,7 @@ There is no routing, you take care of that by making templates and pages in the 
 // a template named 'home' in the processwire admin.
 // TEMPLATE CONTROLLERS ARE OPTIONAL: If you don't need custom functionality 
 // for a template then no controller is needed. By default the mvc.php template
-// will use the view matching the template name. e.g. views/about.html.php
+// will use the view matching the template name. e.g. views/basic-page.html.php
 class HomeController extends Controller {
         // Index will be executed by all pages using the Home template.
         // Except if a page-specific method is defined (see below)
