@@ -115,6 +115,7 @@ Basic layout: `views/layouts`
 
 - Write tests!!!
 - Add controller level layout override
+- Add JSON rendering support
 - More...?
 
 ### License
