@@ -44,7 +44,7 @@ There is no routing, you take care of that by making templates and pages in the 
 
 **Most basic controller**
 
-```
+```php
 class ContactController extends Controller {
 	function index() {
 		// Render views/contact.html.php
