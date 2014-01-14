@@ -54,7 +54,7 @@ class ContactController extends Controller {
 ```
 	
 
-**Controller for 'home' template:**
+**More complete controller example for the 'home' template:**
 
 ```php
 // site/controllers/home_controller.php
