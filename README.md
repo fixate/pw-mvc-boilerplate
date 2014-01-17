@@ -1,6 +1,6 @@
 # A Rails-inspired MVC boilerplate for ProcessWire
 
-A boilerplate for new ProcessWire projects. The MVC entrypoint is enabled for a template by using the [delegate approach](http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/), so make sure to set all templates to use `mvc.php` as an alternate template by visiting:
+A boilerplate for new ProcessWire projects (tested only with PHP 5.4.24). The MVC entrypoint is enabled for a template by using the [delegate approach](http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/), so make sure to set all templates to use `mvc.php` as an alternate template by visiting:
 
 ```
 Setup -> [template] -> Advanced -> Alternate Template Filename
@@ -52,7 +52,7 @@ class ContactController extends Controller {
 	}
 }
 ```
-	
+
 
 **More complete controller example for the 'home' template:**
 
@@ -68,12 +68,12 @@ class HomeController extends Controller {
 		// Render views/home.html.php
 		return $this->render();
 	}
-	
+
 	// Optional
 	function before() { /* Will run before controller method */ }
 	// Optional
 	function after() { /* Will run after controller method */ }
-	
+
 	// Will execute for a page named page-specific/page_specific instead of index()
 	// Also renders views/home.html.php
 	function page_specific() {
@@ -82,7 +82,7 @@ class HomeController extends Controller {
 		// e.g. <p>var = <?= $defined ?></p> <!-- only here! -->
 		return $this->render($vars);
 	}
-	
+
 	// Also a page specific method
 	function override_view_name() {
 	  	// Override the implicit view and use views/foobar.html.php
