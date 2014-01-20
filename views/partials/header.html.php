@@ -9,7 +9,6 @@
  */
 ?>
 <header class="area-header" role="banner">
-
   <div class="wrap">
 
     <a class="logo" href="<?= $config->urls->root; ?>">
@@ -28,5 +27,4 @@
     <?= $this->partial('search-form') ?>
 
   </div>
-
 </header>

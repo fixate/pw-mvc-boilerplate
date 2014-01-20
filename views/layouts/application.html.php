@@ -22,9 +22,9 @@
 	<?= $this->partial('admin/bar') ?>
 	<?= $this->partial('header') ?>
 
-	<div class="area-content" role="main">
+	<main class="area-content" role="main">
 		<?php $this->spit(); ?>
-	</div><!-- .area-content -->
+	</main><!-- .area-content -->
 
 	<?= $this->partial('footer') ?>
 	<?= $this->partial('scripts') ?>

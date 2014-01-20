@@ -8,7 +8,7 @@
  * @since Theme_Name 1.0
  */
  ?>
-<div class="area-footer">
+<footer class="area-footer">
   <div class="wrap">
 
     <div>
@@ -16,6 +16,6 @@
     </div>
 
   </div>
-</div>
+</footer>
 
 <?= $this->partial('scripts') ?>
