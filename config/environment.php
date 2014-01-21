@@ -1,6 +1,6 @@
 <?php
 /*------------------------------------*\
-	User environment
+	USER ENVIRONMENT
 \*------------------------------------*/
 $environment = array(
 	// 'env' => 'development',

@@ -1,7 +1,6 @@
 <?php
-
 /*------------------------------------*\
-	Load core
+	LOAD CORE
 \*------------------------------------*/
 /**
  * This is the global init file included before all template files.
@@ -18,7 +17,7 @@ require_once TEMPLATE_DIR.'core/all.php';
 
 
 /*------------------------------------*\
-	Load environment
+	LOAD ENVIRONMENT
 \*------------------------------------*/
 require TEMPLATE_DIR.'/config/environment.php';
 // Get and initialize the environment
@@ -33,9 +32,8 @@ unset($environment);
 
 
 
-
 /*------------------------------------*\
-  Intializers
+  INTIALIZERS
 \*------------------------------------*/
 /**
  * Put initialization code for your various modules
@@ -48,7 +46,7 @@ unset($environment);
 
 
 /*------------------------------------*\
-	$CONTROLLERS
+	CONTROLLERS
 \*------------------------------------*/
 /**
  * Site-wide controllers which hold logic, and helpers for access to fields defined
