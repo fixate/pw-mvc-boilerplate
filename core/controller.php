@@ -75,6 +75,8 @@ abstract class Controller implements IController {
 	protected function load_view($view_name, $data) {
 		$view = new View($this, $view_name);
 
+		$view->set_layout(isset($this->layout) ? $this->layout : 'application');
+
 		$view->set_base_path(f8\Paths::join($this->config->paths->templates, 'views'));
 		$view->set_asset_uri(f8\Paths::join($this->config->urls->templates, 'assets'));
 		if ($this->view_vars) {

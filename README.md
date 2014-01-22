@@ -61,9 +61,9 @@ class ContactController extends Controller {
 // The name of the class matters! 'Home' in 'HomeController' matches up to
 // a template named 'home' in the processwire admin.
 class HomeController extends Controller {
-        // Index will be executed by all pages using the Home template.
-        // Except if a page-specific method is defined (see below)
-        // This function MUST be defined in your template controller.
+  // Index will be executed by all pages using the Home template.
+  // Except if a page-specific method is defined (see below)
+  // This function MUST be defined in your template controller.
 	function index() {
 		// Render views/home.html.php
 		return $this->render();
@@ -74,21 +74,24 @@ class HomeController extends Controller {
 	// Optional
 	function after() { /* Will run after controller method */ }
 
-	// Will execute for a page named page-specific/page_specific instead of index()
+	// Will execute for a page named foo-bar or foo_bar instead of index()
 	// Also renders views/home.html.php
-	function page_specific() {
-	   	$vars = array('defined' => 'only here!');
+	function foo_bar() {
+    $vars = array('defined' => 'only here!');
 		// Optionally pass an array for variables that will be available in the view
 		// e.g. <p>var = <?= $defined ?></p> <!-- only here! -->
 		return $this->render($vars);
 	}
 
-	// Also a page specific method
-	function override_view_name() {
+	// Also a page specific method - demonstrating overriding of view name and layout
+	function bar_baz() {
 	  	// Override the implicit view and use views/foobar.html.php
 	  	// Also sets the layout to views/layouts/alternative.html.php
 		return $this->render('foobar', array('optional' => 'vars'))->set_layout('alternative');
 	}
+
+  // To set the layout globally to this controller, just define $layout
+  protected $layout = 'alternative';
 }
 ```
 

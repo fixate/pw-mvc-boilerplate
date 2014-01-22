@@ -6,7 +6,7 @@ class ViewException extends Exception {}
 
 class View implements IView {
 	protected static $helpers = array();
-	protected $layout = 'application';
+	protected $layout = '';
 	protected $data = array();
 	public $controller = null;
 
