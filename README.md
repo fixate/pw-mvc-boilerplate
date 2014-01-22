@@ -117,7 +117,7 @@ Basic layout: `views/layouts`
 ### TODO
 
 - Write tests!!!
-- Add controller level layout override
+- ~~Add controller level layout override~~
 - Add JSON rendering support for RESTful APIs
 - More...?
 
