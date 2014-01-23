@@ -22,7 +22,7 @@ Kickstart ProcessWire projects with a light-weight structure that reduces repeti
  
 ## Requirements
 
-The boilerplate uses traits to seperate concerns in the `ApplicationController`, as such it required `PHP 5.4`. If you would rather run on `PHP =< 5.3` you just need to remove the traits and inline the code into `ApplicationController`.
+The boilerplate uses traits to separate concerns in the `ApplicationController`, as such it required `PHP 5.4`. If you would rather run on `PHP =< 5.3` you just need to remove the traits and inline the code into `ApplicationController`.
 
 ## Installation
 
