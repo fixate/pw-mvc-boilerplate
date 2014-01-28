@@ -78,11 +78,8 @@ class Strings {
 class Php {
 	static function require_all($path, $ext = 'php') {
 		$requires = Files::ls($path, $ext);
-
-		if ($requires) {
-			foreach ($requires as $f) {
-				require Paths::join($path, $f);
-			}
+		foreach ($requires as $f) {
+			require Paths::join($path, $f);
 		}
 	}
 }
@@ -90,10 +87,7 @@ class Php {
 class Files {
 	static function ls($path, $extension = null)
   {
-		if (!is_dir($path)) return false;
-
     $result = array();
-
     if ($handle = opendir($path))
       while (($file = readdir($handle)) !== false)
       {
@@ -122,8 +116,12 @@ class Paths {
     return $arrStr[0];
   }
 
-  static function get_filename_without_extension($path)
+  static function get_filename_without_extension($path, $preserve_path = false)
   {
+		if ($preserve_path) {
+			return self::join(pathinfo($path, PATHINFO_DIRNAME), pathinfo($path, PATHINFO_FILENAME));
+		}
+
 		return pathinfo($path, PATHINFO_FILENAME);
   }
 
@@ -147,7 +145,8 @@ class Paths {
 	}
 
 	static function change_extension($path, $ext) {
-		return self::get_filename_without_extension($path).'.'.trim($ext, '.');
+		return self::get_filename_without_extension($path, true).'.'.trim($ext, '.');
 	}
 }
+
 
