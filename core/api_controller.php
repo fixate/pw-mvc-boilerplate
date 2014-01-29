@@ -21,6 +21,8 @@ abstract class ApiController implements IController {
 				if ($method == 'post' && $ret && $resp->status() == 0) {
 					$resp->set_status(201); // CREATED
 				}
+			} elseif (method_exists($this, 'all')) {
+				$ret = $this->all($req, $resp);
 			} elseif ($method == 'get') {
 				$ret = $this->page_data();
 			} else {
