@@ -16,6 +16,10 @@ namespace fixate;
  */
 
 class HttpRequest {
+	static $http_methods = array(
+		'GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'COPY',
+		'HEAD', 'OPTIONS', 'LINK', 'UNLINK', 'PURGE'
+	);
 
 	static function instance() {
 		static $instance = null;

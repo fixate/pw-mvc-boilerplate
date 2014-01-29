@@ -41,10 +41,7 @@ class HttpResponse {
 	}
 
 	function status() {
-		if (empty($this->body) && $this->status == 0) {
-			return 204; // no content
-		}
-		return $this->status || 200;
+		return $this->status;
 	}
 
 	function header($name) {
