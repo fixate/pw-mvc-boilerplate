@@ -148,5 +148,3 @@ class Paths {
 		return self::get_filename_without_extension($path, true).'.'.trim($ext, '.');
 	}
 }
-
-
