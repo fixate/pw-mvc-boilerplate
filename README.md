@@ -118,7 +118,7 @@ Basic layout: `views/layouts`
 
 ```
 
-** JSON API anyone?**
+** JSON API anyone? **
 
 Uses processwires $config->is_ajax to determine whether to use api controller or normal controller
 
@@ -142,6 +142,11 @@ class ContactController extends ApiController {
     $resp->set_status(404);
     $resp->set_body("<strong>$ID NOT FOUND</strong>");
     $resp->set_header('Content-Type', 'text/html');
+  }
+
+  function all($req, $resp) {
+    // Catch all for all remaining requests methods
+    if ($req->method() == 'PATCH') { /*...*/ }
   }
 
   // Other methods are
