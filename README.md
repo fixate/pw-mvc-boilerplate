@@ -19,7 +19,7 @@ Kickstart ProcessWire projects with a light-weight structure that reduces repeti
 - contains a working, and easy to understand contact form built through the API
 - Rails-inspired MVC pattern
 - Page-specific and fallback controller actions
- 
+
 ## Requirements
 
 The boilerplate uses traits to separate concerns in the `ApplicationController`, as such it required `PHP 5.4`. If you would rather run on `PHP =< 5.3` you just need to remove the traits and inline the code into `ApplicationController`.
@@ -118,11 +118,46 @@ Basic layout: `views/layouts`
 
 ```
 
+** JSON API anyone?**
+
+Uses processwires $config->is_ajax to determine whether to use api controller or normal controller
+
+```php
+// controllers/api/contact_controller.php
+class ContactController extends ApiController {
+  // Get method is optional, by default a get request
+  // returns the page data for this page.
+  // To get hold of this data use $this->page_data().
+  // GET /contact/?id=1
+  function get() {
+    $id = $this->param('id');
+    return array('foo' => 'bar'.$id);
+    // {"foo":"bar1"}
+  }
+
+  // POST /contact (with optional request and response objects)
+  function post($req, $resp) {
+    $id = $this->param('id'); // equivalent to $req->param('id')
+    // Lets serve a dummy 404 page here for some reason
+    $resp->set_status(404);
+    $resp->set_body("<strong>$ID NOT FOUND</strong>");
+    $resp->set_header('Content-Type', 'text/html');
+  }
+
+  // Other methods are
+  // PUT, PATCH, DELETE, COPY, HEAD, OPTIONS, LINK, UNLINK and PURGE
+  // If a request is made and the controller doesnt implement that method
+  // then http status 405 Method Not Allowed is used. The Allow header is
+  // given with the allowed methods.
+}
+```
+
 ### TODO
 
 - Write tests!!!
 - ~~Add controller level layout override~~
-- Add JSON rendering support for RESTful APIs
+- ~~Add JSON rendering support for RESTful APIs~~ NEW!
+- Add bash script to install into your processwire, complete with dependencies
 - More...?
 
 ### License
