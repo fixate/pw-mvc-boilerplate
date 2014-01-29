@@ -25,6 +25,8 @@ class Environment {
 		} else {
 			$this->env[$k] = $v;
 		}
+
+		$this->set_env($this->env['env']);
 	}
 
 	function unset_key($k) {
