@@ -10,14 +10,16 @@ class View implements IView {
 	protected $data = array();
 	public $controller = null;
 
-	function __construct(IController &$controller, $name) {
+	function __construct(IController &$controller, $name = '') {
 		$this->controller = $controller;
 		$this->name = $name;
 	}
 
 	// Spit out the page
 	function spit() {
-		echo $this->render_file($this->name);
+    if (!empty($this->name)) {
+      echo $this->render_file($this->name);
+    }
 	}
 
 	function partial($name, $data = array()) {
