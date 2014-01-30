@@ -17,12 +17,17 @@ abstract class Controller implements IController {
 
 	private $view_vars = array();
 
+	protected $view = null;
   protected static $fallback = null;
 
 	function __construct(&$config, &$page) {
 		$this->config = $config;
 		$this->page = $page;
+
+		$this->initialize();
 	}
+
+	function initialize() { /* override if required */ }
 
 	function render($view_name = null, $data = null) {
 		if ($view_name && is_array($view_name)) {
@@ -36,7 +41,7 @@ abstract class Controller implements IController {
 			$view_name = self::clean_template($view_name);
 		}
 
-		return $this->load_view($view_name, $data);
+		return $this->view = $this->load_view($view_name, $data);
 	}
 
 	abstract function index();
