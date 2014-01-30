@@ -91,7 +91,7 @@ class View implements IView {
 		$pages = wire('pages');
 		$config = $this->controller->config;
 		$env = Environment::get_instance();
-		extract(array_merge($_data, $this->data));
+    extract(array_merge($this->data, $_data));
 
 		ob_start();
 		try {
