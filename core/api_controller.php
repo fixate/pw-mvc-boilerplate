@@ -14,10 +14,16 @@ abstract class ApiController implements IController {
 		$resp = new f8\HttpResponse();
 		$method = strtolower($req->method());
 
-		$resp->set_header('Content-Type', 'application/json');
 		try {
 			if (method_exists($this, $method)) {
 				$ret = $this->$method($req, $resp);
+
+        // Body set, just return the response
+        if (!empty($resp->body())) {
+          return $resp;
+        }
+
+        // Set created status on sucessfull post
 				if ($method == 'post' && $ret && $resp->status() == 0) {
 					$resp->set_status(201); // CREATED
 				}
@@ -32,13 +38,14 @@ abstract class ApiController implements IController {
 		} catch (f8\HttpException $ex) {
 			$resp->set_status($ex->getStatusCode());
 			$resp->set_header('Allow', implode(', ',$this->get_allowed()));
-			$resp->set_body(wireEncodeJSON(array('error' => $ex->getMessage())));
+			$resp->set_body(json_encode(array('error' => $ex->getMessage())));
 		} catch (Exception $ex) {
 			$resp->set_status(500);
-			$resp->set_body(wireEncodeJSON(array('error' => $ex->getMessage())));
+			$resp->set_body(json_encode(array('error' => $ex->getMessage())));
 			return $resp;
 		}
 
+    // Set NO CONTENT on blank responses
 		if (!$ret && empty($resp->body())) {
 			if ($resp->status() == 0){
 				$resp->set_status(204); // No content
@@ -46,9 +53,20 @@ abstract class ApiController implements IController {
 			return $resp;
 		}
 
-		if ($ret && (is_array($ret) || is_object($ret))) {
-			$resp->set_body(wireEncodeJSON($ret));
-		}
+    if ($ret) {
+      // Serialize to JSON
+      if (is_array($ret) || is_object($ret)) {
+        $resp->set_header('Content-Type', 'application/json');
+        $resp->set_body(json_encode($ret));
+      } else if (is_string($ret)) {
+        if (f8\Strings::starts_with(trim($ret), '<') && f8\Strings::ends_with(trim($ret), '>')) {
+          $resp->set_header('Content-Type', 'text/html');
+        } else {
+          $resp->set_header('Content-Type', 'text/plain');
+        }
+        $resp->set_body($ret);
+      }
+    }
 
 		return $resp;
 	}
