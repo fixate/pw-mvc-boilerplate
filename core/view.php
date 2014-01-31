@@ -101,7 +101,7 @@ class View implements IView {
 				if (is_callable($fallback)) {
 					echo $fallback($this);
 				} else {
-					throw new ViewException("Template {$file} does not exist.");
+					throw new ViewException("View file {$file}.html.php does not exist.");
 				}
 			} else {
 				include $_path;
