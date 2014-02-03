@@ -3,7 +3,7 @@
  * Google Analytics tracking code. Optimised asynchronous snippet as per:
  * http://mathiasbynens.be/notes/async-analytics-snippet
  *
- * Change GA_UACODE in global-controllers.php to your analytics tracking code
+ * Add your Google Analytics UACode in templates/config/environment.php
  *
  * @package ProcessWire
  * @since Theme_Name 1.0
