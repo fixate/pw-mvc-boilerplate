@@ -1,5 +1,7 @@
 <?php
 
+use fixate as f8;
+
 trait Javascript {
 	static function __jsInitialize($obj) {
 		$obj->helper('js_add_vendor');
@@ -10,8 +12,13 @@ trait Javascript {
 
 	private $__js_scripts = array();
 
-	function js_add_vendor($script, $path_tmpl = 'vendor/%%/%%.js') {
-		$this->__js_scripts[] = array('vendor', $script, $path_tmpl);
+	function js_add_vendor($vendor) {
+		$main = $this->__load_bower_main($vendor);
+		if (is_array($main)) {
+			$main = current($main);
+		}
+
+		$this->__js_scripts[] = array('vendor', $vendor, "vendor/%%/{$main}");
 	}
 
 	function js_add_script($script, $path_tmpl = 'js/%%') {
@@ -49,6 +56,12 @@ trait Javascript {
 			$html .= "<script>({$detect}) || document.write('<script src=\"{$asset}\">\\x3C/script>')</script>";
 		}
 		return $html;
+	}
+
+	private function __load_bower_main($vendor) {
+		$file = f8\Paths::join(TEMPLATE_DIR, "assets/vendor/{$vendor}/.bower.json");
+		$manifest = json_decode(file_get_contents($file), true);
+		return $manifest['main'];
 	}
 
 	private function __script_tag($src) {
