@@ -8,17 +8,23 @@ trait Javascript {
 		$obj->helper('js_add_script');
 		$obj->helper('js_add_cdn');
 		$obj->helper('render_scripts');
+		$obj->helper('render_js_data');
 	}
 
 	private $__js_scripts = array();
 
 	function js_add_vendor($vendor) {
-		$main = $this->__load_bower_main($vendor);
-		if (is_array($main)) {
-			$main = current($main);
+		if ($main = $this->__load_bower_main($vendor)) {
+			if (is_array($main)) {
+				$main = $main[0];
+			}
+
+			$path = "vendor/%%/{$main}";
+		} else {
+			$path = "vendor/%%/%%";
 		}
 
-		$this->__js_scripts[] = array('vendor', $vendor, "vendor/%%/{$main}");
+		$this->__js_scripts[] = array('vendor', $vendor, $path);
 	}
 
 	function js_add_script($script, $path_tmpl = 'js/%%') {
@@ -36,7 +42,12 @@ trait Javascript {
 			switch ($type) {
 			case 'user':
 			case 'vendor':
-				$path = $this->view->assets(str_replace('%%', $url, array_pop($script)));
+				$path = str_replace('%%', $url, array_pop($script));
+				$has_ext = f8\Paths::get_extension($path) == 'js';
+				if (!$has_ext) {
+					$path = f8\Paths::change_extension($path, 'js');
+				}
+				$path = $this->view->assets($path, !$has_ext);
 				$html .= $this->__script_tag($path);
 				break;
 			case 'cdn':
@@ -46,6 +57,14 @@ trait Javascript {
 		}
 
 		return $html;
+	}
+
+	function render_js_data() {
+		$page = $this->page;
+		return '<script>window.processWire = '.wireEncodeJSON(array(
+			'page' => $page->name,
+			'template' => $page->template->name,
+		)).'</script>';
 	}
 
 	private function __cdn_tag($url, $fallback = false) {
@@ -60,8 +79,11 @@ trait Javascript {
 
 	private function __load_bower_main($vendor) {
 		$file = f8\Paths::join(TEMPLATE_DIR, "assets/vendor/{$vendor}/.bower.json");
-		$manifest = json_decode(file_get_contents($file), true);
-		return $manifest['main'];
+		if (file_exists($file)) {
+			$manifest = json_decode(file_get_contents($file), true);
+			return $manifest['main'];
+		}
+		return null;
 	}
 
 	private function __script_tag($src) {
