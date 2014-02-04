@@ -6,7 +6,7 @@
  * @since Theme_Name 1.0
  */
 ?>
-<?php if ($env->is_production && isset($env->ga_uacode)): ?>
+<?php if ($env->is_production && $env->ga_uacode !== false): ?>
 	<?= $this->partial("google-analytics") ?>
 <?php endif ?>
 
