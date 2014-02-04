@@ -78,10 +78,16 @@ trait Javascript {
 	}
 
 	private function __load_bower_main($vendor) {
-		$file = f8\Paths::join(TEMPLATE_DIR, "assets/vendor/{$vendor}/.bower.json");
-		if (file_exists($file)) {
-			$manifest = json_decode(file_get_contents($file), true);
-			return $manifest['main'];
+		$tries = array('.bower.json', 'bower.json', 'components.json');
+
+		foreach ($t as $tries) {
+			$file = f8\Paths::join(TEMPLATE_DIR, "assets/vendor/{$vendor}/{$t}");
+			if (file_exists($file)) {
+				$manifest = json_decode(file_get_contents($file), true);
+				if (array_key_exists($manifest, 'main')) {
+					return $manifest['main'];
+				}
+			}
 		}
 		return null;
 	}
