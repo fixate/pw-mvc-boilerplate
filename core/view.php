@@ -10,14 +10,16 @@ class View implements IView {
 	protected $data = array();
 	public $controller = null;
 
-	function __construct(IController &$controller, $name) {
+	function __construct(IController &$controller, $name = '') {
 		$this->controller = $controller;
 		$this->name = $name;
 	}
 
 	// Spit out the page
 	function spit() {
-		echo $this->render_file($this->name);
+    if (!empty($this->name)) {
+      echo $this->render_file($this->name);
+    }
 	}
 
 	function partial($name, $data = array()) {
@@ -91,7 +93,7 @@ class View implements IView {
 		$pages = wire('pages');
 		$config = $this->controller->config;
 		$env = Environment::get_instance();
-		extract(array_merge($_data, $this->data));
+    extract(array_merge($this->data, $_data));
 
 		ob_start();
 		try {
@@ -99,7 +101,7 @@ class View implements IView {
 				if (is_callable($fallback)) {
 					echo $fallback($this);
 				} else {
-					throw new ViewException("Template {$file} does not exist.");
+					throw new ViewException("View file {$file}.html.php does not exist.");
 				}
 			} else {
 				include $_path;

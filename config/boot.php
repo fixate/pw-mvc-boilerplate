@@ -62,7 +62,10 @@ unset($environment);
 /**
  * Load the controller associated with the current template if it exists
  */
-require_once "{$config->paths->templates}/controllers/application_controller.php";
-Controller::set_fallback_controller('ApplicationController');
-Controller::run($config, $page);
+if (!$config->ajax) {
+	require_once "{$config->paths->templates}/controllers/application_controller.php";
+	Controller::set_fallback('ApplicationController');
+}
 
+Application::init($config, $page);
+Application::run();

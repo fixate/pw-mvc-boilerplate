@@ -1,11 +1,10 @@
 <?php
 
 interface IController {
-	function render($view_name = null, $data = array());
-	function call();
+	function call($req);
 
-	// User page entry point
-	function index();
+	function before();
+	function after($resp);
 }
 
 interface IView {

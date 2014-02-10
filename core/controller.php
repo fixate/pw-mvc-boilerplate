@@ -17,12 +17,17 @@ abstract class Controller implements IController {
 
 	private $view_vars = array();
 
-  protected static $fallback_controller = null;
+	protected $view = null;
+  protected static $fallback = null;
 
 	function __construct(&$config, &$page) {
 		$this->config = $config;
 		$this->page = $page;
+
+		$this->initialize();
 	}
+
+	function initialize() { /* override if required */ }
 
 	function render($view_name = null, $data = null) {
 		if ($view_name && is_array($view_name)) {
@@ -36,26 +41,39 @@ abstract class Controller implements IController {
 			$view_name = self::clean_template($view_name);
 		}
 
-		return $this->load_view($view_name, $data);
+		return $this->view = $this->load_view($view_name, $data);
 	}
 
 	abstract function index();
+	// Do nothing - override if required
+	function before() {}
+	function after($resp) {}
 
-	function get_view_vars() {
-		return $this->view_vars;
+	function get_view_vars($name = null) {
+		if ($name === null) {
+			return $this->view_vars;
+		}
+
+		return $this->view_vars[$name];
 	}
 
-	function call() {
+	function call($req) {
+		$resp = new f8\HttpResponse();
+
 		$func = 'page_'.f8\Strings::snake_case($this->page->name);
 		if (!method_exists($this, $func)) {
 			$func = 'index';
 		}
-		$resp = $this->$func();
-		if ($resp && $resp instanceof IView) {
-			echo $resp->render();
-		} else if ($resp && (is_array($resp) || is_object($resp))) {
-			echo json_encode($resp);
+
+		if (!($ret = $this->$func($req, $resp))) {
+			return $resp;
 		}
+
+		if ($ret instanceof IView) {
+			$resp->set_body($ret->render());
+		}
+
+		return $resp;
 	}
 
 	function helper($func) {
@@ -87,6 +105,15 @@ abstract class Controller implements IController {
 		return $view;
 	}
 
+	protected function setting($name) {
+		static $settings = null;
+		if ($settings == null) {
+			$settings = wire('pages')->get('/settings/');
+		}
+
+		return $settings->$name;
+	}
+
   function add_view_vars($key, $value = null) {
 		if (is_array($key)) {
 			$vars = $key;
@@ -102,41 +129,38 @@ abstract class Controller implements IController {
 		return str_replace('-', '_', $template);
 	}
 
-  static function set_fallback_controller($controller) {
-    self::$fallback_controller = $controller;
+  static function set_fallback($controller) {
+    self::$fallback = $controller;
   }
 
-  // Static functions
-  static function run(&$config, &$page) {
-    if (!$page->template) {
-      return;
-    }
+	static function dynamic_load($app) {
+		$config = $app->config;
+		$page = $app->page;
 
-    $template = self::clean_template((string)$page->template);
-    $controller_path = f8\Paths::join($config->paths->templates, 'controllers', "{$template}_controller.php");
-    $controller = f8\Strings::camel_case($template).'Controller';
-
-    if (file_exists($controller_path)) {
-      require_once $controller_path;
-    } elseif (isset(self::$fallback_controller)) {
-      $controller = self::$fallback_controller;
-    } else {
-      trigger_error("No controller defined for template '{$template}'", E_USER_ERROR);
-      return false;
-    }
-
-    // Instantiate controller class
-    $controller = new $controller($config, $page);
-		if (method_exists($controller, 'before')) {
-			$controller->before();
+		if (!$page->template) {
+			return false;
 		}
 
-    $controller->call();
+		$template = self::clean_template((string)$page->template);
 
-		if (method_exists($controller, 'after')) {
-			$controller->after();
+		$path_args = array($config->paths->templates, 'controllers');
+		// Ajax requests - load controller from api path
+		if ($config->ajax) { $path_args[] = 'api'; }
+		$path_args[] = "{$template}_controller.php";
+		$controller_path = call_user_func_array('fixate\Paths::join', $path_args);
+
+		$controller = f8\Strings::camel_case($template).'Controller';
+
+		if (file_exists($controller_path)) {
+			require_once $controller_path;
+		} elseif (isset(self::$fallback)) {
+			$controller = self::$fallback;
+		} else {
+			trigger_error("No controller defined for template '{$template}'", E_USER_ERROR);
+			return false;
 		}
 
-    return true;
-  }
+		// Instantiate controller class
+		return new $controller($config, $page);
+	}
 }

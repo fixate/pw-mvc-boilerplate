@@ -12,7 +12,16 @@ trait PrimaryNav {
 	 *
 	 * @since Theme_Name 1.0
 	 */
-	function primary_nav() {
+	function primary_nav($options = array()) {
+		$options = array_merge(array(
+			'current_class' => 'menu__item_-current',
+			'outer_tpl' => '<ul class="menu_-primary">||</ul>',
+			'inner_tpl' => '<ul class="menu menu__sub">||</ul>',
+			'show_root' => true,
+			'list_field_class' => 'menu__item menu__item_-primary',
+			'item_tpl' => '<a href="{nav_url|url}">{title|band_title}</a>'
+		), $options);
+
 		$modules = wire('modules');
 
 		if ($modules->isInstalled('MarkupSimpleNavigation')) {
@@ -22,15 +31,6 @@ trait PrimaryNav {
 			return false;
 		}
 
-		return $treeMenu->render(
-			array(
-				'current_class' => 'menu__item_-current',
-				'outer_tpl' => '<ul class="menu menu_-primary">||</ul>',
-				'inner_tpl' => '<ul class="menu menu__sub">||</ul>',
-				'show_root' => true,
-				'list_field_class' => 'menu__item menu__item_-primary',
-				'item_tpl' => '<a href="{nav_url|url}">{title|band_title}</a>'
-			)
-		);
+		return $treeMenu->render($options);
 	}
 }

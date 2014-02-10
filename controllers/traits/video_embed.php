@@ -12,6 +12,10 @@ trait VideoEmbed {
 	 *  - Youtube: converts video links to embed links.
 	 */
 	function video_embed($url, $options = array()) {
+		if (!$url) {
+			return '';
+		}
+
 		$options = array_merge(array(
 			'width' => 560,
 			'height' => 315,
