@@ -77,6 +77,16 @@ abstract class ApiController implements IController {
 	function before() {}
 	function after($resp) {}
 
+	// Get user settings
+	protected function setting($name) {
+		static $settings = null;
+		if ($settings == null) {
+			$settings = wire('pages')->get('/settings/');
+		}
+
+		return $settings->$name;
+	}
+
   // Get rendered partial
   protected function partial($name, $data = array()) {
     $view = new View($this);

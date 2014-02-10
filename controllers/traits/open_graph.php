@@ -19,8 +19,9 @@ trait OpenGraph {
 	}
 
 	function opengraph_meta_tags() {
+		$image = $this->__og_get_prop('image');
 		$tags = array(
-			'image' => $this->__og_get_prop('image'),
+			'image' => $image->url,
 			'title' => $this->__og_get_prop('title'),
 			'url'   => $canonical_url ? $canonical_url : $this->page->httpUrl,
 			'site_name' => $this->__og_opts['site_name'],
@@ -32,12 +33,13 @@ trait OpenGraph {
 
 	private function __og_get_prop($prop, $default = null) {
 		$prop = $this->page->get($this->__og_opts["{$prop}_get"]);
-		if (is_array($prop)) {
-			if (count($prop) == 0) {
+
+		if ($prop && method_exists($prop, 'count')) {
+			if ($prop->count() == 0) {
 				return $default;
 			}
 
-			$prop = $prop[0];
+			$prop = $prop->first();
 		}
 
 		if (!$prop) {

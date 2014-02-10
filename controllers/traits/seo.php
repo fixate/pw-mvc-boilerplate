@@ -7,15 +7,14 @@ trait SEO {
 
 	protected function get_seo_title() {
 		$page =& $this->page;
-		$seo_title = '';
 
-		if ($title = $page->seo_title) {
-			$seo_title = $title;
-		} else {
+		if (!($seo_title = $page->seo_title)) {
 			$seo_title = $page->title;
 		}
 
-		$seo_title .= ' ' . $this->get_view_vars('site_name');
+		if (method_exists($this, 'setting')) {
+			return $seo_title . ' ' . $this->setting('site_name');
+		}
 
 		return $seo_title;
 	}
