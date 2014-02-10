@@ -19,7 +19,8 @@ abstract class ApiController implements IController {
 				$ret = $this->$method($req, $resp);
 
         // Body set, just return the response
-        if (!empty($resp->body())) {
+				$body = $resp->body();
+        if (!empty($body)) {
           return $resp;
         }
 
@@ -46,7 +47,8 @@ abstract class ApiController implements IController {
 		}
 
     // Set NO CONTENT on blank responses
-		if (!$ret && empty($resp->body())) {
+		$body = $resp->body();
+		if (!$ret && empty($body)) {
 			if ($resp->status() == 0){
 				$resp->set_status(204); // No content
 			}
