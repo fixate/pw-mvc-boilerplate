@@ -15,7 +15,7 @@ trait PrimaryNav {
 	function primary_nav($options = array()) {
 		$options = array_merge(array(
 			'current_class' => 'menu__item_-current',
-			'outer_tpl' => '<ul class="menu menu_-primary">||</ul>',
+			'outer_tpl' => '<ul class="menu_-primary">||</ul>',
 			'inner_tpl' => '<ul class="menu menu__sub">||</ul>',
 			'show_root' => true,
 			'list_field_class' => 'menu__item menu__item_-primary',
