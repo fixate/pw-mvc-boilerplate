@@ -5,22 +5,22 @@ trait SEO {
 		$obj->add_view_vars($obj->get_seo_vars());
 	}
 
-	function get_seo_title() {
+	protected function get_seo_title() {
 		$page =& $this->page;
-		$pages = wire('pages');
 		$seo_title = '';
 
 		if ($title = $page->seo_title) {
 			$seo_title = $title;
 		} else {
 			$seo_title = $page->title;
-			$seo_title .= ' ' . $pages->get('/settings/')->seo_title_append;
 		}
+
+		$seo_title .= ' ' . $this->get_view_vars('site_name');
 
 		return $seo_title;
 	}
 
-	function get_seo_desc() {
+	protected function get_seo_desc() {
 		$page =& $this->page;
 
 		if ($page->seo_description) {
@@ -28,7 +28,7 @@ trait SEO {
 		}
 	}
 
-	function get_seo_noindex() {
+	protected function get_seo_noindex() {
 		$page =& $this->page;
 
 		if ($page->seo_noindex) {

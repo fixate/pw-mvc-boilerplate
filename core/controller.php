@@ -49,8 +49,12 @@ abstract class Controller implements IController {
 	function before() {}
 	function after($resp) {}
 
-	function get_view_vars() {
-		return $this->view_vars;
+	function get_view_vars($name = null) {
+		if ($name === null) {
+			return $this->view_vars;
+		}
+
+		return $this->view_vars[$name];
 	}
 
 	function call($req) {
@@ -99,6 +103,15 @@ abstract class Controller implements IController {
 		$view->add_data($data);
 
 		return $view;
+	}
+
+	protected function setting($name) {
+		static $settings = null;
+		if ($settings == null) {
+			$settings = wire('pages')->get('/settings/');
+		}
+
+		return $settings->$name;
 	}
 
   function add_view_vars($key, $value = null) {
