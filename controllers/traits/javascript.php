@@ -78,7 +78,7 @@ trait Javascript {
 	}
 
 	private function __load_bower_main($vendor) {
-		$tries = array('.bower.json', 'bower.json', 'components.json');
+		$tries = array('.bower.json', 'bower.json', 'component.json');
 
 		foreach ($t as $tries) {
 			$file = f8\Paths::join(TEMPLATE_DIR, "assets/vendor/{$vendor}/{$t}");
