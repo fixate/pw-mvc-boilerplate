@@ -32,17 +32,17 @@ trait Javascript {
 	}
 
 	function js_add_cdn($url, $detect = false, $fallback = false) {
-		$this->__js_scripts[] = array('cdn', $url, array($detect, $fallback));
+		$this->__js_scripts[] = array('cdn', NULL, NULL, $url, array($detect, $fallback));
 	}
 
 	function render_scripts() {
 		$html = '';
 		foreach ($this->__js_scripts as $script) {
-			list($type, $url) = $script;
+			list($type, $vendor, $script_path, $url) = $script;
 			switch ($type) {
 			case 'user':
 			case 'vendor':
-				$path = str_replace('%%', $url, array_pop($script));
+				$path = str_replace('%%', $vendor, array_pop($script));
 				$has_ext = f8\Paths::get_extension($path) == 'js';
 				if (!$has_ext) {
 					$path = f8\Paths::change_extension($path, 'js');
