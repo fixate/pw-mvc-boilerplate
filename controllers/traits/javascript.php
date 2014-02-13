@@ -80,11 +80,11 @@ trait Javascript {
 	private function __load_bower_main($vendor) {
 		$tries = array('.bower.json', 'bower.json', 'component.json');
 
-		foreach ($t as $tries) {
+		foreach ($tries as $t) {
 			$file = f8\Paths::join(TEMPLATE_DIR, "assets/vendor/{$vendor}/{$t}");
 			if (file_exists($file)) {
 				$manifest = json_decode(file_get_contents($file), true);
-				if (array_key_exists($manifest, 'main')) {
+				if (array_key_exists('main', $manifest)) {
 					return $manifest['main'];
 				}
 			}
