@@ -24,11 +24,11 @@ trait Javascript {
 			$path = "vendor/%%/%%";
 		}
 
-		$this->__js_scripts[] = array('vendor', $vendor, $path);
+		$this->__js_scripts[] = array('vendor', $vendor, $path, NULL);
 	}
 
 	function js_add_script($script, $path_tmpl = 'js/%%') {
-		$this->__js_scripts[] = array('user', $script, $path_tmpl);
+		$this->__js_scripts[] = array('user', $script, $path_tmpl, NULL);
 	}
 
 	function js_add_cdn($url, $detect = false, $fallback = false) {
