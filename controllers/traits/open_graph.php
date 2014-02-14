@@ -21,7 +21,7 @@ trait OpenGraph {
 	function opengraph_meta_tags() {
 		$image = $this->__og_get_prop('image');
 		$tags = array(
-			'image' => $image->url,
+			'image' => $image ? $image->url : null,
 			'title' => $this->__og_get_prop('title'),
 			'url'   => $this->__og_opts['canonical_url'] ? $this->__og_opts['canonical_url'] : $this->page->httpUrl,
 			'site_name' => $this->__og_opts['site_name'],
