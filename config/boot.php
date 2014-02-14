@@ -39,7 +39,9 @@ unset($environment);
  * Put initialization code for your various modules
  * in the initializers directory.
  */
-\fixate\Php::require_all(TEMPLATE_DIR.'initializers/');
+if (is_dir(TEMPLATE_DIR.'initializers/')){
+	\fixate\Php::require_all(TEMPLATE_DIR.'initializers/');
+}
 
 
 
