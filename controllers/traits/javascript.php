@@ -24,15 +24,15 @@ trait Javascript {
 			$path = "vendor/%%/%%";
 		}
 
-		$this->__js_scripts[] = array('vendor', $vendor, $path, NULL);
+		$this->__js_scripts[] = array('vendor', $vendor, $path, null);
 	}
 
 	function js_add_script($script, $path_tmpl = 'js/%%') {
-		$this->__js_scripts[] = array('user', $script, $path_tmpl, NULL);
+		$this->__js_scripts[] = array('user', $script, $path_tmpl, null);
 	}
 
 	function js_add_cdn($url, $detect = false, $fallback = false) {
-		$this->__js_scripts[] = array('cdn', NULL, NULL, $url, array($detect, $fallback));
+		$this->__js_scripts[] = array('cdn', null, null, $url, array($detect, $fallback));
 	}
 
 	function render_scripts() {
