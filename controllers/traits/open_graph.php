@@ -23,7 +23,7 @@ trait OpenGraph {
 		$tags = array(
 			'image' => $image->url,
 			'title' => $this->__og_get_prop('title'),
-			'url'   => $canonical_url ? $canonical_url : $this->page->httpUrl,
+			'url'   => $this->__og_opts['canonical_url'] ? $this->__og_opts['canonical_url'] : $this->page->httpUrl,
 			'site_name' => $this->__og_opts['site_name'],
 			'type' => $this->__og_get_prop('site_type', $this->__og_opts['site_type_default'])
 		);
