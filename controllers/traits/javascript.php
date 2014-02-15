@@ -16,7 +16,7 @@ trait Javascript {
 	function js_add_vendor($vendor) {
 		if ($main = $this->__load_bower_main($vendor)) {
 			if (is_array($main)) {
-				$main = $main[0];
+				$main = $this->__get_script_path($main);
 			}
 
 			$path = "vendor/%%/{$main}";
@@ -94,5 +94,18 @@ trait Javascript {
 
 	private function __script_tag($src) {
 		return "<script type=\"text/javascript\" src=\"{$src}\"></script>";
+	}
+
+	private function __get_script_path($array) {
+		$i = 0;
+
+		foreach ($array as $path) {
+			if (f8\Paths::get_extension($path) === 'js') {
+				return $array[$i];
+			}
+			$i++;
+		}
+
+		return null;
 	}
 }
