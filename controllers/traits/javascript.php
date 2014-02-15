@@ -38,11 +38,11 @@ trait Javascript {
 	function render_scripts() {
 		$html = '';
 		foreach ($this->__js_scripts as $script) {
-			list($type, $vendor, $script_path, $url) = $script;
+			list($type, $script_name, $script_path, $url) = $script;
 			switch ($type) {
 			case 'user':
 			case 'vendor':
-				$path = str_replace('%%', $vendor, array_pop($script));
+				$path = str_replace('%%', $script_name, $script_path);
 				$has_ext = f8\Paths::get_extension($path) == 'js';
 				if (!$has_ext) {
 					$path = f8\Paths::change_extension($path, 'js');
