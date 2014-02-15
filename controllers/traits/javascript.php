@@ -47,7 +47,7 @@ trait Javascript {
 				if (!$has_ext) {
 					$path = f8\Paths::change_extension($path, 'js');
 				}
-				$path = $this->view->assets($path, !$has_ext);
+				$path = $this->view->assets($path);
 				$html .= $this->__script_tag($path);
 				break;
 			case 'cdn':
