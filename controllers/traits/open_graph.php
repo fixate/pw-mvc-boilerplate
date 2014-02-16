@@ -6,7 +6,7 @@ trait OpenGraph {
 	}
 
 	private $__og_opts = array(
-		'image_get' => 'thumbnail|image|images',
+		'image_get' => 'image|images',
 		'title_get' => 'title',
 		'canonical_url' => false,
 		'object_type' => false,
