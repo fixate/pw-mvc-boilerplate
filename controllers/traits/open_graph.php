@@ -9,8 +9,7 @@ trait OpenGraph {
 		'image_get' => 'thumbnail|image|images',
 		'title_get' => 'title',
 		'canonical_url' => false,
-		'site_type_get' => 'site_type',
-		'site_type_default' => 'article',
+		'site_type' => false,
 		'site_name' => false
 	);
 
@@ -21,11 +20,11 @@ trait OpenGraph {
 	function opengraph_meta_tags() {
 		$image = $this->__og_get_prop('image');
 		$tags = array(
-			'image' => $image ? $image->url : null,
-			'title' => $this->__og_get_prop('title'),
-			'url'   => $this->__og_opts['canonical_url'] ? $this->__og_opts['canonical_url'] : $this->page->httpUrl,
 			'site_name' => $this->__og_opts['site_name'],
-			'type' => $this->__og_get_prop('site_type', $this->__og_opts['site_type_default'])
+			'site_type' => $this->__og_opts['site_type'],
+			'url'   => $this->__og_opts['canonical_url'] ? $this->__og_opts['canonical_url'] : $this->page->httpUrl,
+			'title' => $this->__og_get_prop('title'),
+			'image' => $image ? $image->url : null
 		);
 
 		return $this->__og_render_tags($tags);

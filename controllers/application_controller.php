@@ -13,6 +13,8 @@ class ApplicationController extends Controller {
 	function initialize() {
 		$site_name = $this->site_name();
 		$this->og_set_opt('site_name', $site_name);
+		$site_type = $this->site_type();
+		$this->og_set_opt('site_type', $site_type ? $site_type : 'website');
 
 		Javascript::__jsInitialize($this);
 		OpenGraph::__ogInitialize($this);
@@ -30,6 +32,10 @@ class ApplicationController extends Controller {
 
 	protected function site_name() {
 		return $this->setting('site_name');
+	}
+
+	protected function site_type() {
+		return $this->setting('og_site_type');
 	}
 
   // Fallback index
