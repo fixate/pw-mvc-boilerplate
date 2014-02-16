@@ -46,7 +46,7 @@ If you don't do this, processwire will look for site/[template_name].php. mvc.ph
 
 There is no routing, you take care of that by making templates and pages in the ProcessWire admin.
 
-### Most basic controller
+#### Most Basic Controller
 
 ```php
 class ContactController extends Controller {
@@ -58,7 +58,7 @@ class ContactController extends Controller {
 ```
 
 
-### More complete controller example for the 'home' template:
+#### More Complete Controller Example For The 'home' Template:
 
 ```php
 // site/controllers/home_controller.php
@@ -99,7 +99,7 @@ class HomeController extends Controller {
 }
 ```
 
-### Views:
+#### Views:
 
 Basic layout: `views/layouts`
 
@@ -118,7 +118,7 @@ Basic layout: `views/layouts`
 
 ```
 
-### JSON API anyone?
+#### JSON API Anyone?
 
 Uses ProcesWire's $config->is_ajax to determine whether to use api controller or normal controller
 
