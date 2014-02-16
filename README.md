@@ -19,6 +19,7 @@ Kickstart ProcessWire projects with a light-weight structure that reduces repeti
 - contains a working, and easy to understand contact form built through the API
 - Rails-inspired MVC pattern
 - Page-specific and fallback controller actions
+- OpenGraph features
 
 ## Requirements
 
@@ -41,12 +42,11 @@ Move the contents of `!root` to the root of your site (.gitignore to your projec
 
 **IMPORTANT:** For all of your templates that you want to work through a `Controller` use the mvc.php template. To enable that set `Alternate Template Filename` to 'mvc' in the advanced tab of your template.
 
-If you don't do this, processwire will look for site/[template_name].php. mvc.php is the entrypoint into
-the MVC framework.
+If you don't do this, processwire will look for site/[template_name].php. mvc.php is the entrypoint into the MVC framework.
 
 There is no routing, you take care of that by making templates and pages in the ProcessWire admin.
 
-**Most basic controller**
+### Most basic controller
 
 ```php
 class ContactController extends Controller {
@@ -58,7 +58,7 @@ class ContactController extends Controller {
 ```
 
 
-**More complete controller example for the 'home' template:**
+### More complete controller example for the 'home' template:
 
 ```php
 // site/controllers/home_controller.php
@@ -99,7 +99,7 @@ class HomeController extends Controller {
 }
 ```
 
-**Views:**
+### Views:
 
 Basic layout: `views/layouts`
 
@@ -118,9 +118,9 @@ Basic layout: `views/layouts`
 
 ```
 
-** JSON API anyone? **
+### JSON API anyone?
 
-Uses processwires $config->is_ajax to determine whether to use api controller or normal controller
+Uses ProcesWire's $config->is_ajax to determine whether to use api controller or normal controller
 
 ```php
 // controllers/api/contact_controller.php
@@ -157,12 +157,13 @@ class ContactController extends ApiController {
 }
 ```
 
-### TODO
+## TODO
 
 - Write tests!!!
 - ~~Add controller level layout override~~
 - ~~Add JSON rendering support for RESTful APIs~~ NEW!
 - Add bash script to install into your processwire, complete with dependencies
+- Add Wiki
 - More...?
 
 ### License
