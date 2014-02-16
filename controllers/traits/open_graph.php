@@ -84,16 +84,17 @@ trait OpenGraph {
 	private function __og_render_tags($tags) {
 		$html = '';
 		foreach ($tags as $name => $value) {
-			if ($value !== null && !is_array($value)) {
-				$html .= $this->__og_tag_markup($name, $value);
-			}
-
-			if (is_array($value)) {
-				foreach ($value as $v) {
-					$html .= $this->__og_tag_markup($name, $v);
+			if ($value !== null) {
+				if (is_array($value)) {
+					foreach ($value as $v) {
+						$html .= $this->__og_tag_markup($name, $v);
+					}
+				} else {
+					$html .= $this->__og_tag_markup($name, $value);
 				}
 			}
 		}
+
 		return $html;
 	}
 
