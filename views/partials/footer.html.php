@@ -5,7 +5,6 @@
  * This partial is included via main.php
  *
  * @package ProcessWire
- * @since Theme_Name 1.0
  */
  ?>
 <footer class="area-footer">

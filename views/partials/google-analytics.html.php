@@ -6,7 +6,6 @@
  * Add your Google Analytics UACode in templates/config/environment.php
  *
  * @package ProcessWire
- * @since Theme_Name 1.0
  */
 ?>
 <script>

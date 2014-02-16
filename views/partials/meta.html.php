@@ -2,8 +2,7 @@
 /**
  * Page head.
  *
- * @package Fixate/Bluline
- * @since Theme_Name 1.0
+ * @package Processwire
  */
 ?>
 <head>

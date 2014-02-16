@@ -8,7 +8,6 @@
  * Make sure to set 'Alternate Template' to 'main.php' under Template Settings
  *
  * @package ProcessWire
- * @since Theme_Name 1.0
  */
 
 if ($q) :
