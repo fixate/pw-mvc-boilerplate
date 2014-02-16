@@ -10,6 +10,7 @@ trait OpenGraph {
 		'title_get' => 'title',
 		'canonical_url' => false,
 		'site_type' => false,
+		'site_type_default' => 'website',
 		'site_name' => false
 	);
 
