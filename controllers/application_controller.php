@@ -12,7 +12,6 @@ class ApplicationController extends Controller {
 
 	function initialize() {
 		$site_name = $this->site_name();
-		$this->add_view_vars('site_name', $site_name);
 		$this->og_set_opt('site_name', $site_name);
 
 		Javascript::__jsInitialize($this);
