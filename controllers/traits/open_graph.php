@@ -6,7 +6,7 @@ trait OpenGraph {
 	}
 
 	private $__og_opts = array(
-		'image_get' => 'image|images',
+		'image_get' => 'thumbnail|image|images',
 		'title_get' => 'title',
 		'canonical_url' => false,
 		'object_type' => false,
@@ -14,8 +14,14 @@ trait OpenGraph {
 		'site_name' => false
 	);
 
+	private $__og_custom_tags = [];
+
 	protected function og_set_opt($opt, $value) {
 		$this->__og_opts[$opt] = $value;
+	}
+
+	protected function og_add_tag($tag, $value) {
+		$this->__og_custom_tags[$tag] = $value;
 	}
 
 	function opengraph_meta_tags() {
@@ -27,6 +33,8 @@ trait OpenGraph {
 			'url'   => $this->__og_opts['canonical_url'] ? $this->__og_opts['canonical_url'] : $this->page->httpUrl,
 			'image' => $this->__og_image_meta($image)
 		);
+
+		$tags = array_merge($tags, $this->__og_custom_tags);
 
 		return $this->__og_render_tags($tags);
 	}
