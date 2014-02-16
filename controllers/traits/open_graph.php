@@ -6,12 +6,12 @@ trait OpenGraph {
 	}
 
 	private $__og_opts = array(
-		'image_get' => 'image|images',
+		'site_name' => false,
 		'title_get' => 'title',
 		'canonical_url' => false,
 		'object_type' => false,
 		'object_type_default' => 'website',
-		'site_name' => false
+		'image_get' => 'image|images'
 	);
 
 	private $__og_custom_tags = [];
