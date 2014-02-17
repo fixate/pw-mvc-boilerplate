@@ -5,6 +5,16 @@ trait SEO {
 		$obj->add_view_vars($obj->get_seo_vars());
 	}
 
+	function get_seo_vars() {
+		$page =& $this->page;
+
+		return array(
+			'seo_title'   => $this->get_seo_title(),
+			'seo_desc'    => $this->get_seo_desc(),
+			'seo_noindex' => $this->get_seo_noindex()
+		);
+	}
+
 	protected function get_seo_title() {
 		$page =& $this->page;
 
@@ -25,6 +35,8 @@ trait SEO {
 		if ($page->seo_description) {
 			return "<meta name='description' content='{$page->seo_description}'>";
 		}
+
+		return false;
 	}
 
 	protected function get_seo_noindex() {
@@ -33,16 +45,8 @@ trait SEO {
 		if ($page->seo_noindex) {
 			return "<meta name='robots' content='noindex, nofollow'>";
 		}
-	}
 
-	function get_seo_vars() {
-    $page =& $this->page;
-
-		return array(
-			'seo_title'   => $this->get_seo_title(),
-			'seo_desc'    => $this->get_seo_desc(),
-			'seo_noindex' => $this->get_seo_noindex()
-		);
+		return false;
 	}
 }
 
