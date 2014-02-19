@@ -89,9 +89,19 @@ abstract class ApiController implements IController {
 
   // Get rendered partial
   protected function partial($name, $data = array()) {
-    $view = new View($this);
-    return $view->partial($name, $data);
+    return $this->get_view()->partial($name, $data);
   }
+
+	protected function get_view() {
+		if (isset($this->view)) {
+			return $this->view;
+		}
+
+		$view = new View($this);
+		$view->set_base_path(f8\Paths::join($this->config->paths->templates, 'views'));
+		$view->set_asset_uri(f8\Paths::join($this->config->urls->templates, 'assets'));
+		return $this->view = $view;
+	}
 
 	protected function get_allowed() {
 		return array_filter(f8\HttpRequest::$http_methods, function($m) {
