@@ -3,9 +3,10 @@
 use fixate as f8;
 
 abstract class ApiController implements IController {
-	function __construct(&$config, &$page) {
+	function __construct(&$config, &$page, &$session) {
 		$this->config = $config;
 		$this->page = $page;
+		$this->session = $session;
 	}
 
 	function call($req) {
