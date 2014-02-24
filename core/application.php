@@ -5,6 +5,7 @@ use fixate as f8;
 class Application {
 	public $config = null;
 	public $page = null;
+	public $session = null;
 
 	static function instance() {
 		static $instance = null;
@@ -15,9 +16,10 @@ class Application {
 		return $instance;
 	}
 
-	static function init($config, $page) {
+	static function init($config, $page, $session) {
 		self::instance()->config = $config;
 		self::instance()->page = $page;
+		self::instance()->session = $session;
 	}
 
 	static function run() {

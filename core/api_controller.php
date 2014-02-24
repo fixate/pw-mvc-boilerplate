@@ -3,9 +3,10 @@
 use fixate as f8;
 
 abstract class ApiController implements IController {
-	function __construct(&$config, &$page) {
+	function __construct(&$config, &$page, &$session) {
 		$this->config = $config;
 		$this->page = $page;
+		$this->session = $session;
 	}
 
 	function call($req) {
@@ -17,6 +18,9 @@ abstract class ApiController implements IController {
 		try {
 			if (method_exists($this, $method)) {
 				$ret = $this->$method($req, $resp);
+
+				// Just die on redirect
+				if ($resp->is_redirect()) { die(); }
 
         // Body set, just return the response
 				$body = $resp->body();
@@ -76,6 +80,14 @@ abstract class ApiController implements IController {
 	// Do nothing - override if required
 	function before() {}
 	function after($resp) {}
+
+	function helper($func) {
+		if (!is_callable($func)) {
+			$func = array($this, $func);
+		}
+
+		View::add_helper($func);
+	}
 
 	// Get user settings
 	protected function setting($name) {

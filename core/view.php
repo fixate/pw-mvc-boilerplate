@@ -90,6 +90,7 @@ class View implements IView {
 
 		$view = $this;
 		$page = $this->controller->page;
+		$session = $this->controller->session;
 		$pages = wire('pages');
 		$config = $this->controller->config;
 		$env = Environment::get_instance();

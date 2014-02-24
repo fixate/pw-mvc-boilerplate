@@ -44,6 +44,15 @@ class HttpResponse {
 		return $this->status;
 	}
 
+	function redirect($to, $status = 301) {
+		$this->set_status($status);
+		$this->set_header('Location', $to);
+	}
+
+	function is_redirect() {
+		return $this->status == 301 || $this->status == 302;
+	}
+
 	function header($name) {
 		return $this->headers[$name];
 	}

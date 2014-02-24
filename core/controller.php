@@ -13,6 +13,7 @@ use fixate as f8;
 
 abstract class Controller implements IController {
 	public $page = null;
+	public $session = null;
 	public $config = null;
 
 	private $view_vars = array();
@@ -20,9 +21,10 @@ abstract class Controller implements IController {
 	protected $view = null;
   protected static $fallback = null;
 
-	function __construct(&$config, &$page) {
+	function __construct(&$config, &$page, &$session) {
 		$this->config = $config;
 		$this->page = $page;
+		$this->session = $session;
 
 		$this->initialize();
 	}
@@ -44,7 +46,6 @@ abstract class Controller implements IController {
 		return $this->view = $this->load_view($view_name, $data);
 	}
 
-	abstract function index();
 	// Do nothing - override if required
 	function before() {}
 	function after($resp) {}
@@ -136,6 +137,7 @@ abstract class Controller implements IController {
 	static function dynamic_load($app) {
 		$config = $app->config;
 		$page = $app->page;
+		$session = $app->session;
 
 		if (!$page->template) {
 			return false;
@@ -161,6 +163,6 @@ abstract class Controller implements IController {
 		}
 
 		// Instantiate controller class
-		return new $controller($config, $page);
+		return new $controller($config, $page, $session);
 	}
 }
