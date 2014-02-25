@@ -1,11 +1,9 @@
 <?php
 
-use fixate as f8;
-
 class Application {
 	public $config = null;
 	public $page = null;
-	public $session= null;
+	public $session = null;
 
 	static function instance() {
 		static $instance = null;
@@ -31,9 +29,7 @@ class Application {
 
 		$controller->before();
 
-		$req = f8\HttpRequest::instance();
-
-		if ($resp = $controller->call($req)) {
+		if ($resp = $controller->call()) {
 			echo $resp->body();
 		}
 

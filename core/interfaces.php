@@ -1,10 +1,10 @@
 <?php
 
 interface IController {
-	function call($req);
+	function call();
 
 	function before();
-	function after($resp);
+	function after();
 }
 
 interface IView {
