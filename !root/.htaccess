@@ -555,13 +555,14 @@ FileETag None
 
 #################################################################################################
 # START PROCESSWIRE HTACCESS DIRECTIVES
-# @version 2.3
+# @version 2.4
 #################################################################################################
 
 # -----------------------------------------------------------------------------------------------
 # Don't show directory indexes, but do follow symbolic links
-# Note: some cloud hosting companies don't allow +FollowSymLinks
-# Uncomment +SymLinksifOwnerMatch and comment +FollowSymLinks if you have troubles
+# 500 NOTE: Some cloud hosting companies don't allow +FollowSymLinks.
+# Uncomment +SymLinksifOwnerMatch and comment +FollowSymLinks if you have 500 errors.
+# If that doesn't resolve the error, then set it back to +FollowSymLinks.
 # -----------------------------------------------------------------------------------------------
 
 Options -Indexes
@@ -579,11 +580,11 @@ ErrorDocument 404 /index.php
 # -----------------------------------------------------------------------------------------------
 
 <Files favicon.ico>
-  ErrorDocument 404 "The requested file favicon.ico was not found.
+ErrorDocument 404 "The requested file favicon.ico was not found.
 </Files>
 
 <Files robots.txt>
-  ErrorDocument 404 "The requested file robots.txt was not found.
+ErrorDocument 404 "The requested file robots.txt was not found.
 </Files>
 
 # -----------------------------------------------------------------------------------------------
@@ -591,17 +592,18 @@ ErrorDocument 404 /index.php
 # -----------------------------------------------------------------------------------------------
 
 <FilesMatch "\.(inc|info|module|sh|sql)$|^(\..*)$">
-  Order allow,deny
+Order allow,deny
 </FilesMatch>
 
 # -----------------------------------------------------------------------------------------------
 # Override a few PHP settings that can't be changed at runtime (not required)
+# 500 NOTE: Try commenting out this entire section below if getting Apache 500 errors.
 # -----------------------------------------------------------------------------------------------
 
 <IfModule mod_php5.c>
-  php_flag magic_quotes_gpc		off
-  php_flag magic_quotes_sybase		off
-  php_flag register_globals		off
+php_flag magic_quotes_gpc		off
+php_flag magic_quotes_sybase		off
+php_flag register_globals		off
 </IfModule>
 
 # -----------------------------------------------------------------------------------------------
@@ -616,107 +618,110 @@ DirectoryIndex index.php index.html index.htm
 
 <IfModule mod_rewrite.c>
 
-  RewriteEngine On
-  AddDefaultCharset UTF-8
+RewriteEngine On
+AddDefaultCharset UTF-8
 
-  # -----------------------------------------------------------------------------------------------
-  # Set an environment variable so the installer can detect that mod_rewrite is active.
-  # -----------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------
+# Set an environment variable so the installer can detect that mod_rewrite is active.
+# Note that some web hosts don't support this. If you get a 500 error, you might try
+# commenting out this SetEnv line below.
+# -----------------------------------------------------------------------------------------------
 
-  SetEnv HTTP_MOD_REWRITE On
+SetEnv HTTP_MOD_REWRITE On
 
-  # -----------------------------------------------------------------------------------------------
-  # Optional: Set a rewrite base if rewrites aren't working properly on your server.
-  # And if your site directory starts with a "~" you will most likely have to use this.
-  # -----------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------
+# OPTIONAL: Set a rewrite base if rewrites aren't working properly on your server.
+# And if your site directory starts with a "~" you will most likely have to use this.
+# -----------------------------------------------------------------------------------------------
 
-  # RewriteBase /
-  # RewriteBase /pw/
-  # RewriteBase /~user/
+# RewriteBase /
+# RewriteBase /pw/
+# RewriteBase /~user/
 
-  # -----------------------------------------------------------------------------------------------
-  # Access Restrictions: Keep web users out of dirs that begin with a period
-  # -----------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------
+# Access Restrictions: Keep web users out of dirs that begin with a period
+# -----------------------------------------------------------------------------------------------
 
-  RewriteRule "(^|/)\." - [F]
+RewriteRule "(^|/)\." - [F]
 
-  # -----------------------------------------------------------------------------------------------
-  # Optional: Redirect users to the 'www.' version of the site (uncomment to enable).
-  # For example: http://processwire.com/ would be redirected to http://www.processwire.com/
-  # -----------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------
+# OPTIONAL: Redirect users to the 'www.' version of the site (uncomment to enable).
+# For example: http://processwire.com/ would be redirected to http://www.processwire.com/
+# -----------------------------------------------------------------------------------------------
 
-  # RewriteCond %{HTTP_HOST} !^www\. [NC]
-  # RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# RewriteCond %{HTTP_HOST} !^www\. [NC]
+# RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # -----------------------------------------------------------------------------------------------
-  # Access Restrictions: Protect ProcessWire system files
-  # -----------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------
+# Access Restrictions: Protect ProcessWire system files
+# -----------------------------------------------------------------------------------------------
 
-  # Block access to any htaccess files
-  RewriteCond %{REQUEST_URI} (^|/)\.htaccess$ [NC,OR]
-  # Block access to protected assets directories
-  RewriteCond %{REQUEST_URI} (^|/)(site|site-[^/]+)/assets/(cache|logs|backups|sessions|config|install|tmp)($|/.*$) [OR]
-  # Block acceess to the /site/install/ directory
-  RewriteCond %{REQUEST_URI} (^|/)(site|site-[^/]+)/install($|/.*$) [OR]
-  # Block dirs in /site/assets/ dirs that start with a hyphen
-  RewriteCond %{REQUEST_URI} (^|/)(site|site-[^/]+)/assets.*/-.+/.* [OR]
-  # Block access to /wire/config.php, /site/config.php, /site/config-dev.php, and /wire/index.config.php
-  RewriteCond %{REQUEST_URI} (^|/)(wire|site|site-[^/]+)/(config|index\.config|config-dev)\.php$ [OR]
-  # Block access to any PHP-based files in /templates-admin/
-  RewriteCond %{REQUEST_URI} (^|/)(wire|site|site-[^/]+)/templates-admin($|/|/.*\.(php|html?|tpl|inc))$ [OR]
-  # Block access to any PHP or markup files in /site/templates/
-  RewriteCond %{REQUEST_URI} (^|/)(site|site-[^/]+)/templates($|/|/.*\.(php|html?|tpl|inc))$ [OR]
-  # Block access to any PHP files in /site/assets/
-  RewriteCond %{REQUEST_URI} (^|/)(site|site-[^/]+)/assets($|/|/.*\.php)$ [OR]
-  # Block access to any PHP files in core or core module directories
-  RewriteCond %{REQUEST_URI} (^|/)wire/(core|modules)/.*\.(php|inc|tpl|module)$ [OR]
-  # Block access to any PHP files in /site/modules/
-  RewriteCond %{REQUEST_URI} (^|/)(site|site-[^/]+)/modules/.*\.(php|inc|tpl|module)$ [OR]
-  # Block access to any software identifying txt files
-  RewriteCond %{REQUEST_URI} (^|/)(COPYRIGHT|INSTALL|README|htaccess)\.(txt|md)$ [OR]
-  # Block all http access to the default/uninstalled site-default directory
-  RewriteCond %{REQUEST_URI} (^|/)site-default/
-  # If any conditions above match, isssue a 403 forbidden
-  RewriteRule ^.*$ - [F,L]
+# Block access to any htaccess files
+RewriteCond %{REQUEST_URI} (^|/)\.htaccess$ [NC,OR]
+# Block access to protected assets directories
+RewriteCond %{REQUEST_URI} (^|/)(site|site-[^/]+)/assets/(cache|logs|backups|sessions|config|install|tmp)($|/.*$) [OR]
+# Block acceess to the /site/install/ directory
+RewriteCond %{REQUEST_URI} (^|/)(site|site-[^/]+)/install($|/.*$) [OR]
+# Block dirs in /site/assets/ dirs that start with a hyphen
+RewriteCond %{REQUEST_URI} (^|/)(site|site-[^/]+)/assets.*/-.+/.* [OR]
+# Block access to /wire/config.php, /site/config.php, /site/config-dev.php, and /wire/index.config.php
+RewriteCond %{REQUEST_URI} (^|/)(wire|site|site-[^/]+)/(config|index\.config|config-dev)\.php$ [OR]
+# Block access to any PHP-based files in /templates-admin/
+RewriteCond %{REQUEST_URI} (^|/)(wire|site|site-[^/]+)/templates-admin($|/|/.*\.(php|html?|tpl|inc))$ [OR]
+# Block access to any PHP or markup files in /site/templates/
+RewriteCond %{REQUEST_URI} (^|/)(site|site-[^/]+)/templates($|/|/.*\.(php|html?|tpl|inc))$ [OR]
+# Block access to any PHP files in /site/assets/
+RewriteCond %{REQUEST_URI} (^|/)(site|site-[^/]+)/assets($|/|/.*\.php)$ [OR]
+# Block access to any PHP files in core or core module directories
+RewriteCond %{REQUEST_URI} (^|/)wire/(core|modules)/.*\.(php|inc|tpl|module)$ [OR]
+# Block access to any PHP files in /site/modules/
+RewriteCond %{REQUEST_URI} (^|/)(site|site-[^/]+)/modules/.*\.(php|inc|tpl|module)$ [OR]
+# Block access to any software identifying txt files
+RewriteCond %{REQUEST_URI} (^|/)(COPYRIGHT|INSTALL|README|htaccess)\.(txt|md)$ [OR]
+# Block all http access to the default/uninstalled site-default directory
+RewriteCond %{REQUEST_URI} (^|/)site-default/
+# If any conditions above match, isssue a 403 forbidden
+RewriteRule ^.*$ - [F,L]
 
-  # -----------------------------------------------------------------------------------------------
-  # Ensure that the URL follows the name-format specification required by ProcessWire
-  # -----------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------
+# Ensure that the URL follows the name-format specification required by ProcessWire
+# -----------------------------------------------------------------------------------------------
 
-  RewriteCond %{REQUEST_URI} "^/~?[-_.a-zA-Z0-9/]*$"
+RewriteCond %{REQUEST_URI} "^/~?[-_.a-zA-Z0-9/]*$"
 
-  # -----------------------------------------------------------------------------------------------
-  # If the request is for a file or directory that physically exists on the server,
-  # then don't give control to ProcessWire, and instead load the file
-  # -----------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------
+# If the request is for a file or directory that physically exists on the server,
+# then don't give control to ProcessWire, and instead load the file
+# -----------------------------------------------------------------------------------------------
 
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !(favicon\.ico|robots\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !(favicon\.ico|robots\.txt)
 
-  # -----------------------------------------------------------------------------------------------
-  # Optional: Don't send missing image requests to ProcessWire (uncomment below to enable).
-  # This might be helpful if you are launching a new site and lots of images have moved.
-  # It will reduce the load on the server not to have ProcessWire trying to serve those requests.
-  # -----------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------
+# OPTIONAL: Prevent ProcessWire from attempting to serve images or anything in /site/assets/.
+# Both of these lines are optional, but can help to reduce server load. However, they
+# are not compatible with the $config->pagefileSecure option (if enabled) and they
+# may produce an Apache 404 rather than your regular 404. You may uncomment the two lines
+# below if you don't need to use the $config->pagefileSecure option.
+# -----------------------------------------------------------------------------------------------
 
-  # RewriteCond %{REQUEST_URI} !\.(gif|jpg|png|ico)$ [NC]
+# RewriteCond %{REQUEST_FILENAME} !\.(jpg|jpeg|gif|png|ico)$ [NC]
+# RewriteCond %{REQUEST_FILENAME} !(^|/)site/assets/
 
-  # -----------------------------------------------------------------------------------------------
-  # Pass control to ProcessWire if all the above directives allow us to this point.
-  # For regular VirtualHosts (most installs)
-  # -----------------------------------------------------------------------------------------------
-  RewriteRule ^(.*)$ index.php?it=$1 [L,QSA]
+# -----------------------------------------------------------------------------------------------
+# Pass control to ProcessWire if all the above directives allow us to this point.
+# For regular VirtualHosts (most installs)
+# -----------------------------------------------------------------------------------------------
+	RewriteRule ^(.*)$ index.php?it=$1 [L,QSA]
 
-  # -----------------------------------------------------------------------------------------------
-  # If using VirtualDocumentRoot: comment out the one above and use this one instead.
-  # -----------------------------------------------------------------------------------------------
-  # RewriteRule ^(.*)$ /index.php?it=$1 [L,QSA]
+# -----------------------------------------------------------------------------------------------
+# 500 NOTE: If using VirtualDocumentRoot: comment out the one above and use this one instead.
+# -----------------------------------------------------------------------------------------------
+# RewriteRule ^(.*)$ /index.php?it=$1 [L,QSA]
 
-</IfModule>
+	</IfModule>
 
 #################################################################################################
 # END PROCESSWIRE HTACCESS DIRECTIVES
 #################################################################################################
-
-
