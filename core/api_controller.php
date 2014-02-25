@@ -3,34 +3,39 @@
 use fixate as f8;
 
 abstract class ApiController implements IController {
+	protected $request = null;
+	protected $response = null;
+
 	function __construct(&$config, &$page, &$session) {
 		$this->config = $config;
 		$this->page = $page;
 		$this->session = $session;
 	}
 
-	function call($req) {
-		$this->set_request($req);
-
-		$resp = new f8\HttpResponse();
+	function call() {
+		$req = $this->request = f8\HttpRequest::instance();
+		$this->response = new f8\HttpResponse();
 		$method = strtolower($req->method());
 
 		try {
 			if (method_exists($this, $method)) {
-				$ret = $this->$method($req, $resp);
+				$ret = $this->$method();
+
+				// Just die on redirect
+				if ($this->response->is_redirect()) { die(); }
 
         // Body set, just return the response
-				$body = $resp->body();
+				$body = $this->response->body();
         if (!empty($body)) {
-          return $resp;
+          return $this->response;
         }
 
         // Set created status on sucessfull post
-				if ($method == 'post' && $ret && $resp->status() == 0) {
-					$resp->set_status(201); // CREATED
+				if ($method == 'post' && $ret && $this->response->status() == 0) {
+					$this->response->set_status(201); // CREATED
 				}
 			} elseif (method_exists($this, 'all')) {
-				$ret = $this->all($req, $resp);
+				$ret = $this->all();
 			} elseif ($method == 'get') {
 				$ret = $this->page_data();
 			} else {
@@ -38,45 +43,53 @@ abstract class ApiController implements IController {
 			}
 
 		} catch (f8\HttpException $ex) {
-			$resp->set_status($ex->getStatusCode());
-			$resp->set_header('Allow', implode(', ',$this->get_allowed()));
-			$resp->set_body(json_encode(array('error' => $ex->getMessage())));
+			$this->response->set_status($ex->getStatusCode());
+			$this->response->set_header('Allow', implode(', ',$this->get_allowed()));
+			$this->response->set_body(json_encode(array('error' => $ex->getMessage())));
 		} catch (Exception $ex) {
-			$resp->set_status(500);
-			$resp->set_body(json_encode(array('error' => $ex->getMessage())));
-			return $resp;
+			$this->response->set_status(500);
+			$this->response->set_body(json_encode(array('error' => $ex->getMessage())));
+			return $this->response;
 		}
 
     // Set NO CONTENT on blank responses
-		$body = $resp->body();
+		$body = $this->response->body();
 		if (!$ret && empty($body)) {
-			if ($resp->status() == 0){
-				$resp->set_status(204); // No content
+			if ($this->response->status() == 0){
+				$this->response->set_status(204); // No content
 			}
-			return $resp;
+			return $this->response;
 		}
 
     if ($ret) {
       // Serialize to JSON
       if (is_array($ret) || is_object($ret)) {
-        $resp->set_header('Content-Type', 'application/json');
-        $resp->set_body(json_encode($ret));
+        $this->response->set_header('Content-Type', 'application/json');
+        $this->response->set_body(json_encode($ret));
       } else if (is_string($ret)) {
         if (f8\Strings::starts_with(trim($ret), '<') && f8\Strings::ends_with(trim($ret), '>')) {
-          $resp->set_header('Content-Type', 'text/html');
+          $this->response->set_header('Content-Type', 'text/html');
         } else {
-          $resp->set_header('Content-Type', 'text/plain');
+          $this->response->set_header('Content-Type', 'text/plain');
         }
-        $resp->set_body($ret);
+        $this->response->set_body($ret);
       }
     }
 
-		return $resp;
+		return $this->response;
 	}
 
 	// Do nothing - override if required
 	function before() {}
-	function after($resp) {}
+	function after() {}
+
+	function helper($func) {
+		if (!is_callable($func)) {
+			$func = array($this, $func);
+		}
+
+		View::add_helper($func);
+	}
 
 	// Get user settings
 	protected function setting($name) {
@@ -108,10 +121,6 @@ abstract class ApiController implements IController {
 		return array_filter(f8\HttpRequest::$http_methods, function($m) {
 			return $m == 'GET' || method_exists($this, strtolower($m));
 		});
-	}
-
-	protected function set_request($req) {
-		$this->request = $req;
 	}
 
 	protected function param($name) {

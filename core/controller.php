@@ -19,6 +19,8 @@ abstract class Controller implements IController {
 	private $view_vars = array();
 
 	protected $view = null;
+	protected $response = null;
+	protected $request = null;
   protected static $fallback = null;
 
 	function __construct(&$config, &$page, &$session) {
@@ -46,10 +48,9 @@ abstract class Controller implements IController {
 		return $this->view = $this->load_view($view_name, $data);
 	}
 
-	abstract function index();
 	// Do nothing - override if required
 	function before() {}
-	function after($resp) {}
+	function after() {}
 
 	function get_view_vars($name = null) {
 		if ($name === null) {
@@ -59,23 +60,22 @@ abstract class Controller implements IController {
 		return $this->view_vars[$name];
 	}
 
-	function call($req) {
-		$resp = new f8\HttpResponse();
+	function call() {
+		$this->request = f8\HttpRequest::instance();
+		$this->response = new f8\HttpResponse();
 
 		$func = 'page_'.f8\Strings::snake_case($this->page->name);
 		if (!method_exists($this, $func)) {
 			$func = 'index';
 		}
 
-		if (!($ret = $this->$func($req, $resp))) {
-			return $resp;
-		}
+		$ret = $this->$func();
 
 		if ($ret instanceof IView) {
-			$resp->set_body($ret->render());
+			$this->response->set_body($ret->render());
 		}
 
-		return $resp;
+		return $this->response;
 	}
 
 	function helper($func) {
