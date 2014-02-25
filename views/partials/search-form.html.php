@@ -5,7 +5,6 @@
  * This partial is included via header.inc.php
  *
  * @package ProcessWire
- * @since Theme_Name 1.0
  */
 ?>
 <form id='search_form' action='<?php echo $config->urls->root?>search/' method='get'>

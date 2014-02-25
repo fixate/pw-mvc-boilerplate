@@ -16,7 +16,7 @@ trait Javascript {
 	function js_add_vendor($vendor) {
 		if ($main = $this->__load_bower_main($vendor)) {
 			if (is_array($main)) {
-				$main = $main[0];
+				$main = $this->__get_script_path($main);
 			}
 
 			$path = "vendor/%%/{$main}";
@@ -24,30 +24,30 @@ trait Javascript {
 			$path = "vendor/%%/%%";
 		}
 
-		$this->__js_scripts[] = array('vendor', $vendor, $path);
+		$this->__js_scripts[] = array('vendor', $vendor, $path, null);
 	}
 
 	function js_add_script($script, $path_tmpl = 'js/%%') {
-		$this->__js_scripts[] = array('user', $script, $path_tmpl);
+		$this->__js_scripts[] = array('user', $script, $path_tmpl, null);
 	}
 
 	function js_add_cdn($url, $detect = false, $fallback = false) {
-		$this->__js_scripts[] = array('cdn', $url, array($detect, $fallback));
+		$this->__js_scripts[] = array('cdn', null, null, $url, array($detect, $fallback));
 	}
 
 	function render_scripts() {
 		$html = '';
 		foreach ($this->__js_scripts as $script) {
-			list($type, $url) = $script;
+			list($type, $script_name, $script_path, $url) = $script;
 			switch ($type) {
 			case 'user':
 			case 'vendor':
-				$path = str_replace('%%', $url, array_pop($script));
+				$path = str_replace('%%', $script_name, $script_path);
 				$has_ext = f8\Paths::get_extension($path) == 'js';
 				if (!$has_ext) {
 					$path = f8\Paths::change_extension($path, 'js');
 				}
-				$path = $this->view->assets($path, !$has_ext);
+				$path = $this->view->assets($path);
 				$html .= $this->__script_tag($path);
 				break;
 			case 'cdn':
@@ -78,13 +78,13 @@ trait Javascript {
 	}
 
 	private function __load_bower_main($vendor) {
-		$tries = array('.bower.json', 'bower.json', 'components.json');
+		$tries = array('.bower.json', 'bower.json', 'component.json');
 
-		foreach ($t as $tries) {
+		foreach ($tries as $t) {
 			$file = f8\Paths::join(TEMPLATE_DIR, "assets/vendor/{$vendor}/{$t}");
 			if (file_exists($file)) {
 				$manifest = json_decode(file_get_contents($file), true);
-				if (array_key_exists($manifest, 'main')) {
+				if (array_key_exists('main', $manifest)) {
 					return $manifest['main'];
 				}
 			}
@@ -94,5 +94,18 @@ trait Javascript {
 
 	private function __script_tag($src) {
 		return "<script type=\"text/javascript\" src=\"{$src}\"></script>";
+	}
+
+	private function __get_script_path($array) {
+		$i = 0;
+
+		foreach ($array as $path) {
+			if (f8\Paths::get_extension($path) === 'js') {
+				return $array[$i];
+			}
+			$i++;
+		}
+
+		return null;
 	}
 }

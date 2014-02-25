@@ -12,8 +12,9 @@ class ApplicationController extends Controller {
 
 	function initialize() {
 		$site_name = $this->site_name();
-		$this->add_view_vars('site_name', $site_name);
 		$this->og_set_opt('site_name', $site_name);
+		$og_object_type = $this->og_object_type();
+		$this->og_set_opt('object_type', $og_object_type ? $og_object_type : 'website');
 
 		Javascript::__jsInitialize($this);
 		OpenGraph::__ogInitialize($this);
@@ -23,7 +24,7 @@ class ApplicationController extends Controller {
 		Utils::__utilsInitialize($this);
 
 		$this->js_add_cdn(
-			'//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js',
+			'//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
 			'window.jQuery',
 			'vendor/jquery/jquery.js'
 		);
@@ -31,6 +32,10 @@ class ApplicationController extends Controller {
 
 	protected function site_name() {
 		return $this->setting('site_name');
+	}
+
+	protected function og_object_type() {
+		return $this->setting('og_site_type');
 	}
 
   // Fallback index
