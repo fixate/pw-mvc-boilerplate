@@ -25,7 +25,7 @@ trait OpenGraph {
 	}
 
 	function opengraph_meta_tags() {
-		$image = $this->__og_get_prop('image', 'filename');
+		$image = $this->__og_get_prop('image', 'url');
 		$tags = array(
 			'site_name' => $this->__og_opts['site_name'],
 			'type' => $this->__og_opts['object_type'] ? $this->__og_opts['object_type'] : $this->__og_opts['object_type_default'],
@@ -70,12 +70,17 @@ trait OpenGraph {
 	}
 
 	private function __og_image_meta($image) {
+		$config =& $this->config;
+
 		if ($image) {
 			if (is_array($image)) {
+				foreach ($image as $item) {
+					$item = 'http://' . $config->httpHost . $item;
+				}
 				return $image;
 			}
 
-			return $image->filename;
+			return 'http://' . $config->httpHost . $image->url;
 		}
 
 		return null;
