@@ -71,17 +71,18 @@ trait OpenGraph {
 
 	private function __og_image_meta($image) {
 		$config =& $this->config;
+		$hostname = 'http://' . $config->httpHost;
 
 		if ($image) {
 			if (is_array($image)) {
 				foreach ($image as &$item) {
-					$item = rtrim($this->page->httpUrl, '/') . $item;
+					$item = $hostname . $item;
 				}
 
 				return $image;
 			}
 
-			return rtrim($this->page->httpUrl, '/') . $image->url;
+			return $hostname . $image->url;
 		}
 
 		return null;
