@@ -74,13 +74,14 @@ trait OpenGraph {
 
 		if ($image) {
 			if (is_array($image)) {
-				foreach ($image as $item) {
-					$item = 'http://' . $config->httpHost . $item;
+				foreach ($image as &$item) {
+					$item = rtrim($this->page->httpUrl, '/') . $item;
 				}
+
 				return $image;
 			}
 
-			return 'http://' . $config->httpHost . $image->url;
+			return rtrim($this->page->httpUrl, '/') . $image->url;
 		}
 
 		return null;
