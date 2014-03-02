@@ -22,7 +22,7 @@
 
 	<?= $this->opengraph_meta_tags() ?>
 
-	<link rel="logo" type="image/svg" href="<?= $this->assets('img/logo.svg') ?>"/>
+	<link rel="logo" type="image/svg" href="http://<?= $config->httpHost . $this->assets('img/logo.svg') ?>"/>
 
   <!--[if ! lte IE 7]><!-->
 	<link rel="stylesheet" type="text/css" href="<?= $this->assets('css/style.css') ?>" />
