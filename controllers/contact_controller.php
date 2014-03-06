@@ -39,7 +39,7 @@ class ContactController extends ApplicationController {
 		$sanitizer = wire('sanitizer');
 		$session = wire('session');
 
-		$to_email = $page->get('email');
+		$recipient_email = $page->get('email');
 		$message_success = '<p>Thank for your message, we\'ll be in touch soon!</p>';
 		$output = '';
 
@@ -137,8 +137,6 @@ class ContactController extends ApplicationController {
 				$sender_email    = $sanitizer->email($form->get('email')->value);
 				$sender_message  = $sanitizer->textarea($form->get('message')->value);
 
-				$recipient_email = $pages->get('/settings')->email;
-
 				$headers  = 'MIME-Version: 1.0' . "\r\n";
 				$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 				$recipient_headers = $headers . 'From: {$sender_email}' . "\r\n";
@@ -152,7 +150,7 @@ class ContactController extends ApplicationController {
 				include './views/email/contact-form-sender.html.php';
 				$sender_msg = ob_get_clean();
 
-				mail($to_email, "[Company Name] Query", $recipient_msg, $recipient_headers);
+				mail($recipient_email, "[Company Name] Query", $recipient_msg, $recipient_headers);
 				mail($sender_email, "[Company Name] - Thank you for your message", $sender_msg, $sender_headers);
 
 				$output = $message_success;
