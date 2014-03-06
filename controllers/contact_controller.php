@@ -137,10 +137,12 @@ class ContactController extends ApplicationController {
 				$sender_email    = $sanitizer->email($form->get('email')->value);
 				$sender_message  = $sanitizer->textarea($form->get('message')->value);
 
+				$recipient_email = $pages->get('/settings')->email;
+
 				$headers  = 'MIME-Version: 1.0' . "\r\n";
 				$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 				$recipient_headers = $headers . 'From: {$sender_email}' . "\r\n";
-				$sender_headers = $headers . 'From: larry@fixate.it' . "\r\n";
+				$sender_headers = $headers . 'From: {$recipient_email}' . "\r\n";
 
 				ob_start();
 				include './views/email/contact-form-recipient.php';
