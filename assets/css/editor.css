@@ -9,7 +9,7 @@
 		- expand 'TinyMCE Advanced Configuration Options'
 		- paste '/site/templates/assets/css/editor.css' under 'content_css'
  */
-@import url('style.css');
+@import url('style.min.css');
 
 body {
   padding: 0 1em;
