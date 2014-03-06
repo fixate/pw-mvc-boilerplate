@@ -145,11 +145,11 @@ class ContactController extends ApplicationController {
 				$sender_headers = $headers . 'From: {$recipient_email}' . "\r\n";
 
 				ob_start();
-				include './views/email/contact-form-recipient.php';
+				include './views/email/contact-form-recipient.html.php';
 				$recipient_msg = ob_get_clean();
 
 				ob_start();
-				include './views/email/contact-form-sender.php';
+				include './views/email/contact-form-sender.html.php';
 				$sender_msg = ob_get_clean();
 
 				mail($to_email, "[Company Name] Query", $recipient_msg, $recipient_headers);
