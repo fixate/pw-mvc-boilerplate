@@ -131,12 +131,29 @@ class ContactController extends ApplicationController {
 				$output = $form->render();
 			} else {
 
-				// sanitise inputs
-				$user_name     = $sanitizer->text($input->post->name);
-				$user_email    = $sanitizer->email($form->get('email')->value);
-				$user_message  = $sanitizer->textarea($form->get('message')->value);
 
-				mail($to_email, "[Website Name] contact", $user_message, 'From: ' . $user_email);
+				// sanitise inputs
+				$sender_name     = $sanitizer->text($input->post->name);
+				$sender_email    = $sanitizer->email($form->get('email')->value);
+				$sender_message  = $sanitizer->textarea($form->get('message')->value);
+
+				$recipient_email = $pages->get('/settings')->email;
+
+				$headers  = 'MIME-Version: 1.0' . "\r\n";
+				$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+				$recipient_headers = $headers . 'From: {$sender_email}' . "\r\n";
+				$sender_headers = $headers . 'From: {$recipient_email}' . "\r\n";
+
+				ob_start();
+				include './views/email/contact-form-recipient.php';
+				$recipient_msg = ob_get_clean();
+
+				ob_start();
+				include './views/email/contact-form-sender.php';
+				$sender_msg = ob_get_clean();
+
+				mail($to_email, "[Company Name] Query", $recipient_msg, $recipient_headers);
+				mail($sender_email, "[Company Name] - Thank you for your message", $sender_msg, $sender_headers);
 
 				$output = $message_success;
 			}
