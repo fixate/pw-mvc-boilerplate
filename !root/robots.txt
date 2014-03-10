@@ -1,1 +1,2 @@
 User-Agent: *
+# Sitemap: http://example.com/sitemap.xml
