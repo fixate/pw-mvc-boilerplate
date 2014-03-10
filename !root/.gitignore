@@ -2,15 +2,6 @@
 config.rb
 .sass-cache/
 
-# ignore Sourcejs folder
-Source.js
-
-# ignore symlinked styleguide folders and files
-styleguide/css
-styleguide/img
-styleguide/fnt
-styleguide/style.css
-
 #ignore ProcessWire files and folders
 *.old
 *.old/*
@@ -26,10 +17,11 @@ sess_*
 *.swo
 *.sh
 **/site/config-dev.php
-**/site/assets/logs/**
-**/site/assets/files/**
-**/site/assets/sessions/**
 **/site/assets/cache/**
+**/site/assets/files/**
+**/site/assets/logs/**
+**/site/assets/sessions/**
+!**/site/assets/**/.*
 **/site/assets/installed.php
 
 # ignore grunt files
