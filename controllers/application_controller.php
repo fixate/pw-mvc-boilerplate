@@ -7,6 +7,7 @@ class ApplicationController extends Controller {
 	use OpenGraph;
 	use PrimaryNav;
 	use SEO;
+	use Search;
 	use VideoEmbed;
 	use Utils;
 
@@ -20,6 +21,7 @@ class ApplicationController extends Controller {
 		OpenGraph::__ogInitialize($this);
 		PrimaryNav::__pnInitialize($this);
 		SEO::__seoInitialize($this, $site_name);
+		Search::__searchInitialize($this);
 		VideoEmbed::__vidembedInitialize($this);
 		Utils::__utilsInitialize($this);
 
