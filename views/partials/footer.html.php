@@ -16,5 +16,3 @@
 
   </div>
 </footer>
-
-<?= $this->partial('scripts') ?>
