@@ -2,7 +2,7 @@
 /**
  * Partial for site footer
  *
- * This partial is included via main.php
+ * This partial is included via views/layouts/application.php
  *
  * @package ProcessWire
  */
