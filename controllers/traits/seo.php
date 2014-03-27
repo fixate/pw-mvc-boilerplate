@@ -20,10 +20,10 @@ trait SEO {
 
 		if (!($seo_title = $page->seo_title)) {
 			$seo_title = $page->title;
-		}
 
-		if (method_exists($this, 'setting')) {
-			return $seo_title . ' ' . $this->setting('site_name');
+			if (method_exists($this, 'setting')) {
+				return $seo_title . ' ' . $this->setting('site_name');
+			}
 		}
 
 		return $seo_title;
