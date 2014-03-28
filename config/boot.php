@@ -69,5 +69,5 @@ if (!$config->ajax) {
 	Controller::set_fallback('ApplicationController');
 }
 
-Application::init($config, $page, $session);
+Application::init($config, $fields, $input, $page, $pages, $permissions, $roles, $sanitizer, $session, $templates, $user, $users);
 Application::run();

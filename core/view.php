@@ -89,10 +89,20 @@ class View implements IView {
 		}
 
 		$view = $this;
-		$page = $this->controller->page;
-		$session = $this->controller->session;
-		$pages = wire('pages');
+
 		$config = $this->controller->config;
+		$fields = $this->controller->fields;
+		$input = $this->controller->input;
+		$page = $this->controller->page;
+		$pages = $this->controller->pages;
+		$permissions = $this->controller->permissions;
+		$roles = $this->controller->roles;
+		$sanitizer = $this->controller->sanitizer;
+		$session = $this->controller->session;
+		$templates = $this->controller->templates;
+		$user = $this->controller->user;
+		$users = $this->controller->users;
+
 		$env = Environment::get_instance();
     extract(array_merge($this->data, $_data));
 
