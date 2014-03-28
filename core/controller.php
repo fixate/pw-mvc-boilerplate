@@ -4,17 +4,22 @@ use fixate as f8;
 /**
  * Base Controller
  *
- * Fields and functions that are globally accessible to all templates are defined
- * here. This controller is included in _init.php, and is available to all templates
- *
- * @package FixateProcesswire
- * @since Theme_Name 1.0
+ * @package ProcessWire
  */
 
 abstract class Controller implements IController {
-	public $page = null;
-	public $session = null;
 	public $config = null;
+	public $fields = null;
+	public $input = null;
+	public $page = null;
+	public $pages = null;
+	public $permissions = null;
+	public $roles = null;
+	public $sanitizer = null;
+	public $session = null;
+	public $templates = null;
+	public $user = null;
+	public $users = null;
 
 	private $view_vars = array();
 
@@ -23,10 +28,19 @@ abstract class Controller implements IController {
 	protected $request = null;
   protected static $fallback = null;
 
-	function __construct(&$config, &$page, &$session) {
+	function __construct(&$config, &$fields, &$input, &$page, &$pages, &$permissions, &$roles, &$sanitizer, &$session, &$templates, &$user, &$users) {
 		$this->config = $config;
+		$this->fields = $fields;
+		$this->input = $input;
 		$this->page = $page;
+		$this->pages = $pages;
+		$this->permissions = $permissions;
+		$this->roles = $roles;
+		$this->sanitizer = $sanitizer;
 		$this->session = $session;
+		$this->templates = $templates;
+		$this->user = $user;
+		$this->users = $users;
 
 		$this->initialize();
 	}
@@ -137,8 +151,17 @@ abstract class Controller implements IController {
 
 	static function dynamic_load($app) {
 		$config = $app->config;
+		$fields = $app->fields;
+		$input = $app->input;
 		$page = $app->page;
+		$pages = $app->pages;
+		$permissions = $app->permissions;
+		$roles = $app->roles;
+		$sanitizer = $app->sanitizer;
 		$session = $app->session;
+		$templates = $app->templates;
+		$user = $app->user;
+		$users = $app->users;
 
 		if (!$page->template) {
 			return false;
@@ -164,6 +187,7 @@ abstract class Controller implements IController {
 		}
 
 		// Instantiate controller class
-		return new $controller($config, $page, $session);
+		return new $controller($config, $fields, $input, $page, $pages, $permissions, $roles, $sanitizer, $session, $templates, $user, $users);
 	}
 }
+
