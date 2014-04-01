@@ -4,8 +4,8 @@
 # Toggler
 # *******************************************************
 $.fn.toggler = (options = {}) ->
-	options.activeClass ||= 'active'
-	options.activeTriggerClass ||= 'active'
+	options.activeClass ||= 'is-active'
+	options.activeTriggerClass ||= 'is-active'
 	options.closeTarget ||= false
 	selector = @selector
 	resizeTimer = null
