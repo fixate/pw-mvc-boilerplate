@@ -27,7 +27,7 @@ trait OpenGraph {
 	function opengraph_meta_tags() {
 		$image = $this->__og_get_prop('image', 'url');
 		$tags = array(
-			'site_name' => $this->__og_opts['site_name'],
+			'site_name' => $this->__og_get_sitename(),
 			'type' => $this->__og_opts['object_type'] ? $this->__og_opts['object_type'] : $this->__og_opts['object_type_default'],
 			'title' => $this->__og_get_prop('title'),
 			'url'   => $this->__og_opts['canonical_url'] ? $this->__og_opts['canonical_url'] : $this->page->httpUrl,
@@ -67,6 +67,14 @@ trait OpenGraph {
 		}
 
 		return $prop_array;
+	}
+
+	private function __og_get_sitename() {
+		if ($this->__og_opts['site_name']) {
+			return $this->__og_opts['site_name'];
+		}
+
+		return strlen($site_name = $this->pages->get('/settings')->site_name) !== 0 ? $site_name : null;
 	}
 
 	private function __og_image_meta($image) {
