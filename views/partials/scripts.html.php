@@ -10,7 +10,7 @@ $this->js_add_script('main');
 ?>
 
 <?php if ($env->is_production && $env->ga_uacode !== false): ?>
-	<?= $this->partial("google-analytics") ?>
+	<?= $this->partial("google_analytics") ?>
 <?php endif ?>
 
 <?= $this->render_scripts() ?>
