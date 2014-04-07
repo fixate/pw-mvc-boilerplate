@@ -12,7 +12,7 @@
 
     <a class="logo" href="<?= $config->urls->root; ?>">
       <svg width="100" height="100">
-        <image xlink:href="<?= $config->urls->templates; ?>assets/img/logo.svg" src="<?= $config->urls->templates; ?>assets/img/logo.png" width="100" height="100" />
+        <image xlink:href="<?= $this->assets('img/logo.svg'); ?>" src="<?= $this->assets('img/logo.png'); ?>" width="100" height="100" />
       </svg>
     </a>
 
