@@ -20,10 +20,10 @@
     <a class="visuallyhidden" href="#main">skip navigation and go to main content</a>
 
     <?php // get primary nav ?>
-    <?= $this->partial('nav-primary') ?>
+    <?= $this->partial('nav_primary') ?>
 
     <?php // get search form ?>
-    <?= $this->partial('search-form') ?>
+    <?= $this->partial('search_form') ?>
 
   </div>
 </header>
