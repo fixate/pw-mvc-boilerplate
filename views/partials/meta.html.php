@@ -20,6 +20,7 @@
   <meta name="msapplication-TileColor" content="#ffffff"/>
   <meta name="msapplication-TileImage" content="apple-touch-icon-152x152-precomposed.png"/>
 
+	<?= $this->twitter_meta_tags() ?>
 	<?= $this->opengraph_meta_tags() ?>
 
 	<link rel="logo" type="image/svg" href="http://<?= $config->httpHost . $this->assets('img/logo.svg') ?>"/>
