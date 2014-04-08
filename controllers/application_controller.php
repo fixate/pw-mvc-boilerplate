@@ -8,6 +8,7 @@ class ApplicationController extends Controller {
 	use PrimaryNav;
 	use SEO;
 	use Search;
+	use Twitter;
 	use VideoEmbed;
 	use Utils;
 
@@ -17,6 +18,7 @@ class ApplicationController extends Controller {
 		PrimaryNav::__pnInitialize($this);
 		SEO::__seoInitialize($this);
 		Search::__searchInitialize($this);
+		Twitter::__twInitialize($this);
 		VideoEmbed::__vidembedInitialize($this);
 		Utils::__utilsInitialize($this);
 
