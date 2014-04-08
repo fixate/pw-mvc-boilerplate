@@ -11,6 +11,8 @@ trait OpenGraph {
 		'canonical_url' => false,
 		'object_type' => false,
 		'object_type_default' => 'website',
+		'description' => false,
+		'description_get' => 'summary',
 		'image_get' => 'image|images'
 	);
 
@@ -31,6 +33,7 @@ trait OpenGraph {
 			'type' => $this->__og_opts['object_type'] ? $this->__og_opts['object_type'] : $this->__og_opts['object_type_default'],
 			'title' => $this->__og_get_prop('title'),
 			'url'   => $this->__og_opts['canonical_url'] ? $this->__og_opts['canonical_url'] : $this->page->httpUrl,
+			'description' => $this->__og_opts['description'] ? $this->_og_opts['description'] : $this->__og_get_prop('description'),
 			'image' => $this->__og_image_meta($image)
 		);
 
