@@ -32,13 +32,13 @@ class ContactController extends ApplicationController {
 	 */
 	function get_contact_form() {
 		$modules = wire('modules');
-		$config = wire('config');
-		$input = wire('input');
-		$page = wire('page');
-		$sanitizer = wire('sanitizer');
-		$session = wire('session');
+		$config = $this->config;
+		$input = $this->input;
+		$page = $this->page;
+		$pages = $this->pages;
+		$sanitizer = $this->sanitizer;
+		$session = $this->session;
 
-		$recipient_email = $page->get('email');
 		$message_success = '<p>Thank for your message, we\'ll be in touch soon!</p>';
 		$output = '';
 
