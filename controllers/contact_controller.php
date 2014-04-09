@@ -73,6 +73,7 @@ class ContactController extends ApplicationController {
 		$form_name->label = "Name";
 		$form_name->required = 1;
 		$form_name->attr('id+name','name');
+		$form_name->attr('placeholder','Name');
 		$form->append($form_name);
 
 		// create an input for a visitor's email
@@ -80,6 +81,7 @@ class ContactController extends ApplicationController {
 		$form_email->label = "E-Mail";
 		$form_email->required = 1;
 		$form_email->attr('id+name','email');
+		$form_email->attr('placeholder','Email');
 		$form->append($form_email);
 
 		// create a textarea for the visitor's message
@@ -87,6 +89,7 @@ class ContactController extends ApplicationController {
 		$form_message->label = "Message";
 		$form_message->required = 1;
 		$form_message->attr('id+name','message');
+		$form_message->attr('placeholder','Message');
 		$form->append($form_message);
 
 		// implement basic honeypot spam proection
