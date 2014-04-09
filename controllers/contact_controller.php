@@ -8,6 +8,7 @@
  */
 
 class ContactController extends ApplicationController {
+
 	function index() {
 		return $this->render(array(
 			'form' => $this->get_contact_form()
@@ -166,15 +167,3 @@ class ContactController extends ApplicationController {
 		return $output;
 	}
 }
-
-
-
-
-
-/*------------------------------------*\
-  $FIELDS
-\*------------------------------------*/
-
-
-
-
