@@ -8,6 +8,7 @@
  * @package ProcessWire
  */
 ?>
+<?php if ($env->is_production && $env->ga_uacode !== false): ?>
 <script>
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '<?= Environment::ga_uacode() ?>']);
@@ -21,4 +22,4 @@
     s.parentNode.insertBefore(ga, s);
   })();
 </script>
-
+<?php endif ?>
