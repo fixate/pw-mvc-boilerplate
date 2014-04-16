@@ -3,16 +3,50 @@
 trait SEO {
 	static function __seoInitialize($obj) {
 		$obj->add_view_vars($obj->get_seo_vars());
+		$obj->helper('seo_rel_next_prev');
+	}
+
+	private $__seo_opts = array(
+		'limit' => false,
+	);
+
+	protected function seo_set_opt($opt, $value) {
+		$this->__seo_opts[$opt] = $value;
 	}
 
 	function get_seo_vars() {
-		$page =& $this->page;
-
 		return array(
 			'seo_title'   => $this->get_seo_title(),
 			'seo_desc'    => $this->get_seo_desc(),
-			'seo_noindex' => $this->get_seo_noindex()
+			'seo_noindex' => $this->get_seo_noindex(),
 		);
+	}
+
+	function seo_rel_next_prev() {
+		$page =& $this->page;
+		$input =& $this->input;
+		$config =& $this->config;
+		$html = '';
+		$limit = $this->__seo_opts['limit'];
+		$href = 'http://' . $config->httpHost . $page->url;
+
+		if (empty($limit)) {
+			return $html;
+		}
+
+		if ($page->pageNum > 1) {
+			$html .= '<link rel="prev" href="';
+			$html .= $href . ($input->pageNum > 2 ? $config->pageNumUrlPrefix . ($input->pageNum - 1) : '');
+			$html .= '">';
+		}
+
+		if ($input->pageNum * $limit < $page->children->count) {
+			$html .= '<link rel="next" href="';
+			$html .= $href . $config->pageNumUrlPrefix;
+			$html .= ($input->pageNum + 1) . '">';
+		}
+
+		return $html;
 	}
 
 	protected function get_seo_title() {
@@ -31,8 +65,13 @@ trait SEO {
 
 	protected function get_seo_desc() {
 		$page =& $this->page;
+		$input =& $this->input;
 
-		if ($page->seo_description) {
+		/**
+		 * don't output meta description if we are using pagination
+		 * - http://moz.com/blog/pagination-best-practices-for-seo-user-experience
+		 */
+		if ($page->seo_description && $input->pageNum < 2) {
 			return "<meta name='description' content='{$page->seo_description}'>";
 		}
 
