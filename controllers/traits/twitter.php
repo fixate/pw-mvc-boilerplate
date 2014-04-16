@@ -60,7 +60,7 @@ trait Twitter {
 	}
 
 	private function __tw_tag_markup($name, $value) {
-		return "<meta property='twitter:{$name}' value='{$value}'/>";
+		return "<meta property='twitter:{$name}' content='{$value}'/>";
 	}
 }
 
