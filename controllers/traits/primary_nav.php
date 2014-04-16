@@ -18,6 +18,7 @@ trait PrimaryNav {
 			'parent_class' => 'menu__item_-current-parent',
 			'outer_tpl' => '<ul class="menu_-primary">||</ul>',
 			'inner_tpl' => '<ul class="menu menu__sub">||</ul>',
+			'selector' => 'template!=rss',
 			'show_root' => true,
 			'list_field_class' => 'menu__item menu__item_-primary',
 			'item_tpl' => '<a href="{nav_url|url}">{title|band_title}</a>'
