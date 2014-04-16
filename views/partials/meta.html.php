@@ -12,6 +12,7 @@
 	<title><?= $seo_title; ?></title>
 	<?= $seo_desc; ?>
 	<?= $seo_noindex; ?>
+	<?= $this->seo_rel_next_prev() ?>
 
   <?php // enable responsive behaviour for all devices ?>
   <meta name="viewport" content="width=device-width, initial-scale=1">
