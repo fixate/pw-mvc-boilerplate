@@ -65,8 +65,13 @@ trait SEO {
 
 	protected function get_seo_desc() {
 		$page =& $this->page;
+		$input =& $this->input;
 
-		if ($page->seo_description) {
+		/**
+		 * don't output meta description if we are using pagination
+		 * - http://moz.com/blog/pagination-best-practices-for-seo-user-experience
+		 */
+		if ($page->seo_description && $input->pageNum < 2) {
 			return "<meta name='description' content='{$page->seo_description}'>";
 		}
 
