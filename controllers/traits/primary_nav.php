@@ -21,7 +21,7 @@ trait PrimaryNav {
 			'selector' => 'template!=rss',
 			'show_root' => true,
 			'list_field_class' => 'menu__item menu__item_-primary',
-			'item_tpl' => '<a href="{nav_url|url}">{title|band_title}</a>'
+			'item_tpl' => '<a href="{url_nav|url}">{title}</a>'
 		), $options);
 
 		$modules = wire('modules');
