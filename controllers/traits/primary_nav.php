@@ -9,8 +9,6 @@ trait PrimaryNav {
 	 * Get main navigation. This function checks for the existence of the
 	 * MarkupSimpleNavigation module before rendering a menu:
 	 * https://github.com/somatonic/MarkupSimpleNavigation#markupsimplenavigation-116
-	 *
-	 * @since Theme_Name 1.0
 	 */
 	function primary_nav($options = array()) {
 		$options = array_merge(array(
