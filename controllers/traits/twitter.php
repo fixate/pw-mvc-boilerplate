@@ -36,13 +36,15 @@ trait Twitter {
 		return $this->__tw_render_tags($tags);
 	}
 
-	// relies on only a username (without '@') provided to an account_twitter field
+	// user should provide full url to twitter account
 	private function __tw_get_handle() {
-		$pages = $this->pages;
-		$handle = $pages->get('/settings')->account_twitter;
+		$url = $this->pages->get('/settings')->account_twitter;
+		$regex = "|https?://(www\.)?twitter\.com/(#!)?@?([^/]*)|";
 
-		if ($handle) {
-			return '@' . $handle;
+		preg_match($regex, $url, $matches);
+
+		if (!empty($matches) && !empty($matches[3])) {
+			return '@' . $matches[3];
 		}
 
 		return null;
@@ -63,5 +65,3 @@ trait Twitter {
 		return "<meta property='twitter:{$name}' content='{$value}'/>";
 	}
 }
-
-
