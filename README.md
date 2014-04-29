@@ -1,5 +1,7 @@
 # A Rails-inspired MVC boilerplate for ProcessWire
 
+(Our [[wiki]] is under development, but already has more detailed information than this readme.)
+
 A boilerplate for new ProcessWire projects (tested only with PHP 5.4.24). The MVC entrypoint is enabled for a template by using the [delegate approach](http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/), so make sure to set all templates to use `mvc.php` as an alternate template by visiting:
 
 ```
