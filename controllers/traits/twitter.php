@@ -16,6 +16,10 @@ trait Twitter {
 
 	private $__tw_custom_tags = [];
 
+	protected function tw_get_handle() {
+		return $this->__tw_get_handle();
+	}
+
 	protected function tw_set_opt($opt, $value) {
 		$this->__tw_opts[$opt] = $value;
 	}
@@ -25,10 +29,12 @@ trait Twitter {
 	}
 
 	function twitter_meta_tags() {
+		$this->__tw_opts['handle'] = $this->__tw_get_handle();
+
 		$tags = array(
 			'card' => $this->__tw_opts['card'],
-			'site' => $this->__tw_opts['site'] ? $this->__tw_opts['site'] : $this->__tw_get_handle(),
-			'creator' => $this->__tw_opts['creator'] ? $this->__tw_opts['creator'] : $this->__tw_get_handle(),
+			'site' => $this->__tw_opts['site'] ? $this->__tw_opts['site'] : $this->__tw_opts['handle'],
+			'creator' => $this->__tw_opts['creator'] ? $this->__tw_opts['creator'] : $this->__tw_opts['handle'],
 		);
 
 		$tags = array_merge($tags, $this->__tw_custom_tags);
