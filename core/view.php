@@ -79,7 +79,7 @@ class View implements IView {
 	}
 
 	function partial_exists($file) {
-		return $this->view_exists(f8\Paths::join('partial', $file));
+		return $this->view_exists(f8\Paths::join('partials', $file));
 	}
 
 	protected function resolve_view_path($file) {
