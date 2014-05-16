@@ -2,7 +2,7 @@
 /**
  * Partial for page edit links. This link is only available to logged in users.
  *
- * This partial is included via main.php
+ * This partial is included via layouts/application.html.php
  *
  * @package ProcessWire
  */

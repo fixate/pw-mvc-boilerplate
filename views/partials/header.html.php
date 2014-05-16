@@ -1,8 +1,8 @@
 <?php
 /**
- * Include for site's header section.
+ * Partial for site's header section.
  *
- * This partial is included via main.php
+ * This partial is included via layouts/application.html.php
  *
  * @package ProcessWire
  */
