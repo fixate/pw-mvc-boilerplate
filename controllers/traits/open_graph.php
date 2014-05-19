@@ -45,7 +45,7 @@ trait OpenGraph {
 	private function __og_get_prop($prop, $field = null, $default = null) {
 		$prop = $this->page->get($this->__og_opts["{$prop}_get"]);
 
-		if ($prop && method_exists($prop, 'count')) {
+		if ($prop && method_exists($this->page, $prop)) {
 			if ($prop->count() == 0) {
 				return $default;
 			} elseif ($prop->count() > 1) {
