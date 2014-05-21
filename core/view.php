@@ -8,6 +8,7 @@ class View implements IView {
 	protected static $helpers = array();
 	protected $layout = '';
 	protected $data = array();
+	protected $base_path = null;
 	public $controller = null;
 
 	function __construct(IController &$controller, $name = '') {
