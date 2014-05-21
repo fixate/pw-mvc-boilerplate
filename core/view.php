@@ -8,6 +8,7 @@ class View implements IView {
 	protected static $helpers = array();
 	protected $layout = '';
 	protected $data = array();
+	protected $base_path = null;
 	public $controller = null;
 
 	function __construct(IController &$controller, $name = '') {
@@ -74,20 +75,34 @@ class View implements IView {
 		return $this->render_file("layouts/{$this->layout}");
 	}
 
-	protected function render_file($file, $_data = array(), $fallback = null) {
-		if (!($_base_path = $this->base_path)) {
-			$_base_path = f8\Paths::resolve(f8\Paths::join(dirname(__FILE__), '../views'));
+	function view_exists($file) {
+		return file_exists($this->resolve_view_path($file));
+	}
+
+	function partial_exists($file) {
+		return $this->view_exists(f8\Paths::join('partials', $file));
+	}
+
+	protected function resolve_view_path($file) {
+		if (!($base_path = $this->base_path)) {
+			$base_path = f8\Paths::resolve(f8\Paths::join(dirname(__FILE__), '../views'));
 		}
 
+		$path = f8\Paths::join($base_path, $file);
+		if (!f8\Strings::ends_with($path, '.html.php')) {
+			$path .= '.html.php';
+		}
+
+		return $path;
+	}
+
+	protected function render_file($file, $_data = array(), $fallback = null) {
 		if (!isset($this->data)) {
 			$this->data = array();
 		}
 
-		$_path = f8\Paths::join($_base_path, $file);
-		if (!f8\Strings::ends_with($_path, '.html.php')) {
-			$_path .= '.html.php';
-		}
-
+		$_path = $this->resolve_view_path($file);
+		
 		$view = $this;
 
 		$config = $this->controller->config;
