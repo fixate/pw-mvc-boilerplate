@@ -79,7 +79,7 @@ abstract class Controller implements IController {
 		$this->response = new f8\HttpResponse();
 		$input = wire('input');
 
-		$urlSegments = "";
+		$url_segments = "";
 		$has_segment = true;
 		$i = 1;
 
@@ -87,14 +87,14 @@ abstract class Controller implements IController {
 			$seg = $input->urlSegment($i);
 
 			if (!empty($seg)) {
-				$urlSegments .= " " . $seg;
+				$url_segments .= " " . $seg;
 				$i++;
 			} else {
 				$has_segment = false;
 			}
 		}
 
-		$func = 'page_'.f8\Strings::snake_case($this->page->name . $urlSegments);
+		$func = 'page_'.f8\Strings::snake_case($this->page->name . $url_segments);
 		if (!method_exists($this, $func)) {
 			$func = 'index';
 		}
