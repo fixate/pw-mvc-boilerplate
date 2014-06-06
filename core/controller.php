@@ -77,8 +77,24 @@ abstract class Controller implements IController {
 	function call() {
 		$this->request = f8\HttpRequest::instance();
 		$this->response = new f8\HttpResponse();
+		$input = wire('input');
 
-		$func = 'page_'.f8\Strings::snake_case($this->page->name);
+		$urlSegments = "";
+		$has_segment = true;
+		$i = 1;
+
+		while ($has_segment) {
+			$seg = $input->urlSegment($i);
+
+			if (!empty($seg)) {
+				$urlSegments .= " " . $seg;
+				$i++;
+			} else {
+				$has_segment = false;
+			}
+		}
+
+		$func = 'page_'.f8\Strings::snake_case($this->page->name . $urlSegments);
 		if (!method_exists($this, $func)) {
 			$func = 'index';
 		}
