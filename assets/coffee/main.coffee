@@ -57,7 +57,7 @@ $.fn.toggler = (options = {}) ->
 			setOn($el, $target.hasClass(options.activeClass))
 
 	$el = $(@)
-	$($el.parent()).on 'click touch', @selector, (e) ->
+	$($el.parent).on 'click touch', @selector, (e) ->
 		e.preventDefault()
 		e.stopPropagation()
 		togglePress $(@)
