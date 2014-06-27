@@ -78,7 +78,6 @@ $.fn.toggler = (options = {}) ->
     setElems($el)
 
 
-
 $('.js-menu-toggle').toggler
 	activeClass: 'is-open-nav',
 
