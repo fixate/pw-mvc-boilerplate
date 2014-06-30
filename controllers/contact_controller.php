@@ -19,9 +19,6 @@ class ContactController extends ApplicationController {
 
 
 
-/*------------------------------------*\
-	$FUNCTIONS
-	\*------------------------------------*/
 	/**
 	 * Contact form
 	 *
@@ -39,6 +36,7 @@ class ContactController extends ApplicationController {
 		$pages = $this->pages;
 		$sanitizer = $this->sanitizer;
 		$session = $this->session;
+		$view = new View($this);
 
 		$recipient_email = $pages->get('/settings')->email;
 		$message_success = '<p>Thank for your message, we\'ll be in touch soon!</p>';
@@ -134,7 +132,6 @@ class ContactController extends ApplicationController {
 			if($form->getErrors()) {
 				$output = $form->render();
 			} else {
-
 
 				// sanitise inputs
 				$sender_name     = $sanitizer->text($input->post->name);
