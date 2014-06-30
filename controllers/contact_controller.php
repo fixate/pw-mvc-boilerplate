@@ -39,6 +39,7 @@ class ContactController extends ApplicationController {
 		$pages = $this->pages;
 		$sanitizer = $this->sanitizer;
 		$session = $this->session;
+		$view = new View($this);
 
 		$recipient_email = $pages->get('/settings')->email;
 		$message_success = '<p>Thank for your message, we\'ll be in touch soon!</p>';
