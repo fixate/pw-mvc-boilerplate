@@ -1,4 +1,12 @@
 <?php
+/**
+ * Application Controller
+ *
+ * Base controller all other controllers extend. index() in this
+ * controller is used if not provided in template-specific controller.
+ *
+ * @package ProcessWire
+ */
 
 \fixate\Php::require_all(TEMPLATE_DIR.'/controllers/traits');
 
