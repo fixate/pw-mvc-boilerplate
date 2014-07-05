@@ -31,9 +31,9 @@ class ApplicationController extends Controller {
 		Utils::__utilsInitialize($this);
 
 		$this->js_add_cdn(
-			'//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
+			'//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
 			'window.jQuery',
-			'vendor/jquery/jquery.js'
+			'vendor/jquery/dist/jquery.js'
 		);
 	}
 
