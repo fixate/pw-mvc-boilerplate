@@ -90,7 +90,7 @@ $('.js-menu-toggle').toggler
 #--------------------------------------------------#
 body = document.body
 timer = undefined
-window.addEventListener "scroll", (->
+$(window).on 'scroll', () ->
 	clearTimeout timer
 	body.classList.add "disable-hover"  unless body.classList.contains("disable-hover")
 	timer = setTimeout(->
@@ -98,7 +98,6 @@ window.addEventListener "scroll", (->
 		return
 	, 250)
 	return
-), false
 
 
 
