@@ -96,7 +96,7 @@ $(window).on 'scroll', () ->
 	timer = setTimeout(->
 		body.classList.remove "disable-hover"
 		return
-	, 250)
+	, 50)
 	return
 
 
