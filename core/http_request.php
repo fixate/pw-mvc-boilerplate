@@ -31,7 +31,7 @@ class HttpRequest {
 	}
 
 	protected $headers = null;
-	protected $params = null;
+	protected $_params = null;
 
 	function headers() {
 		if ($headers) {
@@ -55,11 +55,11 @@ class HttpRequest {
 	}
 
 	function params() {
-		if ($params) {
-			return $params;
+		if ($this->_params) {
+			return $this->_params;
 		}
 
-		return $params =& $this->get_all_params();
+		return $this->_params = $this->get_all_params();
 	}
 
 	function param($name) {
@@ -79,10 +79,13 @@ class HttpRequest {
 		case 'OPTIONS':
 		case 'PURGE':
 			return $_GET;
-		case 'POST':
 		case 'PUT':
-		case 'PATCH':
 		case 'DELETE':
+      $vars = array();
+      parse_str(file_get_contents("php://input"), $vars);
+      return $vars;
+    case 'POST':
+    case 'PATCH':
 		case 'LINK':
 		case 'UNLINK':
 			return array_merge($_GET, $_POST);
