@@ -13,10 +13,11 @@ abstract class ApiController implements IController {
 	}
 
 	function call() {
-		$req = $this->request = f8\HttpRequest::instance();
-		$this->response = new f8\HttpResponse();
-		$method = strtolower($req->method());
-
+    $req = $this->request = f8\HttpRequest::instance();
+    $this->response = new f8\HttpResponse();
+    $method = strtolower($req->method());
+    $ret = null;
+    
 		try {
 			if (method_exists($this, $method)) {
 				$ret = $this->$method();
