@@ -6,10 +6,10 @@
  *
  * @package ProcessWire
  */
+?>
 
-if ($q) :
-
-  if($count) : ?>
+<?php if ($q) : ?>
+	<?php if($count) : ?>
 
     <small><?= $result_str; ?></small>
 
@@ -20,8 +20,8 @@ if ($q) :
 
   <?php else : ?>
     <small><?= $result_str; ?></small>
-  <?php endif; // $count ?>
+  <?php endif ?>
 
 <?php else : ?>
   <p>Please enter a search term in the search box.</p>
-<?php endif; // $query
+<?php endif ?>
