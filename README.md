@@ -161,13 +161,13 @@ class ContactController extends ApiController {
 
 ## TODO
 
-[ ] Write tests!!!
-[x] Add controller level layout override
-[ ] Rip out API controller and look at gluing a micro-framework like [silex](http://silex.sensiolabs.org/) or [Slim](http://www.slimframework.com/)
-[ ] Add bash script to install into your processwire, complete with dependencies
-[ ] Add Wiki
-[ ] Add easy installation script (wget -O- https://raw.github.com/fixate/pw-mvc-boilerplate/master/install.sh | sh)
-[ ] Get rid of MVC references in docs in favour of PVC (ProcesssWire is the model)
+- [ ] Write tests!!!
+- [x] Add controller level layout override
+- [ ] Rip out API controller and look at gluing a micro-framework like [silex](http://silex.sensiolabs.org/) or [Slim](http://www.slimframework.com/)
+- [ ] Add bash script to install into your processwire, complete with dependencies
+- [ ] Add Wiki
+- [ ] Add easy installation script (wget -O- https://raw.github.com/fixate/pw-mvc-boilerplate/master/install.sh | sh)
+- [ ] Get rid of MVC references in docs in favour of PVC (ProcesssWire is the model)
 
 
 ### License
