@@ -117,7 +117,7 @@ trait OpenGraph {
 	}
 
 	private function __og_tag_markup($name, $value) {
-		return "<meta property='og:{$name}' content='{$value}'/>";
+		return "<meta property='og:{$name}' content=\"{$value}\"/>";
 	}
 }
 
