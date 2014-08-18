@@ -1,8 +1,8 @@
-# A Rails-inspired MVC boilerplate for ProcessWire
+# A Rails-inspired PVC (P for ProcessWire) boilerplate for ProcessWire
 
 (Our [wiki](../../wiki) is under development, but already has more detailed information than this readme.)
 
-A boilerplate for new ProcessWire projects (tested only with PHP 5.4.24). The MVC entrypoint is enabled for a template by using the [delegate approach](http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/), so make sure to set all templates to use `mvc.php` as an alternate template by visiting:
+A boilerplate for new ProcessWire projects (tested only with PHP 5.4.24). The entrypoint is enabled for a template by using the [delegate approach](http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/), so make sure to set all templates to use `mvc.php` as an alternate template by visiting:
 
 ```
 Setup -> [template] -> Advanced -> Alternate Template Filename
@@ -161,13 +161,14 @@ class ContactController extends ApiController {
 
 ## TODO
 
-- Write tests!!!
-- ~~Add controller level layout override~~
-- ~~Add JSON rendering support for RESTful APIs~~ NEW!
-- Add bash script to install into your processwire, complete with dependencies
-- Add Wiki
-- Add easy installation script (wget -O- https://raw.github.com/fixate/pw-mvc-boilerplate/master/install.sh | sh)
-- More...?
+- [ ] Write tests!!!
+- [x] Add controller level layout override
+- [ ] Rip out API controller and look at gluing a micro-framework like [silex](http://silex.sensiolabs.org/) or [Slim](http://www.slimframework.com/)
+- [ ] Add bash script to install into your processwire, complete with dependencies
+- [ ] Add Wiki
+- [ ] Add easy installation script (wget -O- https://raw.github.com/fixate/pw-mvc-boilerplate/master/install.sh | sh)
+- [ ] Get rid of MVC references in docs in favour of PVC (ProcesssWire is the model)
+
 
 ### License
 
