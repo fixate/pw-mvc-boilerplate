@@ -28,3 +28,6 @@ sess_*
 node_modules
 npm-debug.log
 
+# ignore *.css.map and *.js.map files
+*.css.map
+*.js.map
