@@ -24,18 +24,20 @@ class Application {
 	}
 
 	static function init($config, $fields, $input, $page, $pages, $permissions, $roles, $sanitizer, $session, $templates, $user, $users) {
-		self::instance()->config = $config;
-		self::instance()->fields = $fields;
-		self::instance()->input = $input;
-		self::instance()->page = $page;
-		self::instance()->pages = $pages;
-		self::instance()->permissions = $permissions;
-		self::instance()->roles = $roles;
-		self::instance()->session = $session;
-		self::instance()->sanitizer = $sanitizer;
-		self::instance()->templates = $templates;
-		self::instance()->user = $user;
-		self::instance()->users = $users;
+		$instance = self::instance();
+		
+		$instance->config = $config;
+		$instance->fields = $fields;
+		$instance->input = $input;
+		$instance->page = $page;
+		$instance->pages = $pages;
+		$instance->permissions = $permissions;
+		$instance->roles = $roles;
+		$instance->session = $session;
+		$instance->sanitizer = $sanitizer;
+		$instance->templates = $templates;
+		$instance->user = $user;
+		$instance->users = $users;
 	}
 
 	static function run() {
