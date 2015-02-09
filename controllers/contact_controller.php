@@ -140,8 +140,8 @@ class ContactController extends ApplicationController {
 
 				$headers  = 'MIME-Version: 1.0' . "\r\n";
 				$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-				$recipient_headers = $headers . 'From: '.{$sender_email} . "\r\n";
-				$sender_headers = $headers . 'From: '.{$recipient_email} . "\r\n";
+				$recipient_headers = $headers . 'From: '.$sender_email . "\r\n";
+				$sender_headers = $headers . 'From: '.$recipient_email . "\r\n";
 
 				ob_start();
 				include './views/email/contact-form-recipient.html.php';

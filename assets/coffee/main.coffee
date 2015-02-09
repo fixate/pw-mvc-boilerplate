@@ -10,6 +10,12 @@ $.fn.toggler = (options = {}) ->
     selector = $el.selector
     resizeTimer = null
 
+    #  groupElments apply actions to all occurring togglers
+    if !!options.groupElement
+      for singleClass in $(@).attr('class').split(/\s+/)
+        if +(singleClass.search /js-/) != -1
+          options.elmts = $('.' + singleClass)
+
     getTarget = (el) ->
       $($(el).data('target'))
 
@@ -41,6 +47,9 @@ $.fn.toggler = (options = {}) ->
       $target = getTarget($el)
 
       fn = if active then 'addClass' else 'removeClass'
+
+      if !!options.groupElement
+        $el = options.elmts  #change el to a group el
 
       setOn($el, !active)
       $target[fn](options.activeClass)
