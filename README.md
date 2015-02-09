@@ -5,7 +5,7 @@
 A boilerplate for new ProcessWire projects (tested only with PHP 5.4.24). The entrypoint is enabled for a template by using the [delegate approach](http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/), so make sure to set all templates to use `mvc.php` as an alternate template by visiting:
 
 ```
-Setup -> [template] -> Advanced -> Alternate Template Filename
+Setup -> [template] -> Files -> Alternate Template Filename
 ```
 in your admin.
 
