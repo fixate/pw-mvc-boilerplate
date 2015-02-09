@@ -28,3 +28,6 @@ sess_*
 node_modules
 npm-debug.log
 
+# ignore generated source maps
+*.css.map
+*.js.map
