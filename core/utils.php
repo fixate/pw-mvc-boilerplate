@@ -195,24 +195,39 @@ class Paths
 
 class Manifest
 {
-	function __construct ()
+	private $manifest;
+
+	private static $instances = array();
+	/**
+	 * Call singleton
+	 *
+	 * @return Manifest
+	 */
+	public static function get_instance()
 	{
-		$this->manifest = f8\Files::parse_json_array("manifest.json");
+		$class = get_called_class();
+		if ($instances[$class] === null) {
+			self::$instances[$class] = new static;
+		}
+
+		return self::$instances[$class];
 	}
 
-	function has_items ()
+	/**
+	 * Private uncallable constructor
+	 */
+	protected function __construct () {}
+	protected function __clone () {}
+	public function __wakeup()
 	{
-		return $this->manifest->length > 0;
+		throw new Exception("Cannot unserialize singleton");
 	}
 
-	// function __get($name)
-	// {
-	// 	if (array_key_exists($name, $this->manifest)) {
-	// 		return $this->manifest[$name];
-	// 	}
+	function __get ()
+	{}
 
-	// 	return null;
-	// }
+	function __set ()
+	{}
 }
 
 ?>
