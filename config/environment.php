@@ -11,6 +11,7 @@ $environment = array(
 
 	// Google analytics
 	'ga_uacode' => $ga_uacode,
+	// Asset Manifest
 	'use_manifest' => true
 );
 
