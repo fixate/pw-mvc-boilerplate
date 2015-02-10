@@ -35,12 +35,13 @@ class View implements IView
   {
 		if ($use_min) {
 			$ext = f8\Paths::get_extension($path);
+      $is_production = Environment::is_production();
 			// Only css and js
 			if ($ext == 'js' || $ext == 'css') {
 				$is_min = f8\Strings::ends_with($path, ".min.${ext}") !== false;
 
 				// If in production change file to use .min extension
-				if (Environment::is_production() && !$is_min && $use_min) {
+				if ($is_production && !$is_min && $use_min) {
 					$path = f8\Paths::change_extension($path, "min.{$ext}");
 				}
 			}
