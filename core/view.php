@@ -48,8 +48,10 @@ class View implements IView
 		}
 
 		// If in production and MD5# manifest get proper file name
-		if ($use_md5hash && $is_production) {
+		if ($is_production) {
+			if (array.length > 0 && Environment::) {
 
+			}
 		}
 
 		$templates = $this->controller->config->urls->templates;
