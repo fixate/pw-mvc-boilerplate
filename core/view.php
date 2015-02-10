@@ -49,8 +49,10 @@ class View implements IView
 
 		// If in production and MD5# manifest get proper file name
 		if ($is_production) {
-			if (array.length > 0 && Environment::) {
-
+			var_dump(f8\Manifest::has_items());
+			var_dump(Environment::use_manifest());
+			if (f8\Manifest::has_items() && Environment::use_manifest()) {
+				var_dump(f8\Manifest::manifest);
 			}
 		}
 
