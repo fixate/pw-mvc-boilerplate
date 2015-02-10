@@ -153,8 +153,7 @@ class Paths {
 		return strtolower(pathinfo($path, PATHINFO_EXTENSION));
   }
 
-	static function join()
-  {
+	static function join() {
     $_args = func_get_args();
     $path = rtrim($_args[0], '/');
     for ($i = 1; $i < count($_args);$i++)
