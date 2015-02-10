@@ -4,30 +4,35 @@ use fixate as f8;
 
 class ViewException extends Exception {}
 
-class View implements IView {
+class View implements IView 
+{
 	protected static $helpers = array();
 	protected $layout = '';
 	protected $data = array();
 	protected $base_path = null;
 	public $controller = null;
 
-	function __construct(IController &$controller, $name = '') {
+	function __construct(IController &$controller, $name = '') 
+  {
 		$this->controller = $controller;
 		$this->name = $name;
 	}
 
 	// Spit out the page
-	function spit() {
+	function spit() 
+  {
     if (!empty($this->name)) {
       echo $this->render_file($this->name);
     }
 	}
 
-	function partial($name, $data = array()) {
+	function partial($name, $data = array()) 
+  {
 		return $this->render_file(f8\Paths::join('partials', $name), $data);
 	}
 
-	function assets($path, $use_min = true) {
+	function assets($path, $use_min = true) 
+  {
 		if ($use_min) {
 			$ext = f8\Paths::get_extension($path);
 			// Only css and js
@@ -173,3 +178,5 @@ class View implements IView {
 		self::$helpers[$func_name] = $func;
 	}
 }
+
+?>
