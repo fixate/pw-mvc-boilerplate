@@ -137,11 +137,14 @@ class Files
     return $result;
   }
 
-  static function parse_json_array ($filename) {
+  static function parse_json_array ($filename)
+  {
+  	$array = [];
   	if (file_exists($filename)) {
   		$array = json_decode(file_get_contents($filename), true)
   	}
-  	return
+
+  	return $array;
   }
 }
 
