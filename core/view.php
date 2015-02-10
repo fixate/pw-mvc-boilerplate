@@ -4,7 +4,7 @@ use fixate as f8;
 
 class ViewException extends Exception {}
 
-class View implements IView 
+class View implements IView
 {
 	protected static $helpers = array();
 	protected $layout = '';
@@ -12,30 +12,30 @@ class View implements IView
 	protected $base_path = null;
 	public $controller = null;
 
-	function __construct(IController &$controller, $name = '') 
-  {
+	function __construct(IController &$controller, $name = '')
+	{
 		$this->controller = $controller;
 		$this->name = $name;
 	}
 
 	// Spit out the page
-	function spit() 
-  {
+	function spit()
+	{
     if (!empty($this->name)) {
       echo $this->render_file($this->name);
     }
 	}
 
-	function partial($name, $data = array()) 
-  {
+	function partial($name, $data = array())
+	{
 		return $this->render_file(f8\Paths::join('partials', $name), $data);
 	}
 
-	function assets($path, $use_min = true) 
-  {
+	function assets($path, $use_min = true)
+	{
 		if ($use_min) {
 			$ext = f8\Paths::get_extension($path);
-      $is_production = Environment::is_production();
+			$is_production = Environment::is_production();
 			// Only css and js
 			if ($ext == 'js' || $ext == 'css') {
 				$is_min = f8\Strings::ends_with($path, ".min.${ext}") !== false;
@@ -47,10 +47,10 @@ class View implements IView
 			}
 		}
 
-    // If in production and MD5# manifest get proper file name
-    if ($use_md5hash && $is_production) {
-      
-    }
+		// If in production and MD5# manifest get proper file name
+		if ($use_md5hash && $is_production) {
+
+		}
 
 		$templates = $this->controller->config->urls->templates;
 		return f8\Paths::join($templates, 'assets', $path);
@@ -113,7 +113,7 @@ class View implements IView
 		}
 
 		$_path = $this->resolve_view_path($file);
-		
+
 		$view = $this;
 
 		$config = $this->controller->config;
