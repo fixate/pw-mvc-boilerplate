@@ -193,4 +193,26 @@ class Paths
 	}
 }
 
+class Manifest
+{
+	function __construct ()
+	{
+		$this->manifest = f8\Files::parse_json_array("manifest.json");
+	}
+
+	function has_items ()
+	{
+		return $this->manifest->length > 0;
+	}
+
+	function __get($name)
+	{
+		if (array_key_exists($name, $this->manifest)) {
+			return $this->manifest[$name];
+		}
+
+		return null;
+	}
+}
+
 ?>
