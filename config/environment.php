@@ -1,4 +1,6 @@
 <?php
+use fixate as f8;
+
 /*------------------------------------*\
 	USER ENVIRONMENT
 \*------------------------------------*/
@@ -8,6 +10,8 @@ $environment = array(
 	// 'env' => 'production',
 
 	// Google analytics
-	'ga_uacode' => $ga_uacode
+	'ga_uacode' => $ga_uacode,
+	'use_manifest' => true
 );
 
+?>
