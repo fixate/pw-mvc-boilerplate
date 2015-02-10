@@ -141,7 +141,7 @@ class Files
   {
   	$array = [];
   	if (file_exists($filename)) {
-  		$array = json_decode(file_get_contents($filename), true)
+  		$array = json_decode(file_get_contents($filename), true);
   	}
 
   	return $array;
@@ -205,14 +205,14 @@ class Manifest
 		return $this->manifest->length > 0;
 	}
 
-	function __get($name)
-	{
-		if (array_key_exists($name, $this->manifest)) {
-			return $this->manifest[$name];
-		}
+	// function __get($name)
+	// {
+	// 	if (array_key_exists($name, $this->manifest)) {
+	// 		return $this->manifest[$name];
+	// 	}
 
-		return null;
-	}
+	// 	return null;
+	// }
 }
 
 ?>
