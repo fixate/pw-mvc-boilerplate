@@ -47,6 +47,11 @@ class View implements IView
 			}
 		}
 
+    // If in production and MD5# manifest get proper file name
+    if ($use_md5hash && $is_production) {
+      
+    }
+
 		$templates = $this->controller->config->urls->templates;
 		return f8\Paths::join($templates, 'assets', $path);
 	}
