@@ -33,9 +33,17 @@ class View implements IView
 
 	function assets($path, $use_min = true)
 	{
+		$is_production = Environment::is_production();
+
+		// If in production and MD5# manifest get proper file name
+		if ($is_production) {
+			if (Environment::use_manifest()) {
+				$path = Manifest::md5_hash_path($path);
+			}
+		}
+
 		if ($use_min) {
 			$ext = f8\Paths::get_extension($path);
-			$is_production = Environment::is_production();
 			// Only css and js
 			if ($ext == 'js' || $ext == 'css') {
 				$is_min = f8\Strings::ends_with($path, ".min.${ext}") !== false;
@@ -47,14 +55,6 @@ class View implements IView
 			}
 		}
 
-		// If in production and MD5# manifest get proper file name
-		if ($is_production) {
-			var_dump(f8\Manifest::has_items());
-			var_dump(Environment::use_manifest());
-			if (f8\Manifest::has_items() && Environment::use_manifest()) {
-				var_dump(f8\Manifest::manifest);
-			}
-		}
 
 		$templates = $this->controller->config->urls->templates;
 		return f8\Paths::join($templates, 'assets', $path);
@@ -189,4 +189,3 @@ class View implements IView
 	}
 }
 
-?>
