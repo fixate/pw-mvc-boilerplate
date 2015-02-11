@@ -137,14 +137,9 @@ class Files
     return $result;
   }
 
-  static function parse_json_array ($filename)
+  static function parse_json_file($filename)
   {
-  	$array = [];
-  	if (file_exists($filename)) {
-  		$array = json_decode(file_get_contents($filename), true);
-  	}
-
-  	return $array;
+  	return json_decode(file_get_contents($filename), true);
   }
 }
 
@@ -192,42 +187,3 @@ class Paths
 		return self::get_filename_without_extension($path, true).'.'.trim($ext, '.');
 	}
 }
-
-class Manifest
-{
-	private $manifest;
-
-	private static $instances = array();
-	/**
-	 * Call singleton
-	 *
-	 * @return Manifest
-	 */
-	public static function get_instance()
-	{
-		$class = get_called_class();
-		if ($instances[$class] === null) {
-			self::$instances[$class] = new static;
-		}
-
-		return self::$instances[$class];
-	}
-
-	/**
-	 * Private uncallable constructor
-	 */
-	protected function __construct () {}
-	protected function __clone () {}
-	public function __wakeup()
-	{
-		throw new Exception("Cannot unserialize singleton");
-	}
-
-	function __get ()
-	{}
-
-	function __set ()
-	{}
-}
-
-?>
