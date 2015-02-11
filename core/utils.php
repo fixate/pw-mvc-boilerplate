@@ -4,12 +4,12 @@ namespace fixate;
 class Strings
 {
 	static function camel_case($str, $first_capital = true)
-  {
+	{
 		if ($first_capital) {
-      $str[0] = strtoupper($str[0]);
-    }
-    $func = create_function('$c', 'return strtoupper($c[1]);');
-    return preg_replace_callback('/_([a-z])/', $func, $str);
+			$str[0] = strtoupper($str[0]);
+		}
+		$func = create_function('$c', 'return strtoupper($c[1]);');
+	return preg_replace_callback('/_([a-z])/', $func, $str);
 	}
 
 	static function snake_case($str)
