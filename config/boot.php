@@ -35,7 +35,11 @@ unset($environment);
 /*------------------------------------*\
 	LOAD MANIFEST
 \*------------------------------------*/
-$_GLOBALS['manifest'] = $manifest = Manifest::get_instance()
+if ($env::is_production()) {
+	$_GLOBALS['manifest'] = $manifest = Manifest::get_instance();
+	$manifest->initialize(TEMPLATE_DIR.'/manifest.json');
+}
+
 
 
 
