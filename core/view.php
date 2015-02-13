@@ -34,11 +34,10 @@ class View implements IView
 	function assets($path, $use_min = true)
 	{
 		$is_production = Environment::is_production();
-
-		// If in production and MD5# manifest get proper file name
 		if ($is_production) {
-			$path = '/public/'.$path;
+			// If use MD5# manifest in use get proper path
 			if (Environment::use_manifest()) {
+				$path = '/public/'.$path;
 				$path = Manifest::prod_path($path);
 			}
 		}
