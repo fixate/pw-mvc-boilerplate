@@ -2530,8 +2530,8 @@ input:checked + label > .checkbox_-custom:before {
 \*------------------------------------*/
 @font-face {
   font-family: "base-icon-font";
-  src: url("fnt/base-icon-font/base-icon-font.eot");
-  src: url("fnt/base-icon-font/base-icon-font.eot?#iefix") format("embedded-opentype"), url("fnt/base-icon-font/base-icon-font.woff") format("woff"), url("fnt/base-icon-font/base-icon-font.ttf") format("truetype"), url("fnt/base-icon-font/base-icon-font.svg#base-icon-font") format("svg");
+  src: url("../fnt/base-icon-font/base-icon-font.eot");
+  src: url("../fnt/base-icon-font/base-icon-font.eot?#iefix") format("embedded-opentype"), url("../fnt/base-icon-font/base-icon-font.woff") format("woff"), url("../fnt/base-icon-font/base-icon-font.ttf") format("truetype"), url("../fnt/base-icon-font/base-icon-font.svg#base-icon-font") format("svg");
   font-weight: normal;
   font-style: normal; }
 
