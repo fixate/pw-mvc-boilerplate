@@ -37,8 +37,9 @@ class View implements IView
 
 		// If in production and MD5# manifest get proper file name
 		if ($is_production) {
+			$path = '/public/'.$path;
 			if (Environment::use_manifest()) {
-				$path = Manifest::md5_hash_path($path);
+				$path = Manifest::prod_path($path);
 			}
 		}
 
