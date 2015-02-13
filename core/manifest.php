@@ -39,7 +39,7 @@ class Manifest
 		return $instance;
 	}
 
-	public static function md5_hash_path ($path) {
+	public static function prod_path ($path) {
 		$filename = f8\Paths::get_filename($path);
 		$__rev = self::get_instance()->get('manifest');
 		$path = substr($path, 0, strlen($path) - strlen($filename)).$__rev[$filename];
