@@ -1,18 +1,18 @@
 <?php
 namespace fixate;
 
-class Strings 
+class Strings
 {
-	static function camel_case($str, $first_capital = true) 
-  {
+	static function camel_case($str, $first_capital = true)
+	{
 		if ($first_capital) {
-      $str[0] = strtoupper($str[0]);
-    }
-    $func = create_function('$c', 'return strtoupper($c[1]);');
-    return preg_replace_callback('/_([a-z])/', $func, $str);
+			$str[0] = strtoupper($str[0]);
+		}
+		$func = create_function('$c', 'return strtoupper($c[1]);');
+	return preg_replace_callback('/_([a-z])/', $func, $str);
 	}
 
-	static function snake_case($str) 
+	static function snake_case($str)
   {
 		preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $str, $matches);
 		$ret = $matches[0];
@@ -22,7 +22,7 @@ class Strings
 		return implode('_', $ret);
 	}
 
-	static function rchomp($str, $chomp) 
+	static function rchomp($str, $chomp)
   {
 		if (!self::ends_with($str, $chomp)) {
 			return $str;
@@ -78,7 +78,7 @@ class Strings
     return strpos($haystack, $needle) === 0;
   }
 
-	static function slugify($str, $unicode_repl = true) 
+	static function slugify($str, $unicode_repl = true)
   {
 		$str = str_replace('\'', '', trim($str));
 		if ($unicode_repl) {
@@ -103,9 +103,9 @@ class Strings
 	}
 }
 
-class Php 
+class Php
 {
-	static function require_all($path, $ext = 'php') 
+	static function require_all($path, $ext = 'php')
   {
 		$requires = Files::ls($path, $ext);
 		foreach ($requires as $f) {
@@ -114,7 +114,7 @@ class Php
 	}
 }
 
-class Files 
+class Files
 {
 	static function ls($path, $extension = null)
   {
@@ -136,9 +136,14 @@ class Files
 
     return $result;
   }
+
+  static function parse_json_file($filename)
+  {
+  	return json_decode(file_get_contents($filename), true);
+  }
 }
 
-class Paths 
+class Paths
 {
 	static function get_filename($path)
   {
@@ -172,15 +177,13 @@ class Paths
     return $path;
   }
 
-	static function resolve($path) 
+	static function resolve($path)
   {
 		return realpath($path);
 	}
 
-	static function change_extension($path, $ext) 
+	static function change_extension($path, $ext)
   {
 		return self::get_filename_without_extension($path, true).'.'.trim($ext, '.');
 	}
 }
-
-?>
