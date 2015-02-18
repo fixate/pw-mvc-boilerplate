@@ -33,6 +33,18 @@ unset($environment);
 
 
 /*------------------------------------*\
+	LOAD MANIFEST
+\*------------------------------------*/
+if ($env::is_production()) {
+	$_GLOBALS['manifest'] = $manifest = Manifest::get_instance();
+	$manifest->initialize(TEMPLATE_DIR.'/assets/rev-manifest.json');
+}
+
+
+
+
+
+/*------------------------------------*\
   INTIALIZERS
 \*------------------------------------*/
 /**

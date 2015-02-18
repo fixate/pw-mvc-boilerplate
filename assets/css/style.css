@@ -60,7 +60,6 @@ might want to share.
   $font-base-path:      "fnt/[path/to/font]";
   $font-base-filename:  "[font-file-name-without-extension]";
   $font-base-stack:     $font-base, Arial, sans-serif;
-
   $font-base-filename-i:   "[italic-font-file-name-without-extension]"; // italic
   $font-base-filename-b:   "[bold-font-file-name-without-extension]"; // bold
   $font-base-filename-bi:  "[bold-italic-font-file-name-without-extension]"; // bold-italic
@@ -366,7 +365,6 @@ might want to share.
  * syntax not rendering a gradient at all.
  *
  * https: *developer.mozilla.org/en-US/docs/CSS/Tutorials/Using_CSS_gradients
-
  * Example:
    @include gradient(background,
  	  									linear-gradient(180deg, transparent, hsla(0, 0%, 100%, .1) 10px 10px)
@@ -390,7 +388,6 @@ might want to share.
    .foo{
      @include vendor(animation, shrink 3s);
    }
-
    @include keyframe(shrink){
      from{
        font-size:5em;
@@ -1650,27 +1647,21 @@ input[type="checkbox"] {
  * Fluid and nestable grid system, e.g.:
  *
    <div class="grid">
-
        <div class="grid__item  one-third">
            <p>One third grid</p>
        </div><!--
-
     --><div class="grid__item  two-thirds">
            <p>Two thirds grid</p>
        </div><!--
-
     --><div class="grid__item  one-half">
            <p>One half grid</p>
        </div><!--
-
     --><div class="grid__item  one-quarter">
            <p>One quarter grid</p>
        </div><!--
-
     --><div class="grid__item  one-quarter">
            <p>One quarter grid</p>
        </div>
-
    </div>
  *
  * Demo: jsfiddle.net/inuitcss/CLYUC
@@ -2539,8 +2530,8 @@ input:checked + label > .checkbox_-custom:before {
 \*------------------------------------*/
 @font-face {
   font-family: "base-icon-font";
-  src: url("fnt/base-icon-font/base-icon-font.eot");
-  src: url("fnt/base-icon-font/base-icon-font.eot?#iefix") format("embedded-opentype"), url("fnt/base-icon-font/base-icon-font.woff") format("woff"), url("fnt/base-icon-font/base-icon-font.ttf") format("truetype"), url("fnt/base-icon-font/base-icon-font.svg#base-icon-font") format("svg");
+  src: url("../fnt/base-icon-font/base-icon-font.eot");
+  src: url("../fnt/base-icon-font/base-icon-font.eot?#iefix") format("embedded-opentype"), url("../fnt/base-icon-font/base-icon-font.woff") format("woff"), url("../fnt/base-icon-font/base-icon-font.ttf") format("truetype"), url("../fnt/base-icon-font/base-icon-font.svg#base-icon-font") format("svg");
   font-weight: normal;
   font-style: normal; }
 
