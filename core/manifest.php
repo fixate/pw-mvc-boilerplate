@@ -71,7 +71,7 @@ class Manifest
 
 		return null;
 	}
-	private function __set ($name, $value)
+	function __set ($name, $value)
 	{
 		$this->rev[$name] = $value;
 	}
