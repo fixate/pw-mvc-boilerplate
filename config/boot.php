@@ -45,7 +45,7 @@ if ($env::is_production()) {
 
 
 /*------------------------------------*\
-  INTIALIZERS
+	INTIALIZERS
 \*------------------------------------*/
 /**
  * Put initialization code for your various modules

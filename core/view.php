@@ -21,9 +21,9 @@ class View implements IView
 	// Spit out the page
 	function spit()
 	{
-    if (!empty($this->name)) {
-      echo $this->render_file($this->name);
-    }
+		if (!empty($this->name)) {
+			echo $this->render_file($this->name);
+		}
 	}
 
 	function partial($name, $data = array())
@@ -134,7 +134,7 @@ class View implements IView
 		$users = $this->controller->users;
 
 		$env = Environment::get_instance();
-    extract(array_merge($this->data, $_data));
+		extract(array_merge($this->data, $_data));
 
 		ob_start();
 		try {
