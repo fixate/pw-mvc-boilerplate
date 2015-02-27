@@ -19,6 +19,7 @@ class ApplicationController extends Controller {
 	use Twitter;
 	use VideoEmbed;
 	use Utils;
+	use AssetEmbed;
 
 	function initialize() {
 		Javascript::__jsInitialize($this);
@@ -29,6 +30,7 @@ class ApplicationController extends Controller {
 		Twitter::__twInitialize($this);
 		VideoEmbed::__vidembedInitialize($this);
 		Utils::__utilsInitialize($this);
+		AssetEmbed::__assetembedInitialize($this);
 
 		$this->js_add_cdn(
 			'//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
