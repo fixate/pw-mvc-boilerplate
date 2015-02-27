@@ -25,7 +25,7 @@ class Application {
 
 	static function init($config, $fields, $input, $page, $pages, $permissions, $roles, $sanitizer, $session, $templates, $user, $users) {
 		$instance = self::instance();
-		
+
 		$instance->config = $config;
 		$instance->fields = $fields;
 		$instance->input = $input;

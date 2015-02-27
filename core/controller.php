@@ -26,7 +26,7 @@ abstract class Controller implements IController {
 	protected $view = null;
 	protected $response = null;
 	protected $request = null;
-  protected static $fallback = null;
+	protected static $fallback = null;
 
 	function __construct(&$config, &$fields, &$input, &$page, &$pages, &$permissions, &$roles, &$sanitizer, &$session, &$templates, &$user, &$users) {
 		$this->config = $config;
@@ -146,7 +146,7 @@ abstract class Controller implements IController {
 		return $settings->$name;
 	}
 
-  function add_view_vars($key, $value = null) {
+	function add_view_vars($key, $value = null) {
 		if (is_array($key)) {
 			$vars = $key;
 		} else {
@@ -161,9 +161,9 @@ abstract class Controller implements IController {
 		return str_replace('-', '_', $template);
 	}
 
-  static function set_fallback($controller) {
-    self::$fallback = $controller;
-  }
+	static function set_fallback($controller) {
+		self::$fallback = $controller;
+	}
 
 	static function dynamic_load($app) {
 		$config = $app->config;

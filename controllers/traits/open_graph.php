@@ -32,7 +32,7 @@ trait OpenGraph {
 			'site_name' => $this->__og_get_sitename(),
 			'type' => $this->__og_opts['object_type'] ? $this->__og_opts['object_type'] : $this->__og_opts['object_type_default'],
 			'title' => $this->__og_get_prop('title'),
-			'url'   => $this->__og_opts['canonical_url'] ? $this->__og_opts['canonical_url'] : $this->page->httpUrl,
+			'url'		=> $this->__og_opts['canonical_url'] ? $this->__og_opts['canonical_url'] : $this->page->httpUrl,
 			'description' => $this->__og_opts['description'] ? $this->_og_opts['description'] : $this->__og_get_prop('description'),
 			'image' => $this->__og_image_meta($image)
 		);

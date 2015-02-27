@@ -13,7 +13,7 @@ class Strings
 	}
 
 	static function snake_case($str)
-  {
+	{
 		preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $str, $matches);
 		$ret = $matches[0];
 		foreach ($ret as &$match) {
@@ -23,7 +23,7 @@ class Strings
 	}
 
 	static function rchomp($str, $chomp)
-  {
+	{
 		if (!self::ends_with($str, $chomp)) {
 			return $str;
 		}
@@ -34,52 +34,52 @@ class Strings
 	}
 
 	static function pad_left($str, $pad_num, $chr = ' ')
-  {
-    $str_diff = $pad_num - strlen($str);
+	{
+		$str_diff = $pad_num - strlen($str);
 
-    if ($str_diff < 0)
-      return $str;
+		if ($str_diff < 0)
+			return $str;
 
-    for ($i = 0; $i < $str_diff; $i++)
-      {
-        $str = $chr . $str;
-      }
+		for ($i = 0; $i < $str_diff; $i++)
+			{
+				$str = $chr . $str;
+			}
 
-    return $str;
-  }
+		return $str;
+	}
 
-  static function pad_right($str, $pad_num, $chr = ' ')
-  {
-    $str_diff = $padnum - strlen($str);
-    if ($str_diff < 0)
-      return $str;
+	static function pad_right($str, $pad_num, $chr = ' ')
+	{
+		$str_diff = $padnum - strlen($str);
+		if ($str_diff < 0)
+			return $str;
 
-    for ($i = 0; $i < $str_diff; $i++)
-      $str = $str . $chr;
+		for ($i = 0; $i < $str_diff; $i++)
+			$str = $str . $chr;
 
-    return $str;
-  }
+		return $str;
+	}
 
-  static function ends_with($haystack, $needle)
-  {
-    return strrpos($haystack, $needle) === strlen($haystack)-strlen($needle);
-  }
+	static function ends_with($haystack, $needle)
+	{
+		return strrpos($haystack, $needle) === strlen($haystack)-strlen($needle);
+	}
 
-  static function starts_with($haystack, $needle)
-  {
-    if (is_array($needle))
-    {
-      foreach ($needle as $i)
-        if (strpos($haystack, $i) === 0)
-          return true;
-      return false;
-    }
+	static function starts_with($haystack, $needle)
+	{
+		if (is_array($needle))
+		{
+			foreach ($needle as $i)
+				if (strpos($haystack, $i) === 0)
+					return true;
+			return false;
+		}
 
-    return strpos($haystack, $needle) === 0;
-  }
+		return strpos($haystack, $needle) === 0;
+	}
 
 	static function slugify($str, $unicode_repl = true)
-  {
+	{
 		$str = str_replace('\'', '', trim($str));
 		if ($unicode_repl) {
 			$str = strtr($str, array(
@@ -106,7 +106,7 @@ class Strings
 class Php
 {
 	static function require_all($path, $ext = 'php')
-  {
+	{
 		$requires = Files::ls($path, $ext);
 		foreach ($requires as $f) {
 			require Paths::join($path, $f);
@@ -117,73 +117,73 @@ class Php
 class Files
 {
 	static function ls($path, $extension = null)
-  {
-    $result = array();
-    if ($handle = opendir($path))
-      while (($file = readdir($handle)) !== false)
-      {
-        if (is_dir("$path/$file"))
-          continue;
+	{
+		$result = array();
+		if ($handle = opendir($path))
+			while (($file = readdir($handle)) !== false)
+			{
+				if (is_dir("$path/$file"))
+					continue;
 
-        if ($extension && Paths::get_extension($file) != $extension)
-          continue;
+				if ($extension && Paths::get_extension($file) != $extension)
+					continue;
 
-        $result[] = $file;
-      }
+				$result[] = $file;
+			}
 
-    if (isset($handle))
-      closedir($handle);
+		if (isset($handle))
+			closedir($handle);
 
-    return $result;
-  }
+		return $result;
+	}
 
-  static function parse_json_file($filename)
-  {
-  	return json_decode(file_get_contents($filename), true);
-  }
+	static function parse_json_file($filename)
+	{
+		return json_decode(file_get_contents($filename), true);
+	}
 }
 
 class Paths
 {
 	static function get_filename($path)
-  {
-    $arrStr = explode("/", $path);
-    $arrStr = array_reverse($arrStr);
+	{
+		$arrStr = explode("/", $path);
+		$arrStr = array_reverse($arrStr);
 
-    return $arrStr[0];
-  }
+		return $arrStr[0];
+	}
 
-  static function get_filename_without_extension($path, $preserve_path = false)
-  {
+	static function get_filename_without_extension($path, $preserve_path = false)
+	{
 		if ($preserve_path) {
 			return self::join(pathinfo($path, PATHINFO_DIRNAME), pathinfo($path, PATHINFO_FILENAME));
 		}
 
 		return pathinfo($path, PATHINFO_FILENAME);
-  }
+	}
 
-  static function get_extension($path)
-  {
+	static function get_extension($path)
+	{
 		return strtolower(pathinfo($path, PATHINFO_EXTENSION));
-  }
+	}
 
 	static function join()
-  {
-    $_args = func_get_args();
-    $path = rtrim($_args[0], '/');
-    for ($i = 1; $i < count($_args);$i++)
-      $path = "$path/".trim($_args[$i], '/');
+	{
+		$_args = func_get_args();
+		$path = rtrim($_args[0], '/');
+		for ($i = 1; $i < count($_args);$i++)
+			$path = "$path/".trim($_args[$i], '/');
 
-    return $path;
-  }
+		return $path;
+	}
 
 	static function resolve($path)
-  {
+	{
 		return realpath($path);
 	}
 
 	static function change_extension($path, $ext)
-  {
+	{
 		return self::get_filename_without_extension($path, true).'.'.trim($ext, '.');
 	}
 }

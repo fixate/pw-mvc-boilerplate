@@ -81,11 +81,11 @@ class HttpRequest {
 			return $_GET;
 		case 'PUT':
 		case 'DELETE':
-      $vars = array();
-      parse_str(file_get_contents("php://input"), $vars);
-      return $vars;
-    case 'POST':
-    case 'PATCH':
+			$vars = array();
+			parse_str(file_get_contents("php://input"), $vars);
+			return $vars;
+		case 'POST':
+		case 'PATCH':
 		case 'LINK':
 		case 'UNLINK':
 			return array_merge($_GET, $_POST);

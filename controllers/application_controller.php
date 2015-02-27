@@ -37,9 +37,9 @@ class ApplicationController extends Controller {
 		);
 	}
 
-  // Fallback index
-  function index() {
+	// Fallback index
+	function index() {
 		return $this->render($this->config->page->template->name);
-  }
+	}
 }
 
