@@ -13,11 +13,11 @@ abstract class ApiController implements IController {
 	}
 
 	function call() {
-    $req = $this->request = f8\HttpRequest::instance();
-    $this->response = new f8\HttpResponse();
-    $method = strtolower($req->method());
-    $ret = null;
-    
+		$req = $this->request = f8\HttpRequest::instance();
+		$this->response = new f8\HttpResponse();
+		$method = strtolower($req->method());
+		$ret = null;
+
 		try {
 			if (method_exists($this, $method)) {
 				$ret = $this->$method();
@@ -25,13 +25,13 @@ abstract class ApiController implements IController {
 				// Just die on redirect
 				if ($this->response->is_redirect()) { die(); }
 
-        // Body set, just return the response
+				// Body set, just return the response
 				$body = $this->response->body();
-        if (!empty($body)) {
-          return $this->response;
-        }
+				if (!empty($body)) {
+					return $this->response;
+				}
 
-        // Set created status on sucessfull post
+				// Set created status on sucessfull post
 				if ($method == 'post' && $ret && $this->response->status() == 0) {
 					$this->response->set_status(201); // CREATED
 				}
@@ -53,7 +53,7 @@ abstract class ApiController implements IController {
 			return $this->response;
 		}
 
-    // Set NO CONTENT on blank responses
+		// Set NO CONTENT on blank responses
 		$body = $this->response->body();
 		if (!$ret && empty($body)) {
 			if ($this->response->status() == 0){
@@ -62,20 +62,20 @@ abstract class ApiController implements IController {
 			return $this->response;
 		}
 
-    if ($ret) {
-      // Serialize to JSON
-      if (is_array($ret) || is_object($ret)) {
-        $this->response->set_header('Content-Type', 'application/json');
-        $this->response->set_body(json_encode($ret));
-      } else if (is_string($ret)) {
-        if (f8\Strings::starts_with(trim($ret), '<') && f8\Strings::ends_with(trim($ret), '>')) {
-          $this->response->set_header('Content-Type', 'text/html');
-        } else {
-          $this->response->set_header('Content-Type', 'text/plain');
-        }
-        $this->response->set_body($ret);
-      }
-    }
+		if ($ret) {
+			// Serialize to JSON
+			if (is_array($ret) || is_object($ret)) {
+				$this->response->set_header('Content-Type', 'application/json');
+				$this->response->set_body(json_encode($ret));
+			} else if (is_string($ret)) {
+				if (f8\Strings::starts_with(trim($ret), '<') && f8\Strings::ends_with(trim($ret), '>')) {
+					$this->response->set_header('Content-Type', 'text/html');
+				} else {
+					$this->response->set_header('Content-Type', 'text/plain');
+				}
+				$this->response->set_body($ret);
+			}
+		}
 
 		return $this->response;
 	}
@@ -102,10 +102,10 @@ abstract class ApiController implements IController {
 		return $settings->$name;
 	}
 
-  // Get rendered partial
-  protected function partial($name, $data = array()) {
-    return $this->get_view()->partial($name, $data);
-  }
+	// Get rendered partial
+	protected function partial($name, $data = array()) {
+		return $this->get_view()->partial($name, $data);
+	}
 
 	protected function get_view() {
 		if (isset($this->view)) {
@@ -141,7 +141,7 @@ abstract class ApiController implements IController {
 		if (empty($fields)) {
 			$fields = array(
 				'id', 'parent_id', 'templates_id', 'name', 'status', 'sort',
-			 	'sortfield', 'numChildren', 'template', 'parent', 'data'
+				'sortfield', 'numChildren', 'template', 'parent', 'data'
 			);
 		}
 
@@ -160,7 +160,7 @@ abstract class ApiController implements IController {
 				break;
 			default:
 				$data[$f] = $page->$f;
-		 	}
+			}
 		}
 
 		if ($has_data_field) {

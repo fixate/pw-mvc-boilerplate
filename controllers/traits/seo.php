@@ -16,8 +16,8 @@ trait SEO {
 
 	function get_seo_vars() {
 		return array(
-			'seo_title'   => $this->get_seo_title(),
-			'seo_desc'    => $this->get_seo_desc(),
+			'seo_title'		=> $this->get_seo_title(),
+			'seo_desc'		=> $this->get_seo_desc(),
 			'seo_noindex' => $this->get_seo_noindex(),
 		);
 	}
@@ -56,7 +56,7 @@ trait SEO {
 			$seo_title = $page->title;
 
 			if (method_exists($this, 'setting') && $this->setting('site_name')) {
-				return $seo_title . ' ' . $this->get_seo_separator()  . ' ' . $this->setting('site_name');
+				return $seo_title . ' ' . $this->get_seo_separator()	. ' ' . $this->setting('site_name');
 			}
 		}
 
