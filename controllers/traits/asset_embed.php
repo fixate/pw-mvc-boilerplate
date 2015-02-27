@@ -4,7 +4,7 @@ use fixate as f8;
 
 trait AssetEmbed {
 	static function __assetembedInitialize($obj) {
-		$obj->helper('svg_embed');
+		$obj->helper('embed_inline_svg');
 	}
 	/**
 	 * Embed assets.
