@@ -42,7 +42,11 @@ class Manifest
 	public static function prod_path ($path) {
 		$filename = f8\Paths::get_filename($path);
 		$__rev = self::get_instance()->get('manifest');
-		$path = substr($path, 0, strlen($path) - strlen($filename)).$__rev[$filename];
+
+		if (array_key_exists($filename, $__rev)) {
+			$path = '/public/'.$path;
+			$path = substr($path, 0, strlen($path) - strlen($filename)).$__rev[$filename];
+		}
 		return $path;
 	}
 
