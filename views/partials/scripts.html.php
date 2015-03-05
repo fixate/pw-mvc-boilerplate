@@ -9,6 +9,4 @@
 $this->js_add_script('main');
 ?>
 
-<?= $this->partial("google_analytics") ?>
-
 <?= $this->render_scripts() ?>
