@@ -37,7 +37,6 @@ class View implements IView
 		if ($is_production) {
 			// If use MD5# manifest in use get proper path
 			if (Environment::use_manifest()) {
-				$path = '/public/'.$path;
 				$path = Manifest::prod_path($path);
 			}
 		}
