@@ -556,7 +556,8 @@ FileETag None
 # | Block spammy requests
 # ------------------------------------------------------------------------------
 
-RewriteCond %{HTTP_REFERER} ([^.]+\.)*semalt\.com [NC]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*semalt\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*buttons-for-website\.com [NC]
 RewriteRule .* - [F]
 
 

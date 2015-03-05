@@ -51,7 +51,7 @@ class Manifest
 	}
 
 	// Support getting Manifest singleton with static method calls
-  static function __callStatic($method, $args) {
+	static function __callStatic($method, $args) {
 		if (method_exists(__CLASS__, $method)) {
 			return call_user_func_array(array(self, $method), $args);
 		}
@@ -68,7 +68,7 @@ class Manifest
 	/**
 	 *	Makes valls to static variables
 	 */
-  function __get($name) {
+	function __get($name) {
 		if (array_key_exists($name, $this->rev)) {
 			return $this->rev[$name];
 		}
