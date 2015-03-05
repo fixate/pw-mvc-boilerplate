@@ -11,7 +11,7 @@
 ?>
 <?php if ($env->is_production) : ?>
 	<?php if ($env->ga_wmt_meta !== false) : ?>
-	<meta name="google-site-verification" content="<?= $env->ga_wmt_meta ?>">
+		<meta name="google-site-verification" content="<?= $env->ga_wmt_meta ?>">
 	<?php endif ?>
 
 	<?php if ($env->ga_uacode !== false) : ?>
