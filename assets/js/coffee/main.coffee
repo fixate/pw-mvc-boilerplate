@@ -62,9 +62,8 @@ $.fn.toggler = (options = {}) ->
 
         setOn($el, $target.hasClass(options.activeClass))
 
-    $el.parent().on 'click touch', $el, (e) ->
+    $el.on 'click touch', $el, (e) ->
       e.preventDefault()
-      e.stopPropagation()
       togglePress($el)
       return
 
@@ -79,7 +78,7 @@ $.fn.toggler = (options = {}) ->
       $(this).css('cursor', 'pointer')
 
     $(self.document).on 'click touch', $el, (e) ->
-      if $el.data('click-off')  == 'on' && isWideEnough($el) && !$(e.target).hasClass($el.data('click-off-exception'))
+      if $(e.target)[0] != $el[0] && $el.data('click-off')  == 'on' && isWideEnough($el) && !$(e.target).hasClass($el.data('click-off-exception'))
         setShow($el, false)
 
       return
