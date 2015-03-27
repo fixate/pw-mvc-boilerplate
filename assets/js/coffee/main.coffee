@@ -88,7 +88,7 @@ $.fn.toggler = (options = {}) ->
 
 
 $('.js-menu-toggle').toggler
-	activeClass: 'is-open-nav',
+	activeClass: 'is-open-nav'
 
 
 
