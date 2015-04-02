@@ -89,9 +89,7 @@ trait SEO {
 	}
 
 	private function get_seo_separator() {
-		$page =& $this->page;
-
-		if (!($seo_deparator = $page->seo_separator)) {
+		if (!($seo_separator = $this->setting('seo_separator'))) {
 			$seo_separator = '|';
 		}
 
