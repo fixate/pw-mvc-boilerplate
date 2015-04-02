@@ -54,10 +54,10 @@ trait SEO {
 
 		if (!($seo_title = $page->seo_title)) {
 			$seo_title = $page->title;
+		}
 
-			if (method_exists($this, 'setting') && $this->setting('site_name')) {
-				return $seo_title . ' ' . $this->get_seo_separator()	. ' ' . $this->setting('site_name');
-			}
+		if (method_exists($this, 'setting') && $this->setting('site_name')) {
+			$seo_title .= ' ' . $this->get_seo_separator()	. ' ' . $this->setting('site_name');
 		}
 
 		return $seo_title;
@@ -89,9 +89,7 @@ trait SEO {
 	}
 
 	private function get_seo_separator() {
-		$page =& $this->page;
-
-		if (!($seo_deparator = $page->seo_separator)) {
+		if (!($seo_separator = $this->setting('seo_separator'))) {
 			$seo_separator = '|';
 		}
 
