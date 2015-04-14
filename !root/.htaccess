@@ -555,8 +555,8 @@ FileETag None
 # ------------------------------------------------------------------------------
 # | Block spammy requests
 # ------------------------------------------------------------------------------
-
 RewriteCond %{HTTP_REFERER} ([^.]+\.)*aliexpress\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*best-seo-offer\.com [NC,OR]
 RewriteCond %{HTTP_REFERER} ([^.]+\.)*best-seo-solution\.com [NC,OR]
 RewriteCond %{HTTP_REFERER} ([^.]+\.)*buttons-for-website\.com [NC,OR]
 RewriteCond %{HTTP_REFERER} ([^.]+\.)*darodar\.com [NC,OR]
