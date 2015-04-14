@@ -555,9 +555,19 @@ FileETag None
 # ------------------------------------------------------------------------------
 # | Block spammy requests
 # ------------------------------------------------------------------------------
-
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*aliexpress\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*best-seo-offer\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*best-seo-solution\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*buttons-for-website\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*darodar\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*get-free-traffic-now\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*googlsucks\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*humanorightswatch\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*hulfingtonpost\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*iloveitaly\.com [NC,OR]
 RewriteCond %{HTTP_REFERER} ([^.]+\.)*semalt\.com [NC,OR]
-RewriteCond %{HTTP_REFERER} ([^.]+\.)*buttons-for-website\.com [NC]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*simple-share-buttons\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*social-buttons\.com [NC]
 RewriteRule .* - [F]
 
 

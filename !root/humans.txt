@@ -22,7 +22,7 @@
 /* SITE */
   Standards: HTML5, CSS, PHP, Apache
   Components: ProcessWire
-  Software: Illustrator, Vim, Sass, Grunt, SourceJS
+  Software: Illustrator, Vim, Sass, Gulp, KSS
 
 
                                      `.----.`
