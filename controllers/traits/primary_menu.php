@@ -1,8 +1,8 @@
 <?php
 
-trait PrimaryNav {
+trait PrimaryMenu {
 	static function __pnInitialize($obj) {
-		$obj->helper('primary_nav');
+		$obj->helper('primary_menu');
 	}
 
 	/**
@@ -10,7 +10,7 @@ trait PrimaryNav {
 	 * MarkupSimpleNavigation module before rendering a menu:
 	 * https://github.com/somatonic/MarkupSimpleNavigation#markupsimplenavigation-116
 	 */
-	function primary_nav($options = array()) {
+	function primary_menu($options = array()) {
 		$options = array_merge(array(
 			'current_class' => 'menu__item_-current',
 			'parent_class' => 'menu__item_-current-parent',

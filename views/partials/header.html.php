@@ -19,8 +19,8 @@
 		<?php // allow screenreaders to skip navigation ?>
 		<a class="visuallyhidden" href="#main">skip navigation and go to main content</a>
 
-		<?php // get primary nav ?>
-		<?= $this->partial('nav_primary') ?>
+		<?php // get primary menu ?>
+		<?= $this->partial('menu_primary') ?>
 
 		<?php // get search form ?>
 		<?= $this->partial('search_form') ?>
