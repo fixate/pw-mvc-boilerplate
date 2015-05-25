@@ -5,7 +5,7 @@
  * @package Processwire
  */
 
-// add main last so that it renders last
+// add built.js last so that it renders last
 $this->js_add_script('main');
 ?>
 
