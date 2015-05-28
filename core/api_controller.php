@@ -3,14 +3,36 @@
 use fixate as f8;
 
 abstract class ApiController implements IController {
+	public $config = null;
+	public $fields = null;
+	public $input = null;
+	public $page = null;
+	public $pages = null;
+	public $permissions = null;
+	public $roles = null;
+	public $sanitizer = null;
+	public $session = null;
+	public $templates = null;
+	public $user = null;
+	public $users = null;
+
 	protected $request = null;
 	protected $response = null;
 
-	function __construct(&$config, &$page, &$session) {
+	function __construct(&$config, &$fields, &$input, &$page, &$pages, &$permissions, &$roles, &$sanitizer, &$session, &$templates, &$user, &$users) {
 		$this->config = $config;
+		$this->fields = $fields;
+		$this->input = $input;
 		$this->page = $page;
+		$this->pages = $pages;
+		$this->permissions = $permissions;
+		$this->roles = $roles;
+		$this->sanitizer = $sanitizer;
 		$this->session = $session;
-	}
+		$this->templates = $templates;
+		$this->user = $user;
+		$this->users = $users;
+  }
 
 	function call() {
 		$req = $this->request = f8\HttpRequest::instance();
