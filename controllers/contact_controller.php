@@ -29,6 +29,8 @@ class ContactController extends ApplicationController {
 	 *                              successful submission
 	 */
 	function get_contact_form() {
+		$mailAdmin = wireMail();
+		$mailSubmitter = wireMail();
 		$modules = wire('modules');
 		$config = $this->config;
 		$input = $this->input;
@@ -138,11 +140,6 @@ class ContactController extends ApplicationController {
 				$sender_email    = $sanitizer->email($form->get('email')->value);
 				$sender_message  = $sanitizer->textarea($form->get('message')->value);
 
-				$headers  = 'MIME-Version: 1.0' . "\r\n";
-				$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-				$recipient_headers = $headers . 'From: '.$sender_email . "\r\n";
-				$sender_headers = $headers . 'From: '.$recipient_email . "\r\n";
-
 				ob_start();
 				include './views/email/contact-form-recipient.html.php';
 				$recipient_msg = ob_get_clean();
@@ -151,8 +148,21 @@ class ContactController extends ApplicationController {
 				include './views/email/contact-form-sender.html.php';
 				$sender_msg = ob_get_clean();
 
-				mail($recipient_email, "[Company Name] Query", $recipient_msg, $recipient_headers);
-				mail($sender_email, "[Company Name] - Thank you for your message", $sender_msg, $sender_headers);
+				// mail to admin
+				$mailAdmin
+					->to($recipient_email)
+					->from($sender_email)
+					->subject("[Company Name] - Contact Query")
+					->bodyHTML($recipient_msg)
+					->send();
+
+				// mail to submitter
+				$mailSubmitter
+					->to($sender_email)
+					->from($recipient_email)
+					->subject("[Company Name] - Thank you for your message")
+					->bodyHTML($sender_msg)
+					->send();
 
 				$output = $message_success;
 			}

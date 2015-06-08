@@ -24,7 +24,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td><p>We will be in touch at our soonest!</p></td>
+			<td><p>We will be in touch soon!</p></td>
 		</tr>
 		<tr>
 			<td><p>Kind regards, <br>[Company Name]</p></td>

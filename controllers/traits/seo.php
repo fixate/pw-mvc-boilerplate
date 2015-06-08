@@ -72,7 +72,8 @@ trait SEO {
 		 * - http://moz.com/blog/pagination-best-practices-for-seo-user-experience
 		 */
 		if ($page->seo_description && $input->pageNum < 2) {
-			return "<meta name='description' content='{$page->seo_description}'>";
+			$desc = str_replace('"',"'",$page->seo_description);
+			return "<meta name='description' content=\"{$desc}\">";
 		}
 
 		return false;
