@@ -13,6 +13,7 @@
 class ApplicationController extends Controller {
 	use Javascript;
 	use OpenGraph;
+  use Presenters;
 	use PrimaryMenu;
 	use SEO;
 	use Search;
@@ -23,6 +24,7 @@ class ApplicationController extends Controller {
 	function initialize() {
 		Javascript::__jsInitialize($this);
 		OpenGraph::__ogInitialize($this);
+		Presenters::__presenterInitialize($this);
 		PrimaryMenu::__pnInitialize($this);
 		SEO::__seoInitialize($this);
 		Search::__searchInitialize($this);
