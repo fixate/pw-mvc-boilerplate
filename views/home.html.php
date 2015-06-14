@@ -2,7 +2,7 @@
 /**
  * Home template
  *
- * Make sure to set 'Alternate Template' to 'mvc' under Template Settings
+ * Make sure to set 'Alternate Template' to 'mvc' under 'Files' of the template settings
  *
  * @package ProcessWire
  */
