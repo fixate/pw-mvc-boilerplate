@@ -552,23 +552,43 @@ FileETag None
   satisfy all
 </Files>
 
+
+
+
+
 # ------------------------------------------------------------------------------
 # | Block spammy requests
 # ------------------------------------------------------------------------------
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*100dollars-seo\.com [NC,OR]
 RewriteCond %{HTTP_REFERER} ([^.]+\.)*aliexpress\.com [NC,OR]
-RewriteCond %{HTTP_REFERER} ([^.]+\.)*best-seo-offer\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} avg [NC,OR]
 RewriteCond %{HTTP_REFERER} ([^.]+\.)*best-seo-solution\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*best-seo-offer\.com [NC,OR]
 RewriteCond %{HTTP_REFERER} ([^.]+\.)*buttons-for-website\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*buttons-for-your-website\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*buy-cheap-online\.info [NC,OR]
 RewriteCond %{HTTP_REFERER} ([^.]+\.)*darodar\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*event-tracking\.com [NC,OR]
 RewriteCond %{HTTP_REFERER} ([^.]+\.)*get-free-traffic-now\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*free-share-buttons\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*free-social-buttons\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*guardlink\.org [NC,OR]
 RewriteCond %{HTTP_REFERER} ([^.]+\.)*googlsucks\.com [NC,OR]
 RewriteCond %{HTTP_REFERER} ([^.]+\.)*humanorightswatch\.com [NC,OR]
 RewriteCond %{HTTP_REFERER} ([^.]+\.)*hulfingtonpost\.com [NC,OR]
 RewriteCond %{HTTP_REFERER} ([^.]+\.)*iloveitaly\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*ilovevitaly\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*mywebsearch\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*openurls\.com\.cn [NC,OR]
 RewriteCond %{HTTP_REFERER} ([^.]+\.)*semalt\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*semaltmedia\.com [NC,OR]
 RewriteCond %{HTTP_REFERER} ([^.]+\.)*simple-share-buttons\.com [NC,OR]
-RewriteCond %{HTTP_REFERER} ([^.]+\.)*social-buttons\.com [NC]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*social-buttons\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ([^.]+\.)*webmaster-traffic\.com [NC]
 RewriteRule .* - [F]
+
+
+
 
 
 #################################################################################################
