@@ -2,6 +2,8 @@
 
 use fixate as f8;
 
+\fixate\Php::require_all(TEMPLATE_DIR.'/controllers/traits');
+
 abstract class ApiController implements IController {
 	public $config = null;
 	public $fields = null;
