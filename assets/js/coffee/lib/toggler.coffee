@@ -62,9 +62,9 @@ $.fn.toggler = (options = {}) ->
 
         setOn($el, $target.hasClass(options.activeClass))
 
-    $el.parent().on 'click touch', (e) ->
+    $el.on 'click touch', (e) ->
       $el.each (index) ->
-        if (e.target == $el[index] or [].slice.call($el.children()).indexOf(e.target) > -1)
+        if (e.currentTarget == $el[index] or [].slice.call($el.children()).indexOf(e.target) > -1)
           e.preventDefault()
           togglePress($el)
           false
