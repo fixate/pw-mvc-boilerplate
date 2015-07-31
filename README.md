@@ -81,8 +81,9 @@ class HomeController extends Controller {
 	function after() { /* Will run after controller method */ }
 
 	// Will execute for a page named foo-bar or foo_bar instead of index()
+	// The page still has to use the 'home' template.
 	// Also renders views/home.html.php
-	function foo_bar() {
+	function page_foo_bar() {
     $vars = array('defined' => 'only here!');
 		// Optionally pass an array for variables that will be available in the view
 		// e.g. <p>var = <?= $defined ?></p> <!-- only here! -->
@@ -90,7 +91,7 @@ class HomeController extends Controller {
 	}
 
 	// Also a page specific method - demonstrating overriding of view name and layout
-	function bar_baz() {
+	function page_bar_baz() {
 	  	// Override the implicit view and use views/foobar.html.php
 	  	// Also sets the layout to views/layouts/alternative.html.php
 		return $this->render('foobar', array('optional' => 'vars'))->set_layout('alternative');
