@@ -80,7 +80,7 @@ $.fn.toggler = (options = {}) ->
       $(this).css('cursor', 'pointer')
 
     $(self.document).on 'click touch', $el, (e) ->
-      if $el.data('click-off')  == 'on' && isWideEnough($el) && !$(e.target).hasClass($el.data('click-off-exception'))
+      if $el.data('click-off') == 'on' and isWideEnough($el) and ([].indexOf.call($exceptEl, e.target) == -1 and !$exceptEl.find(e.target).length)
         setShow($el, false)
 
       return
