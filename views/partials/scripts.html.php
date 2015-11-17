@@ -6,7 +6,7 @@
  */
 
 // add built.js last so that it renders last
-$this->js_add_script('main');
+$this->js_add_script('built');
 ?>
 
 <?= $this->render_scripts() ?>
