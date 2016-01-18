@@ -1,5 +1,5 @@
 /*--------------------------------------------------*\
-  TOGGLER
+    TOGGLER
 \*--------------------------------------------------*/
 export default $.fn.toggler = function(options) {
   if (options == null) {
