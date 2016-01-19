@@ -9,7 +9,7 @@
  */
 ?>
 <!doctype html>
-<!--[if lteIE 9]>    <html class="no-js ie9 oldie" lang="<?= __('en', 'theme_text_domain'); ?>"> <![endif]-->
+<!--[if lte IE 9]>    <html class="no-js ie9 oldie" lang="<?= __('en', 'theme_text_domain'); ?>"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-js" lang="<?= __('en', 'theme_text_domain'); ?>"> <!--<![endif]-->
 <?= $this->partial('meta') ?>
 <body>
