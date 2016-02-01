@@ -12,13 +12,13 @@ trait PrimaryMenu {
 	 */
 	function primary_menu($options = array()) {
 		$options = array_merge(array(
-			'current_class' => 'menu__item_-current',
-			'parent_class' => 'menu__item_-current-parent',
-			'outer_tpl' => '<ul class="menu_-primary">||</ul>',
+			'current_class' => 'menu__item--current',
+			'parent_class' => 'menu__item--current-parent',
+			'outer_tpl' => '<ul class="menu--primary">||</ul>',
 			'inner_tpl' => '<ul class="menu menu__sub">||</ul>',
 			'selector' => 'template!=rss',
 			'show_root' => true,
-			'list_field_class' => 'menu__item menu__item_-primary',
+			'list_field_class' => 'menu__item menu__item--primary',
 			'item_tpl' => '<a href="{url_nav|url}">{title}</a>',
       'item_current_tpl' => '<a href="{url_nav|url}">{title}</a>'
 		), $options);
