@@ -8,8 +8,8 @@ require_once TEMPLATE_DIR.'core/environment.php';
 require_once TEMPLATE_DIR.'core/manifest.php';
 require_once TEMPLATE_DIR.'core/view.php';
 
-require_once TEMPLATE_DIR.'core/http_request.php';
-require_once TEMPLATE_DIR.'core/http_response.php';
+require_once TEMPLATE_DIR.'core/httprequest.php';
+require_once TEMPLATE_DIR.'core/httpresponse.php';
 
 require_once TEMPLATE_DIR.'core/application.php';
 require_once TEMPLATE_DIR.'core/controller.php';

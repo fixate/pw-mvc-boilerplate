@@ -12,7 +12,7 @@ namespace fixate;
  * http://www.processwire.com
  * http://www.fixate.it
  */
-class http_response
+class HttpResponse
 {
     protected $status = 0;
     protected $body = '';
