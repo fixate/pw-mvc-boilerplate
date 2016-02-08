@@ -4,8 +4,6 @@
  *
  * Information on using the delegate approach can be found here:
  * http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/
- *
- * @package ProcessWire
  */
 ?>
 <!doctype html>

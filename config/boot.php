@@ -1,6 +1,6 @@
 <?php
 /*------------------------------------*\
-	LOAD CORE
+    LOAD CORE
 \*------------------------------------*/
 /**
  * This is the global init file included before all template files.
@@ -9,15 +9,10 @@
  * used to keep logic out of the templates, and to make available all fields defined
  * in the templates.
  */
-
 require_once TEMPLATE_DIR.'core/all.php';
 
-
-
-
-
 /*------------------------------------*\
-	LOAD ENVIRONMENT
+    LOAD ENVIRONMENT
 \*------------------------------------*/
 require TEMPLATE_DIR.'/config/environment.php';
 // Get and initialize the environment
@@ -28,41 +23,29 @@ $env->set($environment);
 // We dont need user environment from here on
 unset($environment);
 
-
-
-
-
 /*------------------------------------*\
-	LOAD MANIFEST
+    LOAD MANIFEST
 \*------------------------------------*/
 if ($env::is_production()) {
-	$_GLOBALS['manifest'] = $manifest = Manifest::get_instance();
-	$manifest->initialize(TEMPLATE_DIR.'/assets/rev-manifest.json');
+    $_GLOBALS['manifest'] = $manifest = Manifest::get_instance();
+    $manifest->initialize(TEMPLATE_DIR.'/assets/rev-manifest.json');
 }
 
-
-
-
-
 /*------------------------------------*\
-	INTIALIZERS
+    INTIALIZERS
 \*------------------------------------*/
-/**
+/*
  * Put initialization code for your various modules
  * in the initializers directory.
  */
-if (is_dir(TEMPLATE_DIR.'initializers/')){
-	\fixate\Php::require_all(TEMPLATE_DIR.'initializers/');
+if (is_dir(TEMPLATE_DIR.'initializers/')) {
+    \fixate\Php::require_all(TEMPLATE_DIR.'initializers/');
 }
 
-
-
-
-
 /*------------------------------------*\
-	CONTROLLERS
+    CONTROLLERS
 \*------------------------------------*/
-/**
+/*
  * Site-wide controllers which hold logic, and helpers for access to fields defined
  * in templates.
  *
@@ -73,12 +56,12 @@ if (is_dir(TEMPLATE_DIR.'initializers/')){
  * template.
  */
 
-/**
+/*
  * Load the controller associated with the current template if it exists
  */
 if (!$config->ajax) {
-	require_once "{$config->paths->templates}/controllers/application_controller.php";
-	Controller::set_fallback('ApplicationController');
+    require_once "{$config->paths->templates}/controllers/application_controller.php";
+    Controller::set_fallback('ApplicationController');
 }
 
 Application::init($config, $fields, $input, $page, $pages, $permissions, $roles, $sanitizer, $session, $templates, $user, $users);

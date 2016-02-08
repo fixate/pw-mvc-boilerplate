@@ -1,9 +1,9 @@
 <?php
 /**
- * Basic Page Controller
+ * Basic Page Controller.
  *
  * Fields and functions specific to the basic page template.
- *
- * @package ProcessWire
  */
-class BasicPageController extends ApplicationController { }
+class BasicPageController extends ApplicationController
+{
+}

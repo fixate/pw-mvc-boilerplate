@@ -1,17 +1,17 @@
 <?php
 /**
- * Home Controller
+ * Home Controller.
  *
  * Fields and functions specific to the home template.
- *
- * @package ProcessWire
  */
-class HomeController extends ApplicationController {
-	function index() {
-		return $this->render(
-			// array(
-			//   'extraScripts' => 'your-script.js',
-			// )
-		);
-	}
+class HomeController extends ApplicationController
+{
+    public function index()
+    {
+        return $this->render(
+            // array(
+            //   'extraScripts' => 'your-script.js',
+            // )
+        );
+    }
 }

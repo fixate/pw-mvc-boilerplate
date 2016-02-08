@@ -1,13 +1,11 @@
 <?php
 /**
- * Basic page template
+ * Basic page template.
  *
  * Make sure to set 'Alternate Template' to 'mvc' under Template Settings
- *
- * @package ProcessWire
  */
 ?>
-<h1><?= $page->get("headline|title"); ?></h1>
+<h1><?= $page->get('headline|title'); ?></h1>
 
 <?= $page->body; ?>
 

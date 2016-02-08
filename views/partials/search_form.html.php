@@ -1,10 +1,8 @@
 <?php
 /**
- * Search form partial
+ * Search form partial.
  *
  * This partial is included via header.inc.php
- *
- * @package ProcessWire
  */
 ?>
 <form id='search_form' action='<?= $config->urls->root?>search/' method='get'>

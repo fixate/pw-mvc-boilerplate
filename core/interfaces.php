@@ -1,17 +1,19 @@
 <?php
 
-interface IController {
-	function call();
+interface IController
+{
+    public function call();
 
-	function before();
-	function after();
+    public function before();
+    public function after();
 }
 
-interface IView {
-	// Called in View
-	function spit();
-	function partial($name);
+interface IView
+{
+    // Called in View
+    public function spit();
+    public function partial($name);
 
-	// Called in Base Controller
-	function render();
+    // Called in Base Controller
+    public function render();
 }

@@ -1,10 +1,8 @@
 <?php
 /**
- * Partial for site footer
+ * Partial for site footer.
  *
  * This partial is included via views/layouts/application.php
- *
- * @package ProcessWire
  */
  ?>
 <footer class="area-footer">

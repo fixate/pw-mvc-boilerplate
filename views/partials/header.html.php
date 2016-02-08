@@ -3,8 +3,6 @@
  * Partial for site's header section.
  *
  * This partial is included via layouts/application.html.php
- *
- * @package ProcessWire
  */
 ?>
 <header class="area-header" role="banner">

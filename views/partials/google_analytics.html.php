@@ -1,12 +1,10 @@
 <?php
 /**
  * Google Analytics tracking code. Optimised asynchronous snippet as per:
- * http://mathiasbynens.be/notes/async-analytics-snippet
+ * http://mathiasbynens.be/notes/async-analytics-snippet.
  *
  * Add your Google Analytics UACode and WebMaster Tools verification codes
  * to templates/config/environment.php
- *
- * @package ProcessWire
  */
 ?>
 <?php if ($env->is_production) : ?>

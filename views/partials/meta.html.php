@@ -1,8 +1,6 @@
 <?php
 /**
  * Page head.
- *
- * @package Processwire
  */
 ?>
 <head>
@@ -24,7 +22,7 @@
 	<?= $this->twitter_meta_tags() ?>
 	<?= $this->opengraph_meta_tags() ?>
 
-	<link rel="logo" type="image/svg" href="http://<?= $config->httpHost . $this->assets('img/logo.svg') ?>"/>
+	<link rel="logo" type="image/svg" href="http://<?= $config->httpHost.$this->assets('img/logo.svg') ?>"/>
 
 	<!--[if ! lte IE 7]><!-->
 	<link rel="stylesheet" type="text/css" href="<?= $this->assets('css/style.css') ?>" />
@@ -41,6 +39,6 @@
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
-	<?= $this->partial("google_analytics") ?>
+	<?= $this->partial('google_analytics') ?>
 </head>
 

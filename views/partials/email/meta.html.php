@@ -1,8 +1,6 @@
 <?php
 /**
- * Partial for meta for email templates
- *
- * @package ProcessWire
+ * Partial for meta for email templates.
  */
  ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

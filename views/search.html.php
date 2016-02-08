@@ -1,19 +1,17 @@
 <?php
 /**
- * Search template
+ * Search template.
  *
  * Make sure to set 'Alternate Template' to 'mvc' under Template Settings
- *
- * @package ProcessWire
  */
 ?>
 
 <?php if ($q) : ?>
-	<?php if($count) : ?>
+	<?php if ($count) : ?>
 
 		<small><?= $result_str; ?></small>
 
-		<?php foreach($results as $item) : ?>
+		<?php foreach ($results as $item) : ?>
 		<h4><a href='<?= $item->url; ?>'><?= $item->title; ?></a></h4>
 		<p><?= $item->summary; ?></p>
 		<?php endforeach; ?>

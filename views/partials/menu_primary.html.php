@@ -1,8 +1,6 @@
 <?php
 /**
- * Primary menu partial
- *
- * @package ProcessWire
+ * Primary menu partial.
  */
 ?>
 <nav id="menu" role="navigation">
