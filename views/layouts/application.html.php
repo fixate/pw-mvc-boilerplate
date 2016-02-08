@@ -11,14 +11,14 @@
 <!--[if gt IE 9]><!--> <html class="no-js" lang="<?= __('en', 'theme_text_domain'); ?>"> <!--<![endif]-->
 <?= $this->partial('meta') ?>
 <body>
-	<?= $this->partial('admin/bar') ?>
-	<?= $this->partial('header') ?>
+  <?= $this->partial('admin/bar') ?>
+  <?= $this->partial('header') ?>
 
-	<main id="main" class="area-content" role="main">
-		<?php $this->spit(); ?>
-	</main><!-- .area-content -->
+  <main id="main" class="area-content" role="main">
+    <?php $this->spit(); ?>
+  </main><!-- .area-content -->
 
-	<?= $this->partial('footer') ?>
-	<?= $this->partial('scripts') ?>
+  <?= $this->partial('footer') ?>
+  <?= $this->partial('scripts') ?>
 </body>
 </html>

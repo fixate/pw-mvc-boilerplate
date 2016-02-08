@@ -7,5 +7,5 @@
 ?>
 
 <ul>
-<?= $pages_list ?>
+  <?= $pages_list ?>
 </ul>

@@ -4,5 +4,5 @@
  */
 ?>
 <nav id="menu" role="navigation">
-	<?= $this->primary_menu() ?>
+  <?= $this->primary_menu() ?>
 </nav>

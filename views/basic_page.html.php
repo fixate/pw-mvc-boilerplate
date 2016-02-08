@@ -10,5 +10,5 @@
 <?= $page->body; ?>
 
 <?php // foreach ($page->[your_repeater] as &$[your_repeater]): ?>
-	<?php // echo $this->partial('repeater/[your_repeater]', compact('[your_repeater]')) ?>
+  <?php // echo $this->partial('repeater/[your_repeater]', compact('[your_repeater]')) ?>
 <?php // endforeach ?>
