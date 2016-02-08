@@ -5,7 +5,7 @@ trait presenters
     public static function __presenterInitialize($obj)
     {
         if (is_dir(TEMPLATE_DIR.'presenters')) {
-            require TEMPLATE_DIR.'lib/presenter.php';
+            require TEMPLATE_DIR.'lib/Presenter.php';
             \fixate\Php::require_all(TEMPLATE_DIR.'presenters/');
 
             $obj->helper('new_presenter');

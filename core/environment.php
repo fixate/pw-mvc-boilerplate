@@ -1,6 +1,6 @@
 <?php
 
-class environment
+class Environment
 {
     // String representing current environment (development, production etc)
     public $env = [];

@@ -1,6 +1,6 @@
 <?php
 
-class application
+class Application
 {
     public $config = null;
     public $fields = null;

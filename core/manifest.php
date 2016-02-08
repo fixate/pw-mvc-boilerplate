@@ -2,7 +2,7 @@
 
 use fixate as f8;
 
-class manifest
+class Manifest
 {
     private $rev = array();
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once TEMPLATE_DIR.'/lib/video_embedder.php';
+require_once TEMPLATE_DIR.'/lib/VideoEmbedder.php';
 
 trait VideoEmbed
 {

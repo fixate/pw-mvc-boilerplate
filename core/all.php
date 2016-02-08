@@ -1,16 +1,16 @@
 <?php
 
-require_once TEMPLATE_DIR.'core/utils.php';
+require_once TEMPLATE_DIR.'core/Utils.php';
 
-require_once TEMPLATE_DIR.'core/interfaces.php';
-require_once TEMPLATE_DIR.'core/exceptions.php';
-require_once TEMPLATE_DIR.'core/environment.php';
-require_once TEMPLATE_DIR.'core/manifest.php';
-require_once TEMPLATE_DIR.'core/view.php';
+require_once TEMPLATE_DIR.'core/Interfaces.php';
+require_once TEMPLATE_DIR.'core/Exceptions.php';
+require_once TEMPLATE_DIR.'core/Environment.php';
+require_once TEMPLATE_DIR.'core/Manifest.php';
+require_once TEMPLATE_DIR.'core/View.php';
 
-require_once TEMPLATE_DIR.'core/httprequest.php';
-require_once TEMPLATE_DIR.'core/httpresponse.php';
+require_once TEMPLATE_DIR.'core/HttpRequest.php';
+require_once TEMPLATE_DIR.'core/HttpResponse.php';
 
-require_once TEMPLATE_DIR.'core/application.php';
-require_once TEMPLATE_DIR.'core/controller.php';
-require_once TEMPLATE_DIR.'core/api_controller.php';
+require_once TEMPLATE_DIR.'core/Application.php';
+require_once TEMPLATE_DIR.'core/Controller.php';
+require_once TEMPLATE_DIR.'core/ApiController.php';

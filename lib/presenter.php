@@ -1,6 +1,6 @@
 <?php
 
-class presenter
+class Presenter
 {
     protected $controller;
     protected $object;

@@ -5,7 +5,7 @@ use fixate as f8;
 /**
  * Base Controller.
  */
-abstract class controller implements IController
+abstract class Controller implements IController
 {
     public $config = null;
     public $fields = null;
@@ -209,7 +209,7 @@ abstract class controller implements IController
         if ($config->ajax) {
             $path_args[] = 'api';
         }
-        $path_args[] = "{$template}_controller.php";
+        $path_args[] = "{$template}Controller.php";
         $controller_path = call_user_func_array('fixate\Paths::join', $path_args);
 
         $controller = f8\Strings::camel_case($template).'Controller';

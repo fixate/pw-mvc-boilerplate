@@ -2,7 +2,7 @@
 
 namespace fixate;
 
-class exceptions extends \RuntimeException
+class Exceptions extends \RuntimeException
 {
     private $statusCode;
     private $headers;
