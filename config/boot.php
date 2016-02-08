@@ -60,7 +60,7 @@ if (is_dir(TEMPLATE_DIR.'initializers/')) {
  * Load the controller associated with the current template if it exists
  */
 if (!$config->ajax) {
-    require_once "{$config->paths->templates}/controllers/application_controller.php";
+    require_once "{$config->paths->templates}/controllers/ApplicationController.php";
     Controller::set_fallback('ApplicationController');
 }
 

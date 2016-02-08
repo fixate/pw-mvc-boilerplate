@@ -63,7 +63,7 @@ class ContactController extends Controller {
 #### More Complete Controller Example For The 'home' Template:
 
 ```php
-// site/controllers/home_controller.php
+// site/controllers/HomeController.php
 // The name of the class matters! 'Home' in 'HomeController' matches up to
 // a template named 'home' in the processwire admin.
 class HomeController extends Controller {
@@ -126,7 +126,7 @@ Basic layout: `views/layouts`
 Uses ProcesWire's $config->is_ajax to determine whether to use api controller or normal controller
 
 ```php
-// controllers/api/contact_controller.php
+// controllers/api/ContactController.php
 class ContactController extends ApiController {
   // Get method is optional, by default a get request
   // returns the page data for this page.
