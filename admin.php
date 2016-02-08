@@ -7,7 +7,5 @@
  * This demonstrates how you can use ProcessWire as a front-end to another application.
  *
  * Leave this file as-is, do not remove.
- *
  */
-
-require($config->paths->adminTemplates . 'controller.php');
+require $config->paths->adminTemplates.'controller.php';
