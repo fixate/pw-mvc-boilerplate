@@ -209,10 +209,11 @@ abstract class Controller implements IController
         if ($config->ajax) {
             $path_args[] = 'api';
         }
-        $path_args[] = "{$template}Controller.php";
-        $controller_path = call_user_func_array('fixate\Paths::join', $path_args);
 
-        $controller = f8\Strings::camel_case($template).'Controller';
+        $camelized_template = f8\Strings::camel_case($template);
+        $path_args[] = "{$camelized_template}Controller.php";
+        $controller_path = call_user_func_array('fixate\Paths::join', $path_args);
+        $controller = "${camelized_template}Controller";
 
         if (file_exists($controller_path)) {
             require_once $controller_path;
