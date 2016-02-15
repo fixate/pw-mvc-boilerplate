@@ -21,6 +21,8 @@ class ApplicationController extends Controller
 
     public function initialize()
     {
+        $this->og_set_opt('site_name', $pages->get('/settings')->site_name);
+
         Javascript::__jsInitialize($this);
         OpenGraph::__ogInitialize($this);
         Presenters::__presenterInitialize($this);
