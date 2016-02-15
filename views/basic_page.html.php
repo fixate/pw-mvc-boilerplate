@@ -5,7 +5,7 @@
  * Make sure to set 'Alternate Template' to 'mvc' under Template Settings
  */
 ?>
-<h1><?= $page->get('headline|title'); ?></h1>
+<h1><?= $page->get('title'); ?></h1>
 
 <?= $page->body; ?>
 
