@@ -23,7 +23,7 @@ trait PrimaryMenu
             'show_root' => true,
             'list_field_class' => 'menu__item menu__item--primary',
             'item_tpl' => '<a href="{url_nav|url}">{title}</a>',
-      'item_current_tpl' => '<a href="{url_nav|url}">{title}</a>',
+            'item_current_tpl' => '<a href="{url_nav|url}">{title}</a>',
         ), $options);
 
         $modules = wire('modules');
