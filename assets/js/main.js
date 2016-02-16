@@ -7,7 +7,7 @@ const $ = window.jQuery;
 
 if ($.fn.toggler) {
   $('.js-menu-toggle').toggler({
-    activeClass: 'is-open-nav',
+    activeClass: 'is-open-menu',
   });
 }
 
