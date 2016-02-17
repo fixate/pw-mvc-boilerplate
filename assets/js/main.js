@@ -5,12 +5,26 @@ import toggler from './lib/toggler';
 
 const $ = window.jQuery;
 
+
+
+
+
+/* -------------------------------------------------- *\
+    INITIALISE TOGGLER
+\* -------------------------------------------------- */
 if ($.fn.toggler) {
   $('.js-menu-toggle').toggler({
     activeClass: 'is-open-menu',
   });
 }
 
+
+
+
+
+/* -------------------------------------------------- *\
+    DISABLE HOVER
+\* -------------------------------------------------- */
 window.addEventListener('scroll', () => {
   const body = document.body;
   let timer = void 0;
@@ -25,4 +39,11 @@ window.addEventListener('scroll', () => {
   }, 100);
 });
 
+
+
+
+
+/* -------------------------------------------------- *\
+    REMOVE NO-JS
+\* -------------------------------------------------- */
 $('html').removeClass('no-js');
