@@ -12,7 +12,7 @@ class ApplicationController extends Controller
     use Javascript;
     use OpenGraph;
     use Presenters;
-    use PrimaryMenu;
+    use MenuFactory;
     use SEO;
     use Search;
     use Twitter;
@@ -26,7 +26,7 @@ class ApplicationController extends Controller
         Javascript::__jsInitialize($this);
         OpenGraph::__ogInitialize($this);
         Presenters::__presenterInitialize($this);
-        PrimaryMenu::__pnInitialize($this);
+        MenuFactory::__menuInitialize($this);
         SEO::__seoInitialize($this);
         Search::__searchInitialize($this);
         Twitter::__twInitialize($this);
