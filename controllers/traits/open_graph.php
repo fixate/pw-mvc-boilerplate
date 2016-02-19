@@ -4,7 +4,7 @@
  *
  * In your controller set your options before initialising:
  *
- * $this->og_set_opt('site_name', $pages->get('/settings')->site_name);
+ * $this->og_set_opt('site_name', $this->pages->get('/settings')->site_name);
  * OpenGraph::__ogInitialize($this);
  */
 trait OpenGraph
