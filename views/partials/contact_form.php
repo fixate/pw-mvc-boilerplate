@@ -5,15 +5,15 @@
 
 <form action="./" method="post" id="contact-form" name="contact-form">
   <label for="name">Name</label>
-  <input type="text" name="name" srequired value="<?= $form['name']['value'] ?>">
+  <input type="text" name="name" required value="<?= $form['name']['value'] ?>">
   <?= $form['name']['error'] ?>
 
   <label for="email">Email</label>
-  <input type="email" name="email" srequired value="<?= $form['email']['value'] ?>">
+  <input type="email" name="email" required value="<?= $form['email']['value'] ?>">
   <?= $form['email']['error'] ?>
 
   <label for="message">Message</label>
-  <textarea name="message" srequired><?= $form['message']['value'] ?></textarea>
+  <textarea name="message" required rows=6><?= $form['message']['value'] ?></textarea>
   <?= $form['message']['error'] ?>
 
   <?php // honeypot ?>
