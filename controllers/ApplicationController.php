@@ -22,7 +22,7 @@ class ApplicationController extends Controller
 
     public function initialize()
     {
-        $this->og_set_opt('site_name', $pages->get('/settings')->site_name);
+        $this->og_set_opt('site_name', $this->pages->get('/settings')->site_name);
 
         Forms::__formsInitialize($this);
         Javascript::__jsInitialize($this);
