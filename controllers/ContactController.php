@@ -53,6 +53,7 @@ class ContactController extends ApplicationController
     protected function handleContactSubmission($submission)
     {
         $pages = $this->pages;
+        $site_name = $pages->get('/settings')->site_name;
         extract($submission);
 
         $templates = array(
@@ -62,8 +63,8 @@ class ContactController extends ApplicationController
 
         $fields = array(
             'admin_email' => $pages->get('/contact')->admin_email,
-            'admin_subject' => "{$pages->get('/settings')->site_name} - Contact Query",
-            'submitter_subject' => "{$pages->get('/settings')->site_name} - Thank you for your message",
+            'admin_subject' => "{$site_name} - Contact Query",
+            'submitter_subject' => "{$site_name} - Thank you for your message",
             'submitter_name' => $name['value'],
             'submitter_email' => $email['value'],
             'submitter_message' => $message['value'],
