@@ -47,8 +47,8 @@ trait Forms
         $pages = $this->pages;
         $mail_admin = wireMail();
         $mail_submitter = wireMail();
-        $admin_markup = '';
-        $submitter_markup = '';
+        $admin_body = '';
+        $submitter_body = '';
 
         /**
          * manadatory keys:
@@ -64,30 +64,30 @@ trait Forms
         if ($admin_template = $templates['to_admin']) {
           ob_start();
           include $admin_template;
-          $admin_markup = ob_get_clean();
+          $admin_body = ob_get_clean();
         }
 
         if ($submitter_template = $templates['to_submitter']) {
           ob_start();
           include $submitter_template;
-          $submitter_markup = ob_get_clean();
+          $submitter_body = ob_get_clean();
         }
 
-        if (!empty($admin_markup)) {
+        if (!empty($admin_body)) {
             $mail_admin
               ->to($admin_email)
               ->from($submitter_email)
               ->subject($admin_subject)
-              ->bodyHTML($admin_markup)
+              ->bodyHTML($admin_body)
               ->send();
         }
 
-        if (!empty($submitter_markup)) {
+        if (!empty($submitter_body)) {
             $mail_submitter
                 ->to($submitter_email)
                 ->from($admin_email)
                 ->subject($submitter_subject)
-                ->bodyHTML($submitter_markup)
+                ->bodyHTML($submitter_body)
                 ->send();
         }
     }
