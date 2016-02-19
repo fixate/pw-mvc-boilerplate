@@ -1,6 +1,6 @@
 <?php
 
-trait seo
+trait Seo
 {
     public static function __seoInitialize($obj)
     {

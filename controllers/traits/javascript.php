@@ -2,7 +2,7 @@
 
 use fixate as f8;
 
-trait javascript
+trait Javascript
 {
     public static function __jsInitialize($obj)
     {

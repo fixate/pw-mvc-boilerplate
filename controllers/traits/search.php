@@ -1,6 +1,6 @@
 <?php
 
-trait search
+trait Search
 {
     public static function __searchInitialize($obj)
     {

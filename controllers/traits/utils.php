@@ -6,7 +6,7 @@
  */
 use fixate as f8;
 
-trait utils
+trait Utils
 {
     public static function __utilsInitialize($obj)
     {

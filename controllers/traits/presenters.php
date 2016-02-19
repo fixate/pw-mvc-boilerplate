@@ -1,6 +1,6 @@
 <?php
 
-trait presenters
+trait Presenters
 {
     public static function __presenterInitialize($obj)
     {

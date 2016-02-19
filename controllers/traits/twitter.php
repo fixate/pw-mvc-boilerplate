@@ -2,7 +2,7 @@
 /**
  * Trait for Twitter cards - similar to the Open Graph protocol.
  */
-trait twitter
+trait Twitter
 {
     public static function __twInitialize($obj)
     {
