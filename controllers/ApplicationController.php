@@ -9,6 +9,7 @@
 
 class ApplicationController extends Controller
 {
+    use Forms;
     use Javascript;
     use OpenGraph;
     use Presenters;
@@ -23,6 +24,7 @@ class ApplicationController extends Controller
     {
         $this->og_set_opt('site_name', $pages->get('/settings')->site_name);
 
+        Forms::__formsInitialize($this);
         Javascript::__jsInitialize($this);
         OpenGraph::__ogInitialize($this);
         Presenters::__presenterInitialize($this);
