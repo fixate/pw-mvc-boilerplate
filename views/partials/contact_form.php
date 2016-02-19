@@ -1,3 +1,4 @@
+<style type="text/css">.hp-model{ display: none;}</style>
 <?php if ($has_sent) : ?>
   Thank you for contacting us, we will be in touch shortly.
 <?php endif ?>
@@ -14,6 +15,9 @@
   <label for="message">Message</label>
   <textarea name="message" srequired><?= $form['message']['value'] ?></textarea>
   <?= $form['message']['error'] ?>
+
+  <?php // honeypot ?>
+  <input class="hp-model" type="text" name="model" value="">
 
   <button type="submit" name="submit" value="submit">submit</button>
 </form>

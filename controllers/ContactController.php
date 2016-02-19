@@ -20,6 +20,7 @@ class ContactController extends ApplicationController
         $sanitizer = $this->sanitizer;
         $view = new View($this);
         $form_has_errors = false;
+        $honeypot_filled = !!$input->post->model;
         $can_send = false;
 
         $submission = array(
@@ -38,7 +39,7 @@ class ContactController extends ApplicationController
         );
 
         $form_has_errors = $this->formHasErrors($submission);
-        $can_send = $is_submission && !$form_has_errors;
+        $can_send = $is_submission && !$form_has_errors && !$honeypot_filled;
 
         if ($can_send) {
           $this->handleContactSubmission($submission);
