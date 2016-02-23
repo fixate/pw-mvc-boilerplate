@@ -8,11 +8,11 @@ trait Presenters
             require TEMPLATE_DIR.'lib/Presenter.php';
             \fixate\Php::require_all(TEMPLATE_DIR.'presenters/');
 
-            $obj->helper('new_presenter');
+            $obj->helper('newPresenter');
         }
     }
 
-    public function new_presenter($view, $object, $options = array())
+    public function newPresenter($view, $object, $options = array())
     {
         if (is_object($object)) {
             $type_prefix = get_class($object);
