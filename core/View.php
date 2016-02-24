@@ -207,3 +207,4 @@ class View implements IView
         self::$helpers[$func_name] = $func;
     }
 }
+
