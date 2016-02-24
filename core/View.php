@@ -44,7 +44,7 @@ class View implements IView
             }
         }
 
-        $path = $is_production ? View::getMinifiedPath($path) : $path;
+        $path = $is_production ? $this->getMinifiedPath($path) : $path;
         $templates = $this->controller->config->urls->templates;
 
         return f8\Paths::join($templates, 'assets', $path);
@@ -196,7 +196,7 @@ class View implements IView
         self::$helpers[$func_name] = $func;
     }
 
-    private static function getMinifiedPath($path)
+    private function getMinifiedPath($path)
     {
         $ext = f8\Paths::get_extension($path);
         // Only css and js
