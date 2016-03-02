@@ -11,6 +11,10 @@
  */
 require_once TEMPLATE_DIR.'core/all.php';
 
+
+
+
+
 /*------------------------------------*\
     LOAD ENVIRONMENT
 \*------------------------------------*/
@@ -23,6 +27,10 @@ $env->set($environment);
 // We dont need user environment from here on
 unset($environment);
 
+
+
+
+
 /*------------------------------------*\
     LOAD MANIFEST
 \*------------------------------------*/
@@ -30,6 +38,10 @@ if ($env::is_production()) {
     $_GLOBALS['manifest'] = $manifest = Manifest::get_instance();
     $manifest->initialize(TEMPLATE_DIR.'/assets/rev-manifest.json');
 }
+
+
+
+
 
 /*------------------------------------*\
     INTIALIZERS
@@ -41,6 +53,10 @@ if ($env::is_production()) {
 if (is_dir(TEMPLATE_DIR.'initializers/')) {
     \fixate\Php::require_all(TEMPLATE_DIR.'initializers/');
 }
+
+
+
+
 
 /*------------------------------------*\
     CONTROLLERS
