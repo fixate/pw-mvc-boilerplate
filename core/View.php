@@ -13,6 +13,12 @@ class View implements IView
     protected $data = array();
     protected $base_path = null;
     public $controller = null;
+    protected static $allowed_view_types = ['html'];
+
+    public static function set_allowed_view_types()
+    {
+        static::$allowed_view_types = func_get_args();
+    }
 
     public function __construct(IController &$controller, $name = '')
     {
@@ -33,10 +39,9 @@ class View implements IView
         return $this->render_file(f8\Paths::join('partials', $name), $data);
     }
 
-    public function assets($path)
+    public function assets($path, $use_min = true)
     {
         $is_production = Environment::is_production();
-
         if ($is_production) {
             // If use MD5# manifest in use get proper path
             if (Environment::use_manifest()) {
@@ -44,7 +49,19 @@ class View implements IView
             }
         }
 
-        $path = $is_production ? $this->getMinifiedPath($path) : $path;
+        if ($use_min) {
+            $ext = f8\Paths::get_extension($path);
+            // Only css and js
+            if ($ext == 'js' || $ext == 'css') {
+                $is_min = f8\Strings::ends_with($path, ".min.${ext}") !== false;
+
+                // If in production change file to use .min extension
+                if ($is_production && !$is_min && $use_min) {
+                    $path = f8\Paths::change_extension($path, "min.{$ext}");
+                }
+            }
+        }
+
         $templates = $this->controller->config->urls->templates;
 
         return f8\Paths::join($templates, 'assets', $path);
@@ -105,12 +122,23 @@ class View implements IView
             $base_path = f8\Paths::resolve(f8\Paths::join(dirname(__FILE__), '../views'));
         }
 
-        $path = f8\Paths::join($base_path, $file);
-        if (!f8\Strings::ends_with($path, '.html.php')) {
-            $path .= '.html.php';
+        $extensions = array_map(function($type) {
+            return ".{$type}.php";
+        }, static::$allowed_view_types);
+
+        foreach ($extensions as $ext) {
+            $path = f8\Paths::join($base_path, $file);
+
+            if (!f8\Strings::ends_with($path, $ext)) {
+                $path .= $ext;
+            }
+
+            if (file_exists($path)) {
+                return $path;
+            }
         }
 
-        return $path;
+        return null;
     }
 
     protected function render_file($file, $_data = array(), $fallback = null)
@@ -194,22 +222,6 @@ class View implements IView
         }
 
         self::$helpers[$func_name] = $func;
-    }
-
-    private function getMinifiedPath($path)
-    {
-        $ext = f8\Paths::get_extension($path);
-        // Only css and js
-        if ($ext == 'js' || $ext == 'css') {
-            $is_min = f8\Strings::ends_with($path, ".min.${ext}") !== false;
-
-            // If in production change file to use .min extension
-            if (!$is_min) {
-                $path = f8\Paths::change_extension($path, "min.{$ext}");
-            }
-        }
-
-        return $path;
     }
 }
 
