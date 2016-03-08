@@ -8,3 +8,4 @@ $this->js_add_script('main.bundle.js');
 ?>
 
 <?= $this->render_scripts() ?>
+<?= $this->render_js_data() ?>
