@@ -15,13 +15,13 @@ class ContactController extends ApplicationController
 
     protected function getContactForm()
     {
+        $can_send = false;
+        $form_has_errors = false;
         $input = $this->input;
+        $honeypot_filled = !!$input->post->model; // this is a deliberately misleading name
         $is_submission = !!$input->post->submit;
         $sanitizer = $this->sanitizer;
         $view = new View($this);
-        $form_has_errors = false;
-        $honeypot_filled = !!$input->post->model;
-        $can_send = false;
 
         $submission = array(
           'name' => array(
@@ -78,7 +78,7 @@ class ContactController extends ApplicationController
     private function saveContactSubmission(array $fields)
     {
         $newpage = new Page();
-        $newpage->template = 'contact-submission';
+        $newpage->template = 'contact_submission';
         $newpage->title = "{$fields['submitter_name']} - " . date('[H:i d M Y]');
         $newpage->email = $fields['submitter_email'];
         $newpage->body = $fields['submitter_message'];
