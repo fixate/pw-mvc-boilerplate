@@ -3,6 +3,6 @@
  * Primary menu partial.
  */
 ?>
-<nav id="menu" role="navigation">
+<nav id="menu-primary">
   <?= $this->primary_menu() ?>
 </nav>

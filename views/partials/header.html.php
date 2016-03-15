@@ -5,7 +5,7 @@
  * This partial is included via layouts/application.html.php
  */
 ?>
-<header class="area-header" role="banner">
+<header class="area-header">
   <div class="wrap">
 
     <a class="logo" href="<?= $config->urls->root; ?>">
