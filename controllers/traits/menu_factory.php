@@ -4,17 +4,17 @@ trait MenuFactory
 {
     public static function __menuInitialize($obj)
     {
-        $obj->helper('primary_menu');
+        $obj->helper('primaryMenu');
     }
 
-    public function primary_menu($options = array())
+    public function primaryMenu($options = array())
     {
-        return $this->__render_menu(array(
+        return $this->__renderMenu(array(
             'outer_tpl' => '<ul class="menu--primary js-menu-primary">||</ul>',
         ));
     }
 
-    private function __render_menu($options = array())
+    private function __renderMenu($options = array())
     {
         $options = array_merge(array(
             'current_class' => 'menu__item--current',
