@@ -9,6 +9,7 @@ export default $.fn.toggler = function(options) {
   return this.each(function() {
     var $el, getTarget, getToggleText, i, isOn, isWideEnough, len, ref, resizeTimer, selector, setElems, setOn, setShow, singleClass, togglePress;
     $el = $(this);
+    $el.canClickOff = true; // add var to manage clickoff
     options.activeClass || (options.activeClass = 'is-active');
     options.activeTriggerClass || (options.activeTriggerClass = 'is-active');
     options.closeTarget || (options.closeTarget = false);
@@ -87,6 +88,7 @@ export default $.fn.toggler = function(options) {
         if (e.target === $el[index] || [].slice.call($el.children()).indexOf(e.target) > -1) {
           e.preventDefault();
           togglePress($el);
+          $el.canClickOff = false; //prevent clickoff exception
           return false;
         }
       });
@@ -99,9 +101,10 @@ export default $.fn.toggler = function(options) {
     $(self.document).on('click touch', $el, function(e) {
       var $exceptEl;
       $exceptEl = $($el.data('click-off-exception'));
-      if ($el.data('click-off') === 'on' && isWideEnough($el) && ([].indexOf.call($exceptEl, e.target) === -1 && !$exceptEl.find(e.target).length)) {
+      if ($el.canClickOff && $el.data('click-off') === 'on' && isWideEnough($el) && ([].indexOf.call($exceptEl, e.target) === -1 && !$exceptEl.find(e.target).length)) {
         setShow($el, false);
       }
+      $el.canClickOff = true; //enable clickoff exception
     });
 
     return setElems($el);
