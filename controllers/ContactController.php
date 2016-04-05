@@ -33,7 +33,7 @@ class ContactController extends ApplicationController
             'error' => $is_submission ? $this->formValidateRequiredEmailField($input->email, 'Please fill in your email address') : '',
           ),
           'message' => array(
-            'value' => $sanitizer->text($input->message),
+            'value' => $sanitizer->textarea($input->message),
             'error' => $is_submission ? $this->formValidateRequiredField($input->message, 'Please add a message'): '',
           ),
         );
