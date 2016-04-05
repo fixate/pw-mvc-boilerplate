@@ -6,15 +6,15 @@
 
   <form action="./#contact" method="post" id="contact-form" name="contact-form">
     <label for="name">Name</label>
-    <input type="text" name="name" required value="<?= $form['name']['value'] ?>">
+    <input id="name" type="text" name="name" required value="<?= $form['name']['value'] ?>">
     <?= $form['name']['error'] ?>
 
     <label for="email">Email</label>
-    <input type="email" name="email" required value="<?= $form['email']['value'] ?>">
+    <input id="email" type="email" name="email" required value="<?= $form['email']['value'] ?>">
     <?= $form['email']['error'] ?>
 
     <label for="message">Message</label>
-    <textarea name="message" required rows=6><?= $form['message']['value'] ?></textarea>
+    <textarea id="message" name="message" required rows=6><?= $form['message']['value'] ?></textarea>
     <?= $form['message']['error'] ?>
 
     <?php // honeypot ?>
