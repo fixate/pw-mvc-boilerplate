@@ -20,6 +20,5 @@
 
     <?php // get search form ?>
     <?= $this->partial('search_form') ?>
-
   </div>
 </header>
