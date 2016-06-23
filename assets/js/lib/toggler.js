@@ -1,6 +1,8 @@
 /*--------------------------------------------------*\
     TOGGLER
 \*--------------------------------------------------*/
+import $ from 'jQuery';
+
 export default $.fn.toggler = function(options) {
   if (options == null) {
     options = {};
