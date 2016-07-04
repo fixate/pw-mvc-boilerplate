@@ -11,9 +11,7 @@ export default function clickToggler(selector, opts = {}) {
   const triggerToggleClass = opts.triggerActiveClass || 'is-active';
   const targetToggleClass = opts.targetActiveClass || 'is-active';
 
-  function init() { initEventHandlers();}
-
-  function initEventHandlers() {
+  function init() {
     document.addEventListener('click', handleClick);
   }
 
