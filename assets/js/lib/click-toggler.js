@@ -19,10 +19,9 @@ export default function clickToggler(selector, opts = {}) {
     const clickTarget = e.target;
     const triggerPair = elementPairs.reduce((aggr, pair) => {
       const { trigger } = pair;
+      const triggerClicked = clickTarget === trigger || trigger.contains(clickTarget);
 
-      if (clickTarget === trigger || trigger.contains(clickTarget)) {
-        return pair;
-      }
+      if (triggerClicked) return pair;
 
       return aggr;
     }, false);
@@ -81,3 +80,4 @@ export default function clickToggler(selector, opts = {}) {
     destroy,
   };
 }
+
