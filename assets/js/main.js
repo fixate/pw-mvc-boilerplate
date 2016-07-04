@@ -2,7 +2,7 @@
     MAIN
 \* -------------------------------------------------- */
 import $ from 'jQuery';
-import './lib/toggler';
+import clickToggler from './lib/click-toggler';
 
 
 
@@ -11,11 +11,7 @@ import './lib/toggler';
 /* -------------------------------------------------- *\
     INITIALISE TOGGLER
 \* -------------------------------------------------- */
-(function initToggler() {
-  if ($.fn.toggler) {
-    $('.js-menu-toggle').toggler({ activeClass: 'is-open-menu' });
-  }
-}());
+clickToggler('.js-menu-toggle', { targetActiveClass: 'is-open-menu' });
 
 
 
