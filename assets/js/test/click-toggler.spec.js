@@ -8,6 +8,8 @@ const btnClassName = 'js-trigger';
 const divClassName = 'js-target';
 
 const document = createDocument();
+global.navigator = window.navigator;
+
 const body = document.body;
 body.innerHTML = `<html>
                     <body>
@@ -164,3 +166,4 @@ test('#clickToggler', nest => {
     assert.end();
   });
 });
+

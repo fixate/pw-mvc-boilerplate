@@ -12,7 +12,11 @@ export default function clickToggler(selector, opts = {}) {
   const targetToggleClass = opts.targetActiveClass || 'is-active';
 
   function init() {
-    document.addEventListener('click', handleClick);
+    document.addEventListener(getEventType(), handleClick);
+  }
+
+  function getEventType() {
+    return /iPad/.test(navigator.userAgent) ? 'touchend' : 'click';
   }
 
   function handleClick(e) {
@@ -70,7 +74,7 @@ export default function clickToggler(selector, opts = {}) {
   }
 
   function destroy() {
-    document.removeEventListener('click', handleClick);
+    document.removeEventListener(getEventType(), handleClick);
   }
 
   init();
@@ -80,4 +84,3 @@ export default function clickToggler(selector, opts = {}) {
     destroy,
   };
 }
-
