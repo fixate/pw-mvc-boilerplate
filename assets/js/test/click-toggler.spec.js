@@ -1,4 +1,5 @@
 import test from 'tape';
+import sinon from 'sinon';
 
 import createDocument from './fixtures/create-document';
 
@@ -77,7 +78,7 @@ test('#clickToggler', nest => {
     assert.end();
   });
 
-  nest.test('-> click dispatched outside of trigger', (assert) => {
+  nest.test('-> click outside of trigger', (assert) => {
     const msg = 'removes active class';
     const toggle = setup();
 
@@ -87,6 +88,21 @@ test('#clickToggler', nest => {
 
     const actual = button1.className;
     const expected = btnClassName;
+
+    assert.equal(actual, expected, msg);
+    assert.end();
+  });
+
+  nest.test('-> click outside of trigger when external deactivate is disallowed', (assert) => {
+    const msg = 'retains active class';
+    const toggle = setup({ respectExternalClick: false });
+
+    button1.classList.add('is-active');
+    body.dispatchEvent(clickEvent);
+    toggle.destroy();
+
+    const actual = button1.className;
+    const expected = [btnClassName, 'is-active'].join(' ');
 
     assert.equal(actual, expected, msg);
     assert.end();
@@ -165,5 +181,35 @@ test('#clickToggler', nest => {
     assert.equal(actual, expected, msg);
     assert.end();
   });
-});
 
+  nest.test('-> fires an event after a clicking to active', assert => {
+    const msg = 'event fired';
+    const callback = sinon.spy();
+    const toggle = setup({ afterGoActive: callback });
+
+    button1.dispatchEvent(clickEvent);
+    toggle.destroy();
+
+    const actual = callback.called;
+    const expected = true;
+
+    assert.equal(actual, expected, msg);
+    assert.end();
+  });
+
+  nest.test('-> fires an event after a clicking to inactive', assert => {
+    const msg = 'event fired';
+    const callback = sinon.spy();
+    const toggle = setup({ afterGoInactive: callback });
+
+    button1.classList.add('is-active');
+    button1.dispatchEvent(clickEvent);
+    toggle.destroy();
+
+    const actual = callback.called;
+    const expected = true;
+
+    assert.equal(actual, expected, msg);
+    assert.end();
+  });
+});
