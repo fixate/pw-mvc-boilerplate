@@ -1,5 +1,5 @@
 /* --------------------------------------------------*\
-    TOGGLER
+    CLICK TOGGLER
 \* --------------------------------------------------*/
 export default function clickToggler(selector, opts = {}) {
   const elementPairs = [...document.querySelectorAll(selector)].map(elem => (
@@ -12,7 +12,9 @@ export default function clickToggler(selector, opts = {}) {
   const targetToggleClass = opts.targetActiveClass || 'is-active';
   const afterGoActiveCb = opts.afterGoActive || null;
   const afterGoInactiveCb = opts.afterGoInactive || null;
-  const respectExternal = opts.respectExternalClick !== undefined ? opts.respectExternalClick : true;
+  const respectExternal = opts.respectExternalClick !== undefined ?
+                            opts.respectExternalClick :
+                              true;
 
   function init() {
     document.addEventListener(getEventType(), handleClick);
@@ -90,15 +92,15 @@ export default function clickToggler(selector, opts = {}) {
   }
 
   function getMatchingPairs(triggerPair) {
-    return elementPairs.filter(pair => {
-      return triggerPair.target === pair.target;
-    });
+    return elementPairs.filter(pair =>
+      triggerPair.target === pair.target
+    );
   }
 
   function getNonMatchingPairs(triggerPair) {
-    return elementPairs.filter(pair => {
-      return triggerPair.target !== pair.target;
-    });
+    return elementPairs.filter(pair =>
+      triggerPair.target !== pair.target
+    );
   }
 
   function destroy() {
