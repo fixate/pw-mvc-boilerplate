@@ -45,7 +45,7 @@ trait SEO
             $html .= '">';
         }
 
-        if ($input->pageNum * $limit < $page->children->count) {
+        if ($page->pageNum * $limit < $page->children->count) {
             $html .= '<link rel="next" href="';
             $html .= $href.$config->pageNumUrlPrefix;
             $html .= ($input->pageNum + 1).'">';
