@@ -13,7 +13,10 @@
   <?= $this->seo_rel_next_prev() ?>
 
   <?php // enable responsive behaviour for all devices ?>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <?php // prevent iOS Safari from styling telephone numbers ?>
+  <meta name="format-detection" content="telephone=no"/>
 
   <?php // Windows 8 start screen tile ?>
   <meta name="msapplication-TileColor" content="#ffffff"/>
