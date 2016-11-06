@@ -1,5 +1,7 @@
 <?php
 
+use ProcessWire as PW;
+
 trait Forms
 {
     public static function __formsInitialize($obj)
@@ -45,8 +47,8 @@ trait Forms
     protected function formSendEmails($fields, $templates)
     {
         $pages = $this->pages;
-        $mail_admin = wireMail();
-        $mail_submitter = wireMail();
+        $mail_admin = PW\wireMail();
+        $mail_submitter = PW\wireMail();
         $admin_body = '';
         $submitter_body = '';
 

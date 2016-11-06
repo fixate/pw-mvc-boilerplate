@@ -1,5 +1,7 @@
 <?php
 
+use ProcessWire as PW;
+
 trait MenuFactory
 {
     public static function __menuInitialize($obj)
@@ -28,7 +30,7 @@ trait MenuFactory
             'item_current_tpl' => '<a href="{url_nav|url}">{title}</a>',
         ), $options);
 
-        $modules = wire('modules');
+        $modules = PW\wire('modules');
 
         if ($modules->isInstalled('MarkupSimpleNavigation')) {
             $treeMenu = $modules->get('MarkupSimpleNavigation');

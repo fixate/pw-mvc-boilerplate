@@ -1,6 +1,7 @@
 <?php
 
 use fixate as f8;
+use ProcessWire as PW;
 
 abstract class ApiController implements IController
 {
@@ -130,7 +131,7 @@ abstract class ApiController implements IController
   {
     static $settings = null;
     if ($settings == null) {
-      $settings = wire('pages')->get('/settings/');
+      $settings = PW\wire('pages')->get('/settings/');
     }
 
     return $settings->$name;

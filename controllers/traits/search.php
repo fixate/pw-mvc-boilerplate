@@ -1,5 +1,7 @@
 <?php
 
+use ProcessWire as PW;
+
 trait Search
 {
     public static function __searchInitialize($obj)
@@ -9,15 +11,15 @@ trait Search
 
     public static function get_query()
     {
-        $input = wire('input');
-        $sanitizer = wire('sanitizer');
+        $input = PW\wire('input');
+        $sanitizer = PW\wire('sanitizer');
 
         return $sanitizer->selectorValue($input->get->q);
     }
 
     public static function get_stored_query()
     {
-        $input = wire('input');
+        $input = PW\wire('input');
         $query = self::get_query();
 
         return $input->whitelist('q', $query)->q;

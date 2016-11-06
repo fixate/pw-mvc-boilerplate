@@ -1,6 +1,7 @@
 <?php
 
 use fixate as f8;
+use ProcessWire as PW;
 
 /**
  * Base Controller.
@@ -86,7 +87,7 @@ abstract class Controller implements IController
     {
         $this->request = f8\HttpRequest::instance();
         $this->response = new f8\HttpResponse();
-        $input = wire('input');
+        $input = PW\wire('input');
 
         $url_segments = '';
         $has_segment = true;
@@ -154,7 +155,7 @@ abstract class Controller implements IController
     {
         static $settings = null;
         if ($settings == null) {
-            $settings = wire('pages')->get('/settings/');
+            $settings = PW\wire('pages')->get('/settings/');
         }
 
         return $settings->$name;

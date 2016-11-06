@@ -1,6 +1,7 @@
 <?php
 
 use fixate as f8;
+use ProcessWire as PW;
 
 trait Javascript
 {
@@ -69,7 +70,7 @@ trait Javascript
     {
         $page = $this->page;
 
-        return '<script>window.processWire = '.wireEncodeJSON(array(
+        return '<script>window.processWire = '.PW\wireEncodeJSON(array(
             'page' => $page->name,
             'template' => $page->template->name,
         )).'</script>';
