@@ -1,5 +1,7 @@
 # A Rails-inspired PVC (P for ProcessWire) boilerplate for ProcessWire
 
+<a href="https://codeclimate.com/github/fixate/pw-mvc-boilerplate"><img src="https://codeclimate.com/github/fixate/pw-mvc-boilerplate/badges/gpa.svg" /></a>
+
 (Our [wiki](../../wiki) is under development, but already has more detailed information than this readme.)
 
 A boilerplate for new ProcessWire projects (tested only with PHP 5.4.24). The entrypoint is enabled for a template by using the [delegate approach](http://processwire.com/talk/topic/740-a-different-way-of-using-templates-delegate-approach/), so make sure to set all templates to use `mvc.php` as an alternate template by visiting:
@@ -63,7 +65,7 @@ class ContactController extends Controller {
 #### More Complete Controller Example For The 'home' Template:
 
 ```php
-// site/controllers/home_controller.php
+// site/controllers/HomeController.php
 // The name of the class matters! 'Home' in 'HomeController' matches up to
 // a template named 'home' in the processwire admin.
 class HomeController extends Controller {
@@ -81,8 +83,9 @@ class HomeController extends Controller {
 	function after() { /* Will run after controller method */ }
 
 	// Will execute for a page named foo-bar or foo_bar instead of index()
+	// The page still has to use the 'home' template.
 	// Also renders views/home.html.php
-	function foo_bar() {
+	function page_foo_bar() {
     $vars = array('defined' => 'only here!');
 		// Optionally pass an array for variables that will be available in the view
 		// e.g. <p>var = <?= $defined ?></p> <!-- only here! -->
@@ -90,7 +93,7 @@ class HomeController extends Controller {
 	}
 
 	// Also a page specific method - demonstrating overriding of view name and layout
-	function bar_baz() {
+	function page_bar_baz() {
 	  	// Override the implicit view and use views/foobar.html.php
 	  	// Also sets the layout to views/layouts/alternative.html.php
 		return $this->render('foobar', array('optional' => 'vars'))->set_layout('alternative');
@@ -125,7 +128,7 @@ Basic layout: `views/layouts`
 Uses ProcesWire's $config->is_ajax to determine whether to use api controller or normal controller
 
 ```php
-// controllers/api/contact_controller.php
+// controllers/api/ContactController.php
 class ContactController extends ApiController {
   // Get method is optional, by default a get request
   // returns the page data for this page.

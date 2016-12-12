@@ -2,7 +2,7 @@
 config.rb
 .sass-cache/
 
-#ignore ProcessWire files and folders
+# ProcessWire Files And Folders
 *.old
 *.old/*
 *.new
@@ -16,13 +16,25 @@ sess_*
 *.swp
 *.swo
 *.sh
-**/site/config-dev.php
-**/site/assets/cache/**
-**/site/assets/files/**
-**/site/assets/logs/**
-**/site/assets/sessions/**
-!**/site/assets/**/.*
-**/site/assets/installed.php
+site/config-dev.php
+site/assets/cache/**
+site/assets/files/**
+site/assets/logs/**
+site/assets/sessions/**
+!site/assets/**/.*
+site/assets/installed.php
+site/templates/assets/**/rev-manifest.json
+site/templates/assets/**/*.css
+site/templates/assets/**/*.map.css
+!site/templates/assets/**/editor.css
+site/templates/assets/**/*bundle.js
+site/templates/assets/**/*.js.map
+site/templates/assets/img/*
+!site/templates/assets/img/raw
+site/templates/views/partials/svg/*
+!site/templates/views/partials/svg/raw
+site/templates/assets/vendor
+site/templates/assets/public
 
 # ignore grunt files
 node_modules

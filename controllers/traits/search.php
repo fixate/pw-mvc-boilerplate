@@ -1,29 +1,34 @@
 <?php
 
-trait Search {
-	static function __searchInitialize($obj) {
-		$obj->add_view_vars($obj->get_search_vars());
-	}
+use ProcessWire as PW;
 
-	static function get_query() {
-		$input = wire('input');
-		$sanitizer = wire('sanitizer');
+trait Search
+{
+    public static function __searchInitialize($obj)
+    {
+        $obj->add_view_vars($obj->get_search_vars());
+    }
 
-		return $sanitizer->selectorValue($input->get->q);
-	}
+    public static function get_query()
+    {
+        $input = PW\wire('input');
+        $sanitizer = PW\wire('sanitizer');
 
-	static function get_stored_query() {
-		$input = wire('input');
-		$query = self::get_query();
+        return $sanitizer->selectorValue($input->get->q);
+    }
 
-		return $input->whitelist('q', $query)->q;
-	}
+    public static function get_stored_query()
+    {
+        $input = PW\wire('input');
+        $query = self::get_query();
 
-	function get_search_vars() {
+        return $input->whitelist('q', $query)->q;
+    }
 
-		return array(
-			'q'     => $this->get_stored_query(),
-		);
-	}
+    public function get_search_vars()
+    {
+        return array(
+            'q' => $this->get_stored_query(),
+        );
+    }
 }
-

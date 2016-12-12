@@ -1,18 +1,16 @@
 <?php
 /**
- * Partial for site footer
+ * Partial for site footer.
  *
  * This partial is included via views/layouts/application.php
- *
- * @package ProcessWire
  */
  ?>
 <footer class="area-footer">
-	<div class="wrap">
+  <div class="wrap">
 
-		<div>
-			&copy; <?php echo date('Y'); ?> Powered by <a href="http://processwire.com">ProcessWire</a>
-		</div>
+    <div>
+      &copy; <?php echo date('Y'); ?> Powered by <a href="http://processwire.com">ProcessWire</a>
+    </div>
 
-	</div>
+  </div>
 </footer>
