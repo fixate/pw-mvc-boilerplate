@@ -11,9 +11,9 @@ trait MenuFactory
 
     public function primaryMenu($options = array())
     {
-        return $this->__renderMenu(array(
+        return $this->__renderMenu(array_merge(array(
             'outer_tpl' => '<ul class="menu--primary js-menu-primary">||</ul>',
-        ));
+        ), $options));
     }
 
     private function __renderMenu($options = array())
