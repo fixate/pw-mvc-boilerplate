@@ -33,7 +33,6 @@
 
   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/feed" />
 
-
   <!--[if lte IE 7]>
   <link rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1.css" media="screen, projection">
   <![endif]-->
