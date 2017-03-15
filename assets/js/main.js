@@ -42,4 +42,4 @@ clickToggler('.js-menu-toggle', { targetActiveClass: 'is-open-menu' });
 /* -------------------------------------------------- *\
     REMOVE NO-JS
 \* -------------------------------------------------- */
-$('html').removeClass('no-js');
+document.querySelector('html').classList.remove('no-js');
