@@ -47,9 +47,9 @@ export default function clickToggler(selector, opts = {}) {
     const classListFn = triggerWasActive ? 'remove' : 'add';
     const cb = triggerWasActive ? afterGoInactiveCb : afterGoActiveCb;
 
-    matchingPairs.map(pair => {
-      pair.trigger.classList[classListFn](triggerToggleClass);
-    });
+    matchingPairs.map(pair =>
+      pair.trigger.classList[classListFn](triggerToggleClass)
+    );
 
     if (target) target.classList[classListFn](targetToggleClass);
 
