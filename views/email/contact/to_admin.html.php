@@ -11,27 +11,20 @@
   <table cellpadding="0" cellspacing="0" border="0" id="backgroundTable">
     <tr>
       <td valign="top">
-        <p>Hi <?= $submitter_name; ?>,</p>
-        <p>Thank you for your message:</p>
-      </td>
-    </tr>
-    <tr>
-      <td valign="top">
       <table id="contentTable" cellpadding="0" cellspacing="0" border="0" align="center">
         <tr>
+          <td width="100" valign="top">From:</td>
+          <td valign="top"><?= $name; ?>, <?= $email_to; ?></td>
+        </tr>
+        <tr>
           <td width="100" valign="top">Message:</td>
-          <td valign="top"><?= $submitter_message; ?></td>
+          <td valign="top"><?= $message; ?></td>
         </tr>
       </table>
+
       </td>
     </tr>
-    <tr>
-      <td><p>We will be in touch soon!</p></td>
-    </tr>
-    <tr>
-      <td><p>Kind regards, <br><?= $this->pages->get('/settings')->site_name ?></p></td>
-    </tr>
   </table>
-
 </body>
 </html>
+
