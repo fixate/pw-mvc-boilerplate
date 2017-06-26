@@ -14,7 +14,7 @@
   <?= $this->partial('admin/bar') ?>
   <?= $this->partial('header') ?>
 
-  <main id="main" class="area-content">
+  <main id="main" class="area-main">
     <?php $this->spit(); ?>
   </main><!-- .area-content -->
 
