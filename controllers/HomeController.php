@@ -6,12 +6,13 @@
  */
 class HomeController extends ApplicationController
 {
-    public function index()
-    {
-        return $this->render(
-            // array(
-            //   'extraScripts' => 'your-script.js',
-            // )
-        );
-    }
+  public function index()
+  {
+    return $this->render(
+      // available as $foo in home.html.php
+      // [
+      //   'foo' => 'bar',
+      // ]
+    );
+  }
 }
