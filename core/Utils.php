@@ -9,7 +9,7 @@ class Strings
         if ($first_capital) {
             $str[0] = strtoupper($str[0]);
         }
-        $func = create_function('$c', 'return strtoupper($c[1]);');
+        $func = function($c) { return strtoupper($c[1]);};
 
         return preg_replace_callback('/_([a-z])/', $func, $str);
     }
