@@ -13,7 +13,7 @@
     </a>
 
     <?php // allow screenreaders to skip navigation ?>
-    <a class="visuallyhidden" href="#main">skip navigation and go to main content</a>
+    <a class="u-visually-hidden" href="#main">skip navigation and go to main content</a>
 
     <?php // get primary menu ?>
     <?= $this->partial('menu_primary') ?>
