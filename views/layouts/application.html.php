@@ -11,6 +11,10 @@
 <!--[if gt IE 9]><!--> <html class="no-js" lang="<?= __('en', 'theme_text_domain'); ?>"> <!--<![endif]-->
 <?= $this->partial('meta') ?>
 <body>
+  <div style="position: absolute; z-index: -1; visibility: hidden;">
+    <?= $this->partial('svg/inline-icons') ?>
+  </div>
+
   <?= $this->partial('admin/bar') ?>
   <?= $this->partial('header') ?>
 
