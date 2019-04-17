@@ -33,7 +33,8 @@ trait SEO
         $config = &$this->config;
         $html = '';
         $limit = $this->__seo_opts['limit'];
-        $href = 'http://'.$config->httpHost.$page->url;
+	$protocol = $config->https ? 'https://' : 'http://';
+	$href = $protocol . $config->httpHost . $page->url;
 
         if (empty($limit)) {
             return $html;

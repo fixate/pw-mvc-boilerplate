@@ -98,7 +98,8 @@ trait OpenGraph
     private function __og_image_meta($image)
     {
         $config = &$this->config;
-        $hostname = 'http://'.$config->httpHost;
+        $protocol = $config->https ? 'https://' : 'http://';
+        $hostname = $protocol . $config->httpHost;
 
         if ($image) {
             if (is_array($image)) {
