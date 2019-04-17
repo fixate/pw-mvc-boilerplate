@@ -33,24 +33,29 @@ trait SEO
         $config = &$this->config;
         $html = '';
         $limit = $this->__seo_opts['limit'];
-	$protocol = $config->https ? 'https://' : 'http://';
-	$href = $protocol . $config->httpHost . $page->url;
+        $protocol = $config->https ? 'https://' : 'http://';
+        $href = $protocol . $config->httpHost . $page->url;
+        $prefix = $config->pageNumUrlPrefix;
 
         if (empty($limit)) {
             return $html;
         }
 
-        if ($page->pageNum > 1) {
+        if ($input->pageNum > 1) {
             $html .= '<link rel="prev" href="';
-            $html .= $href.($input->pageNum > 2 ? $config->pageNumUrlPrefix.($input->pageNum - 1) : '');
+            $html .= $href . ($input->pageNum > 2 ? $prefix . ($input->pageNum - 1) : '');
             $html .= '">';
         }
 
-        if ($page->pageNum * $limit < $page->children->count) {
+        if ($input->pageNum * $limit < $page->children->count) {
             $html .= '<link rel="next" href="';
-            $html .= $href.$config->pageNumUrlPrefix;
-            $html .= ($input->pageNum + 1).'">';
+            $html .= $href . $prefix . ($input->pageNum + 1);
+            $html .= '">';
         }
+
+        $html .= '<link rel="canonical" href="';
+        $html .= $href . ($input->pageNum > 1 ? $prefix . ($input->pageNum) : '');
+        $html .= '">';
 
         return $html;
     }
