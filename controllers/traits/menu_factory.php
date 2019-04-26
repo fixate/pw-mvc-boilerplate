@@ -16,7 +16,7 @@ trait MenuFactory
         ), $options));
     }
 
-    private function __renderMenu($options = array())
+    private function __renderMenu($options = array(), $current_page = null, $entries = null)
     {
         $options = array_merge(array(
             'current_class' => 'menu__item--current',
@@ -40,6 +40,6 @@ trait MenuFactory
             return false;
         }
 
-        return $treeMenu->render($options);
+        return $treeMenu->render($options, $current_page, $entries);
     }
 }
