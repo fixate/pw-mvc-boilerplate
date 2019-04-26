@@ -19,15 +19,15 @@ trait MenuFactory
     private function __renderMenu($options = array(), $current_page = null, $entries = null)
     {
         $options = array_merge(array(
-            'current_class' => 'menu__item--current',
-            'parent_class' => 'menu__item--current-parent',
-            'outer_tpl' => '<ul class="menu">||</ul>',
-            'inner_tpl' => '<ul class="menu menu__sub">||</ul>',
-            'selector' => 'template!=rss',
-            'show_root' => true,
-            'list_field_class' => 'menu__item',
-            'item_tpl' => '<a href="{url_nav|url}">{title}</a>',
+            'current_class'    => 'menu__item--current',
+            'inner_tpl'        => '<ul class="menu menu__sub">||</ul>',
             'item_current_tpl' => '<a href="{url_nav|url}">{title}</a>',
+            'item_tpl'         => '<a href="{url_nav|url}">{title}</a>',
+            'list_field_class' => 'menu__item',
+            'outer_tpl'        => '<ul class="menu">||</ul>',
+            'parent_class'     => 'menu__item--current-parent',
+            'selector'         => 'template!=rss',
+            'show_root'        => true,
         ), $options);
 
         $modules = PW\wire('modules');
