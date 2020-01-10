@@ -1,4 +1,7 @@
 <?php
+
+use Wire\Page;
+
 /**
  * Contact Controller.
  *
@@ -34,7 +37,7 @@ class ContactController extends ApplicationController
       ),
       'message' => array(
         'value' => $sanitizer->textarea($input->message),
-        'error' => $is_submission ? $this->formValidateRequiredField($input->message, 'Please add a message'): '',
+        'error' => $is_submission ? $this->formValidateRequiredField($input->message, 'Please add a message') : '',
       ),
     );
 
@@ -56,22 +59,23 @@ class ContactController extends ApplicationController
   {
     $pages = $this->pages;
     $site_name = $pages->get('/settings')->site_name;
-    $admin_email = $pages->get('template=contact')->email;
+    $email_to = $pages->get('template=contact')->contact_email_to;
+    $email_from = $pages->get('template=contact')->contact_email_from;
     extract($submission);
 
     $admin_template = './views/email/contact/to_admin.html.php';
     $submitter_template = './views/email/contact/to_submitter.html.php';
 
     $admin_fields = array(
-      'email_from' => $admin_email,
-      'email_to' => $admin_email,
+      'email_from' => $email_from,
+      'email_to' => $email_to,
       'subject' => "{$site_name} - Contact Query",
       'name' => $name['value'],
       'message' => $message['value'],
     );
 
     $submitter_fields = array(
-      'email_from' => $admin_email,
+      'email_from' => $email_from,
       'email_to' => $email['value'],
       'subject' => "{$site_name} - Thank you for your message",
       'name' => $name['value'],
@@ -86,7 +90,7 @@ class ContactController extends ApplicationController
   {
     $newpage = new Page();
     $newpage->template = 'contact_submission';
-    $newpage->title = "{$fields['name']['value']} - " . date('[H:i d M Y]');
+    $newpage->title = "{$fields['name']['value']} - " . "{$fields['email']['value']} - " . date('[H:i d M Y]');
     $newpage->email = $fields['email']['value'];
     $newpage->body = $fields['message']['value'];
     $newpage->setOutputFormatting(true);
@@ -94,3 +98,4 @@ class ContactController extends ApplicationController
     $newpage->save();
   }
 }
+
