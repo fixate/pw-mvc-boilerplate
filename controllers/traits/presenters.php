@@ -19,8 +19,10 @@ trait Presenters
         } elseif (!isset($options['with'])) {
             throw new InvalidArgumentException("Must supply presenter class name in 'with' key when presenting non-objects.");
         }
+    } elseif (!isset($options['presenter_name'])) {
+      throw new InvalidArgumentException("Must supply presenter class name in 'presenter_name' key when presenting non-objects.");
 
-        $class = isset($options['with']) ? $options['with'] : "{$type_prefix}Presenter";
+    $class = isset($options['presenter_name']) ? $options['presenter_name'] : "{$type_prefix}Presenter";
 
         return new $class($this, $view, $object, $options);
     }
