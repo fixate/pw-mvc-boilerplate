@@ -2,19 +2,22 @@
 
 class Presenter
 {
-    protected $controller;
-    protected $object;
-    protected $options;
+  protected $controller;
+  protected $context;
+  protected $options;
 
-    public function __construct($controller, $view, $object, $options = array())
-    {
-        $this->controller = $controller;
-        $this->view = $view;
-        $this->object = $object;
-        $this->options = $options;
+  public function __construct(ApplicationController $controller, View $view, $context, $options = array())
+  {
+    $this->controller = $controller;
+    $this->view = $view;
+    /**
+     * The context presenter is passed when created, e.g. a page, page array, etc.
+     */
+    $this->context = $context;
+    $this->options = $options;
 
-        $this->initialize();
-    }
+    $this->initialize();
+  }
 
   # @override
   protected function initialize()
