@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Primary menu partial.
  */
 ?>
 <nav id="menu-primary">
-  <?= $this->primaryMenu() ?>
+  <?= $this->primary_menu() ?>
 </nav>
