@@ -176,13 +176,19 @@ abstract class ApiController implements IController
   {
     $fields = func_get_args();
     $page = &$this->page;
+
+    return $this->get_page_data($page, $fields);
+  }
+
+  protected function get_page_data($page, array $fields = [])
+  {
     $outputFormatting = $page->outputFormatting;
     $page->setOutputFormatting(false);
 
     if (empty($fields)) {
       $fields = array(
         'id', 'parent_id', 'templates_id', 'name', 'status', 'sort',
-        'sortfield', 'numChildren', 'template', 'parent', 'data',
+        'sortfield', 'numChildren', 'template', 'parent', 'data', 'url'
       );
     }
 
@@ -190,22 +196,23 @@ abstract class ApiController implements IController
     $has_data_field = false;
     foreach ($fields as $f) {
       switch ($f) {
-      case 'data':
-        $has_data_field = true;
-        break;
-      case 'template':
-        $data['template'] = $page->template->name;
-        break;
-      case 'parent':
-        $data['parent'] = $page->template->path;
-        break;
-      default:
-        $data[$f] = $page->$f;
+        case 'data':
+          $has_data_field = true;
+          break;
+        case 'template':
+          $data['template'] = $page->template->name;
+          break;
+        case 'parent':
+          $data['parent'] = $page->parent->path;
+          break;
+        default:
+          $data[$f] = $page->$f;
       }
     }
 
     if ($has_data_field) {
       $data['data'] = array();
+
       foreach ($page->template->fieldgroup as $field) {
         if ($field->type instanceof FieldtypeFieldsetOpen) {
           continue;
