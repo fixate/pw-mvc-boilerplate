@@ -45,6 +45,9 @@ abstract class ApiController implements IController
     $ret = null;
 
     try {
+      /**
+       * Implement HTTP verbs explicitly as public methods in your controller
+       */
       if (method_exists($this, $method)) {
         $ret = $this->$method();
 
@@ -59,7 +62,7 @@ abstract class ApiController implements IController
           return $this->response;
         }
 
-        // Set created status on sucessfull post
+        // Set created status on successful post
         if ($method == 'post' && $ret && $this->response->status() == 0) {
           $this->response->set_status(201); // CREATED
         }
