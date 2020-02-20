@@ -58,11 +58,12 @@ abstract class ApiController implements IController
 
         // Body set, just return the response
         $body = $this->response->body();
-        if (!empty($body)) {
+
+        if (!$this->empty($body)) {
           return $this->response;
         }
 
-        // Set created status on successful post
+        // Set created status on sucessfull post
         if ($method == 'post' && $ret && $this->response->status() == 0) {
           $this->response->set_status(201); // CREATED
         }
@@ -86,7 +87,8 @@ abstract class ApiController implements IController
 
     // Set NO CONTENT on blank responses
     $body = $this->response->body();
-    if (!$ret && empty($body)) {
+
+    if ($this->empty($ret) && $this->empty($body)) {
       if ($this->response->status() == 0) {
         $this->response->set_status(204); // No content
       }
@@ -94,7 +96,7 @@ abstract class ApiController implements IController
       return $this->response;
     }
 
-    if ($ret) {
+    if (!$this->empty($ret)) {
       // Serialize to JSON
       if (is_array($ret) || is_object($ret)) {
         $this->response->set_header('Content-Type', 'application/json');
@@ -229,5 +231,10 @@ abstract class ApiController implements IController
     $page->setOutputFormatting($outputFormatting);
 
     return $data;
+  }
+
+  private function empty($value)
+  {
+    return empty($value) && gettype($value) != 'array';
   }
 }
