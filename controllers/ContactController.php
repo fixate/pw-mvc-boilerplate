@@ -59,8 +59,8 @@ class ContactController extends ApplicationController
   {
     $pages = $this->pages;
     $site_name = $pages->get('/settings')->site_name;
-    $email_to = $pages->get('template=contact')->contact_email_to;
-    $email_from = $pages->get('template=contact')->contact_email_from;
+    $admin_email_to = $pages->get('template=contact')->contact_email_to;
+    $admin_email_from = $pages->get('template=contact')->contact_email_from;
     extract($submission);
 
     $admin_template = './views/email/contact/to_admin.html.php';
@@ -68,14 +68,14 @@ class ContactController extends ApplicationController
 
     $admin_fields = array(
       'email_from' => $email['value'],
-      'email_to' => $email_to,
+      'email_to' => $admin_email_to,
       'subject' => "{$site_name} - Contact Query",
       'name' => $name['value'],
       'message' => $message['value'],
     );
 
     $submitter_fields = array(
-      'email_from' => $email_from,
+      'email_from' => $admin_email_from,
       'email_to' => $email['value'],
       'subject' => "{$site_name} - Thank you for your message",
       'name' => $name['value'],
