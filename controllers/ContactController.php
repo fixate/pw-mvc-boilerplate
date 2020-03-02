@@ -67,7 +67,7 @@ class ContactController extends ApplicationController
     $submitter_template = './views/email/contact/to_submitter.html.php';
 
     $admin_fields = array(
-      'email_from' => $email_from,
+      'email_from' => $email['value'],
       'email_to' => $email_to,
       'subject' => "{$site_name} - Contact Query",
       'name' => $name['value'],
