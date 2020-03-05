@@ -7,7 +7,7 @@
 		- navigate to the field you want styles added to
 		- select the 'Input' tab
 		- expand 'TinyMCE Advanced Configuration Options'
-		- paste '/site/templates/assets/css/editor.css' under 'content_css'
+		- paste '/site/templates/assets/css/editor.css' under 'Custom Editor CSS File (regular mode)'
  */
 @import url('../public/css/style.min.css');
 
