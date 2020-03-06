@@ -1,8 +1,12 @@
 <div id="contact">
-  <style type="text/css">.hp-model{ display: none;}</style>
+  <style type="text/css">
+    .hp-model {
+      display: none;
+    }
+  </style>
 
   <?php if ($has_sent) : ?>
-    Thank you for contacting us, we will be in touch shortly.
+    Thank you for contacting us. We'll be in touch shortly.
   <?php endif ?>
 
   <form action="./#contact" method="post" id="contact-form" name="contact-form">
@@ -18,7 +22,8 @@
     <textarea id="message" name="message" required rows=6><?= $form['message']['value'] ?></textarea>
     <?= $form['message']['error'] ?>
 
-    <?php // honeypot ?>
+    <?php // honeypot
+    ?>
     <input class="hp-model" type="text" name="model" value="">
 
     <input type="submit" name="submit" value="submit">
