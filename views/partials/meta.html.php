@@ -32,4 +32,8 @@
   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/feed" />
 
   <?= $this->partial('analytics') ?>
+
+  <script>
+    document.querySelector('html').classList.remove('no-js');
+  </script>
 </head>
