@@ -33,7 +33,6 @@ site/templates/assets/img/*
 !site/templates/assets/img/raw
 site/templates/views/partials/svg/*
 !site/templates/views/partials/svg/raw
-site/templates/assets/vendor
 site/templates/assets/public
 
 # ignore grunt files
