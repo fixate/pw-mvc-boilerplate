@@ -2,114 +2,114 @@
 
 trait SEO
 {
-    public static function __seoInitialize($obj)
-    {
-        $obj->add_view_vars($obj->get_seo_vars());
-        $obj->helper('seo_rel_next_prev');
-    }
+  public static function __seoInitialize($obj)
+  {
+    $obj->add_view_vars($obj->get_seo_vars());
+    $obj->helper('seo_rel_next_prev');
+  }
 
-    private $__seo_opts = array(
-        'limit' => false,
+  private $__seo_opts = array(
+    'limit' => false,
+  );
+
+  protected function seo_set_opt($opt, $value)
+  {
+    $this->__seo_opts[$opt] = $value;
+  }
+
+  public function get_seo_vars()
+  {
+    return array(
+      'seo_title' => $this->get_seo_title(),
+      'seo_desc' => $this->get_seo_desc(),
+      'seo_noindex' => $this->get_seo_noindex(),
     );
+  }
 
-    protected function seo_set_opt($opt, $value)
-    {
-        $this->__seo_opts[$opt] = $value;
+  public function seo_rel_next_prev($total_items = 0)
+  {
+    $page = &$this->page;
+    $total_items = $total_items ? $total_items : $page->children->count;
+    $input = &$this->input;
+    $config = &$this->config;
+    $html = '';
+    $limit = $this->__seo_opts['limit'];
+    $protocol = $config->https ? 'https://' : 'http://';
+    $href = $protocol . $config->httpHost . $page->url;
+    $prefix = $config->pageNumUrlPrefix;
+
+    if (empty($limit)) {
+      return $html;
     }
 
-    public function get_seo_vars()
-    {
-        return array(
-            'seo_title' => $this->get_seo_title(),
-            'seo_desc' => $this->get_seo_desc(),
-            'seo_noindex' => $this->get_seo_noindex(),
-        );
+    if ($input->pageNum > 1) {
+      $html .= '<link rel="prev" href="';
+      $html .= $href . ($input->pageNum > 2 ? $prefix . ($input->pageNum - 1) : '');
+      $html .= '">';
     }
 
-    public function seo_rel_next_prev()
-    {
-        $page = &$this->page;
-        $input = &$this->input;
-        $config = &$this->config;
-        $html = '';
-        $limit = $this->__seo_opts['limit'];
-        $protocol = $config->https ? 'https://' : 'http://';
-        $href = $protocol . $config->httpHost . $page->url;
-        $prefix = $config->pageNumUrlPrefix;
-
-        if (empty($limit)) {
-            return $html;
-        }
-
-        if ($input->pageNum > 1) {
-            $html .= '<link rel="prev" href="';
-            $html .= $href . ($input->pageNum > 2 ? $prefix . ($input->pageNum - 1) : '');
-            $html .= '">';
-        }
-
-        if ($input->pageNum * $limit < $page->children->count) {
-            $html .= '<link rel="next" href="';
-            $html .= $href . $prefix . ($input->pageNum + 1);
-            $html .= '">';
-        }
-
-        $html .= '<link rel="canonical" href="';
-        $html .= $href . ($input->pageNum > 1 ? $prefix . ($input->pageNum) : '');
-        $html .= '">';
-
-        return $html;
+    if ($limit > 0 && $input->pageNum < $total_items / $limit) {
+      $html .= '<link rel="next" href="';
+      $html .= $href . $prefix . ($input->pageNum + 1);
+      $html .= '">';
     }
 
-    protected function get_seo_title()
-    {
-        $page = &$this->page;
+    $html .= "<link rel='canonical' href='{$href}' >";
 
-        if (!($seo_title = $page->seo_title)) {
-            $seo_title = $page->title;
-        }
+    return $html;
+  }
 
-        if (method_exists($this, 'setting') && $this->setting('site_name')) {
-            $seo_title .= ' '.$this->get_seo_separator().' '.$this->setting('site_name');
-        }
+  protected function get_seo_title()
+  {
+    $page = &$this->page;
 
-        return $seo_title;
+    if (!($seo_title = $page->seo_title)) {
+      $seo_title = $page->title;
     }
 
-    protected function get_seo_desc()
-    {
-        $page = &$this->page;
-        $input = &$this->input;
+    if (method_exists($this, 'setting') && $this->setting('site_name')) {
+      $seo_title .= ' ' . $this->get_seo_separator() . ' ' . $this->setting('site_name');
+    }
 
-        /*
+    return $seo_title;
+  }
+
+  protected function get_seo_desc()
+  {
+    $page = &$this->page;
+    $input = &$this->input;
+
+    /*
          * don't output meta description if we are using pagination
          * - http://moz.com/blog/pagination-best-practices-for-seo-user-experience
          */
-        if ($page->seo_description && $input->pageNum < 2) {
-            $desc = str_replace('"', "'", $page->seo_description);
+    if ($page->seo_description && $input->pageNum < 2) {
+      $desc = str_replace('"', "'", $page->seo_description);
 
-            return "<meta name='description' content=\"{$desc}\">";
-        }
-
-        return false;
+      return "<meta name='description' content=\"{$desc}\">";
     }
 
-    protected function get_seo_noindex()
-    {
-        $page = &$this->page;
+    return false;
+  }
 
-        if ($page->seo_noindex) {
-            return "<meta name='robots' content='noindex, nofollow'>";
-        }
+  protected function get_seo_noindex()
+  {
+    $page = &$this->page;
 
-        return false;
+    if ($page->seo_noindex) {
+      return "<meta name='robots' content='noindex, nofollow'>";
     }
 
-    private function get_seo_separator()
-    {
-        if (!($seo_separator = $this->setting('seo_separator'))) {
-            $seo_separator = '|';
-        }
+    return false;
+  }
 
-        return $seo_separator;
+  private function get_seo_separator()
+  {
+    if (!($seo_separator = $this->setting('seo_separator'))) {
+      $seo_separator = '|';
     }
+
+    return $seo_separator;
+  }
 }
+
