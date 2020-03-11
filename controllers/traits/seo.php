@@ -5,7 +5,7 @@ trait SEO
   public static function __seoInitialize($obj)
   {
     $obj->add_view_vars($obj->get_seo_vars());
-    $obj->helper('seo_rel_next_prev');
+    $obj->helper('render_seo_rel_next_prev_links');
   }
 
   private $__seo_opts = array(
@@ -26,7 +26,7 @@ trait SEO
     );
   }
 
-  public function seo_rel_next_prev($total_items = 0)
+  public function render_seo_rel_next_prev_links($total_items = 0)
   {
     $page = &$this->page;
     $total_items = $total_items ? $total_items : $page->children->count;

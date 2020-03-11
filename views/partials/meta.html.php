@@ -12,7 +12,7 @@
   <title><?= $seo_title; ?></title>
   <?= $seo_desc; ?>
   <?= $seo_noindex; ?>
-  <?= $this->seo_rel_next_prev() ?>
+  <?= $this->render_seo_rel_next_prev_links() ?>
 
   <?php // enable responsive behaviour for all devices
   ?>
