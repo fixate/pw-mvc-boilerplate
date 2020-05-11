@@ -100,7 +100,7 @@ trait SEO
       return "<meta name='robots' content='noindex, nofollow'>";
     }
 
-    return false;
+    return "<meta name='robots' content='index, follow'>";
   }
 
   private function get_seo_separator()
@@ -112,4 +112,3 @@ trait SEO
     return $seo_separator;
   }
 }
-
